@@ -1,11 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 
+const base = import.meta.env.BASE_URL;
+
 const SIDE_LINKS = [
-  { label: 'WORK', href: '/#work' },
-  { label: 'ABOUT', href: '/#about' },
-  { label: 'PACKAGES', href: '/#packages' },
-  { label: "LET'S TALK", href: '/#contact' },
+  { label: 'WORK', href: `${base}#work` },
+  { label: 'ABOUT', href: `${base}#about` },
+  { label: 'PACKAGES', href: `${base}#packages` },
+  { label: "LET'S TALK", href: `${base}#contact` },
 ];
 
 export default function Header() {
