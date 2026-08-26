@@ -1,6 +1,7 @@
 /* ==========================================================================
    Monica Howe Studio — design tokens
-   Cream + near-black, one acid-olive accent, italic serif for emphasis.
+   Cream + near-black, olive accent. Fonts match the homepage PDF:
+   Instrument Sans (UI/display) + Newsreader (serif labels / emphasis).
    ========================================================================== */
 :root {
   --color-bg: #f4f1e8;
@@ -14,9 +15,10 @@
   --color-accent: #c6d94d;
   --color-accent-dim: #a9bb3a;
 
-  --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
-  --font-body: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
-  --font-accent: 'Instrument Serif', Georgia, serif;
+  --font-display: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-accent: var(--font-serif);
 
   --container-w: 1360px;
   --gutter: clamp(20px, 5vw, 64px);
@@ -106,23 +108,23 @@ ul {
 }
 
 .eyebrow {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-muted);
 }
 
 .accent-italic {
-  font-family: var(--font-accent);
+  font-family: var(--font-serif);
   font-style: italic;
   color: var(--color-accent-dim);
   font-weight: 400;
 }
 
 .arrow {
-  display: inline-block;
+  display: inline-flex;
   transition: transform 0.35s var(--ease);
 }
 

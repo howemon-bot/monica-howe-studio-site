@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import projects from '../data/projects';
+import ArrowIcon from './ArrowIcon';
 import './WorkList.css';
 
 export default function WorkList() {
@@ -18,8 +19,8 @@ export default function WorkList() {
               <span className="worklist__meta">
                 <span className="worklist__client">{p.client}</span>
                 <span className="worklist__year">{p.year}</span>
-                <span className="worklist__arrow" aria-hidden="true">
-                  ↗
+                <span className="worklist__arrow">
+                  <ArrowIcon size={18} />
                 </span>
               </span>
             </Link>

@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../assets/brand/MonicaHowe_logo.svg';
 import './Header.css';
 
 const base = import.meta.env.BASE_URL;
@@ -18,13 +19,7 @@ export default function Header() {
     <header className="site-header">
       <div className="wrap site-header__row">
         <Link to="/" className="site-header__logo" aria-label="Monica Howe studio — home">
-          <span className="site-header__logo-studio" aria-hidden="true">
-            studio
-          </span>
-          <span className="site-header__logo-name">
-            <span>monica</span>
-            <span>howe</span>
-          </span>
+          <img src={logo} alt="Monica Howe studio" className="site-header__logo-img" />
         </Link>
 
         {!isHome && (

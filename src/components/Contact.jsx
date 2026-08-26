@@ -1,3 +1,5 @@
+import ArrowIcon from './ArrowIcon';
+
 export default function Contact() {
   return (
     <section id="contact" className="contact">
@@ -9,8 +11,8 @@ export default function Contact() {
             Let&rsquo;s design something <span className="accent-italic">that lasts</span>. Say
             hi.
           </span>
-          <span className="arrow contact__headline-arrow" aria-hidden="true">
-            ↗
+          <span className="arrow contact__headline-arrow">
+            <ArrowIcon size={36} />
           </span>
         </a>
 

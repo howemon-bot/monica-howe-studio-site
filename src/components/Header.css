@@ -9,33 +9,16 @@
   justify-content: space-between;
 }
 
-/* PDF lockup: vertical “studio” beside stacked monica / howe */
+/* Official lockup from 01_Assets (vertical studio + monica / howe) */
 .site-header__logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  color: var(--color-ink);
+  display: block;
+  line-height: 0;
 }
 
-.site-header__logo-studio {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  line-height: 1;
-  text-transform: lowercase;
-}
-
-.site-header__logo-name {
-  display: flex;
-  flex-direction: column;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 15px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  text-transform: lowercase;
+.site-header__logo-img {
+  display: block;
+  width: clamp(120px, 16vw, 168px);
+  height: auto;
 }
 
 .site-header__home-link {

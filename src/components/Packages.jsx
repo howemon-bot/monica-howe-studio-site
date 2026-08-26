@@ -1,3 +1,5 @@
+import ArrowIcon from './ArrowIcon';
+
 const PACKAGES = [
   {
     title: ['Logo +', 'Style sheet'],
@@ -39,7 +41,7 @@ export default function Packages() {
           <a href="mailto:monicahowe@studio.com?subject=Booking%20enquiry" className="packages__book link-arrow">
             Book
             <br />
-            now <span className="arrow">↗</span>
+            now <span className="arrow"><ArrowIcon size={16} /></span>
           </a>
         </div>
       ))}
