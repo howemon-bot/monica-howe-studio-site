@@ -1,0 +1,17 @@
+.site-footer__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0 36px;
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.site-footer__top {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.site-footer__top:hover {
+  color: var(--color-ink);
+}

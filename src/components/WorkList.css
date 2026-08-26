@@ -1,0 +1,81 @@
+.worklist {
+  background: var(--color-bg-dark);
+  color: var(--color-bg);
+  padding: clamp(40px, 6vw, 64px) 0 clamp(24px, 4vw, 40px);
+  margin-top: clamp(48px, 7vw, 80px);
+}
+
+.worklist__eyebrow {
+  color: var(--color-cream-muted);
+  margin-bottom: clamp(20px, 3vw, 32px);
+}
+
+.worklist__list {
+  border-top: 1px solid var(--color-line-dark);
+}
+
+.worklist__item {
+  border-bottom: 1px solid var(--color-line-dark);
+}
+
+.worklist__row {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(16px, 3vw, 32px);
+  padding: clamp(16px, 2.6vw, 26px) var(--gutter);
+  transition: padding-left 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+.worklist__row:hover {
+  padding-left: calc(var(--gutter) + 10px);
+  background: rgba(244, 241, 232, 0.03);
+}
+
+.worklist__index {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-cream-muted);
+  letter-spacing: 0.08em;
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.worklist__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(22px, 4vw, 40px);
+  letter-spacing: -0.01em;
+  flex: 1;
+}
+
+.worklist__meta {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 28px);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--color-cream-muted);
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.worklist__client {
+  display: none;
+}
+
+.worklist__arrow {
+  color: var(--color-accent);
+  font-size: 16px;
+  transition: transform 0.3s var(--ease);
+}
+
+.worklist__row:hover .worklist__arrow {
+  transform: translate(3px, -3px);
+}
+
+@media (min-width: 640px) {
+  .worklist__client {
+    display: inline;
+  }
+}
