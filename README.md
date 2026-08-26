@@ -36,8 +36,8 @@ src/
 | `--color-bg` | `#F4F1E8` | page background (cream) |
 | `--color-bg-dark` | `#141310` | selected-work section, footer contrast |
 | `--color-accent` / `--color-accent-dim` | `#C6D94D` / `#A9BB3A` | links, hover states, italic emphasis |
-| `--font-display` | Archivo (800/700) | headlines |
-| `--font-accent` | Instrument Serif italic | emphasis words ("that lasts") |
+| `--font-display` | Instrument Sans (700) | headlines |
+| `--font-accent` / `--font-serif` | Newsreader | labels, meta, italic emphasis ("that lasts") |
 
 ## What's still a placeholder
 

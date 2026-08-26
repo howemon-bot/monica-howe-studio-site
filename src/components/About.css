@@ -53,27 +53,80 @@
   color: var(--color-bg);
 }
 
-.about__rule {
+/* Full-bleed services marquee — scrolls right → left */
+.about__skills {
   margin-top: clamp(40px, 6vw, 64px);
+  margin-left: calc(-1 * var(--gutter));
+  margin-right: calc(-1 * var(--gutter));
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  overflow: hidden;
 }
 
-.about__skills {
+.about__skills-marquee {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px 0;
-  justify-content: center;
-  padding: 20px var(--gutter);
-  font-size: 11px;
+  width: max-content;
+  animation: about-marquee 32s linear infinite;
+}
+
+.about__skills:hover .about__skills-marquee {
+  animation-play-state: paused;
+}
+
+.about__skills-track {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 18px 0;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-ink-soft);
+  white-space: nowrap;
 }
 
-.about__skills li:not(:last-child)::after {
-  content: '·';
-  margin: 0 14px;
+.about__skills-track li {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 28px;
+}
+
+.about__skills-sep {
+  display: inline-flex;
+  margin-left: 28px;
   color: var(--color-accent-dim);
+  font-size: 10px;
+  line-height: 1;
+}
+
+@keyframes about-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__skills-marquee {
+    animation: none;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .about__skills-track:last-child {
+    display: none;
+  }
+
+  .about__skills-track {
+    flex-wrap: wrap;
+    justify-content: center;
+    white-space: normal;
+    padding: 16px var(--gutter);
+  }
 }
 
 @media (max-width: 640px) {
