@@ -1,10 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 
-const LINKS = [
-  { label: 'About', href: '/#about' },
-  { label: 'Work', href: '/#work' },
-  { label: 'Packages', href: '/#packages' },
+const SIDE_LINKS = [
+  { label: 'WORK', href: '/#work' },
+  { label: 'ABOUT', href: '/#about' },
+  { label: 'PACKAGES', href: '/#packages' },
+  { label: "LET'S TALK", href: '/#contact' },
 ];
 
 export default function Header() {
@@ -14,20 +15,17 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="wrap site-header__row">
-        <Link to="/" className="site-header__logo" aria-label="Monica Howe — home">
-          <span className="site-header__logo-line">monica</span>
-          <span className="site-header__logo-line site-header__logo-line--accent">howe</span>
+        <Link to="/" className="site-header__logo" aria-label="Monica Howe studio — home">
+          <span className="site-header__logo-studio" aria-hidden="true">
+            studio
+          </span>
+          <span className="site-header__logo-name">
+            <span>monica</span>
+            <span>howe</span>
+          </span>
         </Link>
 
-        {isHome ? (
-          <nav className="site-header__nav" aria-label="Primary">
-            {LINKS.map((l) => (
-              <a key={l.label} href={l.href}>
-                {l.label}
-              </a>
-            ))}
-          </nav>
-        ) : (
+        {!isHome && (
           <Link to="/" className="site-header__home-link">
             Home
           </Link>
@@ -35,14 +33,14 @@ export default function Header() {
       </div>
 
       {isHome && (
-        <div className="site-header__ticker" aria-hidden="true">
-          <span>WORK</span>
-          <span className="dot" />
-          <span>ABOUT</span>
-          <span className="dot" />
-          <span>PACKAGES</span>
-          <span className="dot" />
-        </div>
+        <nav className="site-header__side" aria-label="Primary">
+          {SIDE_LINKS.map((l, i) => (
+            <span key={l.label} className="site-header__side-item">
+              {i > 0 && <span className="site-header__side-rule" aria-hidden="true" />}
+              <a href={l.href}>{l.label}</a>
+            </span>
+          ))}
+        </nav>
       )}
     </header>
   );

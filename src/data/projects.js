@@ -16,17 +16,17 @@ const projects = [
     client: 'BETTER BRAND LABS',
     year: '2024',
     type: 'Visual identity and implementation',
-    brandColor: '#3F3FA0',
+    brandColor: '#2B3FD6',
     problem:
       "Telavi was shifting from a standard telecom provider to one built around human connection — but the brand hadn't caught up yet.",
     impact:
       'Faster, smoother communication makes human interactions more meaningful. That belief needed to come through visually.',
     solution:
-      'A confident, rounded wordmark and a signal-dot motif carried across stationery, packaging, wayfinding and out-of-home — a system flexible enough to speak in a boardroom deck and a billboard alike.',
+      'A confident, rounded wordmark and a pixel motif carried across stationery, packaging, wayfinding and out-of-home — a system flexible enough to speak in a boardroom deck and a billboard alike.',
     images: {
       hero: telaviHero,
       grid: [
-        { src: telaviLogoCard, label: 'Logo lockup' },
+        { src: telaviLogoCard, label: 'Business cards' },
         { src: telaviCup, label: 'Packaging' },
         { src: telaviPencils, label: 'Stationery' },
         { src: telaviLetterhead, label: 'Letterhead' },
