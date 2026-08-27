@@ -4,7 +4,7 @@
 }
 
 .contact__eyebrow {
-  margin-bottom: 16px;
+  margin-bottom: clamp(28px, 4vw, 40px);
 }
 
 .contact__headline {
@@ -22,7 +22,7 @@
 .contact__headline-arrow {
   display: inline-flex;
   flex-shrink: 0;
-  margin-top: 0.2em;
+  margin-top: 0.15em;
   color: var(--color-accent-dim);
 }
 
@@ -37,4 +37,11 @@
 
 .contact__links a:hover {
   color: var(--color-ink);
+}
+
+.contact__rule {
+  width: min(160px, 40%);
+  height: 2px;
+  margin-top: clamp(28px, 4vw, 40px);
+  background: var(--color-accent);
 }

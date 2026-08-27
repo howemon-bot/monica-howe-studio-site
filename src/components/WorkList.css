@@ -1,41 +1,41 @@
 .worklist {
   background: var(--color-bg-dark);
-  color: var(--color-bg);
-  padding: clamp(40px, 6vw, 64px) 0 clamp(24px, 4vw, 40px);
+  color: var(--color-cream);
+  padding: clamp(40px, 6vw, 64px) 0 clamp(28px, 4vw, 44px);
   margin-top: clamp(48px, 7vw, 80px);
 }
 
 .worklist__eyebrow {
-  color: var(--color-cream-muted);
+  color: var(--color-cream);
   margin-bottom: clamp(20px, 3vw, 32px);
 }
 
 .worklist__list {
-  border-top: 1px solid rgba(198, 217, 77, 0.28);
+  border-top: 1px solid var(--color-accent);
 }
 
 .worklist__item {
-  border-bottom: 1px solid rgba(198, 217, 77, 0.28);
+  border-bottom: 1px solid var(--color-accent);
 }
 
 .worklist__row {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: clamp(16px, 3vw, 32px);
-  padding: clamp(18px, 2.8vw, 28px) var(--gutter);
+  padding: clamp(26px, 3.6vw, 40px) var(--gutter);
   transition: padding-left 0.3s var(--ease), background 0.3s var(--ease);
 }
 
 .worklist__row:hover {
   padding-left: calc(var(--gutter) + 10px);
-  background: rgba(244, 241, 232, 0.03);
+  background: rgba(243, 239, 232, 0.03);
 }
 
 .worklist__index {
-  font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--color-accent);
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--color-cream);
   letter-spacing: 0.04em;
   width: 28px;
   flex-shrink: 0;
@@ -44,22 +44,23 @@
 .worklist__name {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(26px, 4.4vw, 44px);
+  font-size: clamp(30px, 5vw, 52px);
   letter-spacing: -0.02em;
   line-height: 1.05;
+  color: var(--color-cream);
   flex: 1;
   min-width: 0;
 }
 
 .worklist__meta {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: clamp(14px, 2.2vw, 32px);
   font-family: var(--font-serif);
   font-size: clamp(12px, 1.2vw, 15px);
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 0.04em;
-  color: var(--color-cream-muted);
+  color: var(--color-cream);
   text-transform: uppercase;
   flex-shrink: 0;
 }
@@ -80,6 +81,31 @@
 .worklist__row:focus-visible .worklist__arrow {
   opacity: 1;
   transform: translate(0, 0);
+}
+
+.worklist__more {
+  display: flex;
+  justify-content: center;
+  padding-top: 28px;
+}
+
+.worklist__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  color: var(--color-accent);
+  font-size: 22px;
+  line-height: 1;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.worklist__toggle:hover {
+  background: var(--color-accent);
+  color: var(--color-bg-dark);
 }
 
 @media (min-width: 720px) {

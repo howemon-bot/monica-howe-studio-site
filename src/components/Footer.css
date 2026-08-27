@@ -1,10 +1,15 @@
 .site-footer__row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 22px 0 36px;
-  font-size: 12px;
   color: var(--color-muted);
+}
+
+.site-footer__group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .site-footer__top {
@@ -14,4 +19,8 @@
 
 .site-footer__top:hover {
   color: var(--color-ink);
+}
+
+.site-footer__copy {
+  font-size: 11px;
 }

@@ -1,12 +1,17 @@
 .about {
-  padding-top: clamp(56px, 8vw, 96px);
-  padding-bottom: clamp(28px, 4vw, 40px);
+  padding-top: clamp(72px, 10vw, 112px);
+  padding-bottom: clamp(40px, 6vw, 56px);
 }
 
 .about__grid {
   display: grid;
   grid-template-columns: 100px 1fr;
   gap: clamp(16px, 4vw, 40px);
+  align-items: start;
+}
+
+.about__eyebrow {
+  margin-top: 0.55em;
 }
 
 .about__copy {
@@ -22,7 +27,7 @@
 }
 
 .about__bio {
-  margin-top: 20px;
+  margin-top: 28px;
   color: var(--color-ink-soft);
   line-height: 1.6;
   font-size: 15px;
@@ -37,9 +42,9 @@
 .about__cta {
   display: inline-flex;
   align-items: center;
-  margin-top: 28px;
+  margin-top: 36px;
   padding: 11px 26px;
-  border: 1px solid var(--color-ink);
+  border: 1px solid var(--color-accent);
   border-radius: 999px;
   font-size: 12px;
   font-weight: 600;
@@ -49,13 +54,13 @@
 }
 
 .about__cta:hover {
-  background: var(--color-ink);
-  color: var(--color-bg);
+  background: var(--color-accent);
+  color: var(--color-ink);
+  border-color: var(--color-accent);
 }
 
-/* Full-bleed services marquee — scrolls right → left */
 .about__skills {
-  margin-top: clamp(40px, 6vw, 64px);
+  margin-top: clamp(56px, 8vw, 80px);
   margin-left: calc(-1 * var(--gutter));
   margin-right: calc(-1 * var(--gutter));
   border-top: 1px solid var(--color-line);
@@ -132,5 +137,9 @@
 @media (max-width: 640px) {
   .about__grid {
     grid-template-columns: 1fr;
+  }
+
+  .about__eyebrow {
+    margin-top: 0;
   }
 }

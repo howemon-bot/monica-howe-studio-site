@@ -23,7 +23,7 @@ yarn lint
 ```
 src/
   data/projects.js        project content (client, year, problem/impact/solution copy)
-  components/              Header, Hero, WorkList, About, Packages, Contact, Footer
+  components/              Header, Hero, WorkList, About, Contact, Footer, BackToTop
   pages/Home.jsx            composes the homepage sections
   pages/ProjectDetail.jsx   case-study template, reads a project by :slug
   index.css                 design tokens: colour, type, spacing
@@ -35,9 +35,10 @@ src/
 |---|---|---|
 | `--color-bg` | `#F4F1E8` | page background (cream) |
 | `--color-bg-dark` | `#141310` | selected-work section, footer contrast |
-| `--color-accent` / `--color-accent-dim` | `#C6D94D` / `#A9BB3A` | links, hover states, italic emphasis |
+| `--color-accent` / `--color-accent-dim` | `#B3C635` / `#93A52A` | links, hover states, italic emphasis |
+| `--color-cream` | `#F3EFE8` | text on dark backgrounds |
 | `--font-display` | Instrument Sans (700) | headlines |
-| `--font-accent` / `--font-serif` | Newsreader | labels, meta, italic emphasis ("that lasts") |
+| `--font-accent` / `--font-serif` | Newsreader (300 labels, 700 italic) | labels, meta, emphasis ("that lasts") |
 
 ## What's still a placeholder
 
@@ -57,6 +58,5 @@ real exports into `src/assets/<slug>/` and add an `images` object to that
 project's entry in `src/data/projects.js` (same shape as Telavi's) to swap
 them in.
 
-Contact details (email, LinkedIn, Instagram) are placeholders in
-`src/components/Contact.jsx` and `src/components/Packages.jsx` — update the
-links before launch.
+Contact details (email, LinkedIn, Instagram) live in `src/components/Contact.jsx`
+— email is `hola@monicahowe.studio`.

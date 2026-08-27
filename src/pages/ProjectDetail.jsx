@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { getProjectBySlug, getAdjacentProjects } from '../data/projects';
-import Contact from '../components/Contact';
-import '../components/Contact.css';
+import ArrowIcon from '../components/ArrowIcon';
 import './ProjectDetail.css';
 
 const INFO_BLOCKS = [
@@ -10,6 +9,8 @@ const INFO_BLOCKS = [
   { key: 'impact', label: 'Positive impact' },
   { key: 'solution', label: 'Solution' },
 ];
+
+const base = import.meta.env.BASE_URL;
 
 export default function ProjectDetail() {
   const { slug } = useParams();
@@ -61,8 +62,6 @@ export default function ProjectDetail() {
         </div>
       </section>
 
-      {/* Real exports where available (currently Telavi); placeholder plates
-          elsewhere until the other case studies have assets. */}
       {project.images ? (
         <>
           <div className="project__plate project__plate--hero project__plate--photo wrap">
@@ -118,16 +117,23 @@ export default function ProjectDetail() {
 
       <nav className="project__pager wrap" aria-label="Other projects">
         <Link to={`/work/${previous.slug}`} className="project__pager-link">
+          <ArrowIcon size={14} rotate={-135} />
           <span className="eyebrow">Previous</span>
-          <span className="project__pager-name">{previous.name}</span>
         </Link>
         <Link to={`/work/${next.slug}`} className="project__pager-link project__pager-link--next">
           <span className="eyebrow">Next</span>
-          <span className="project__pager-name">{next.name}</span>
+          <ArrowIcon size={14} />
         </Link>
       </nav>
 
-      <Contact />
+      <div className="project__talk wrap">
+        <a href={`${base}#contact`} className="project__talk-link link-arrow">
+          Let&rsquo;s talk
+          <span className="arrow">
+            <ArrowIcon size={18} />
+          </span>
+        </a>
+      </div>
     </article>
   );
 }

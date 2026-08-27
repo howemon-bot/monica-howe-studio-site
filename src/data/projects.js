@@ -1,5 +1,3 @@
-// Central project data. Swap `image` placeholders for real assets from the
-// .ai file exports when they're ready — everything else is wired to this shape.
 import telaviHero from '../assets/telavi/hero-collage.jpg';
 import telaviLogoCard from '../assets/telavi/logo-card.jpg';
 import telaviCup from '../assets/telavi/cup.jpg';

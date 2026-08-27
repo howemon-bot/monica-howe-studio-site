@@ -35,7 +35,6 @@ jobs:
           GITHUB_PAGES: 'true'
         run: yarn build
 
-      # SPA fallback so /work/:slug works on refresh
       - name: Add 404.html
         run: cp dist/index.html dist/404.html
 

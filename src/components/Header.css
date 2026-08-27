@@ -9,7 +9,6 @@
   justify-content: space-between;
 }
 
-/* Official lockup from 01_Assets (vertical studio + monica / howe) */
 .site-header__logo {
   display: block;
   line-height: 0;
@@ -21,24 +20,26 @@
   height: auto;
 }
 
-.site-header__home-link {
-  font-size: 13px;
+.site-header__home-mobile {
+  display: none;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   border-bottom: 1px solid var(--color-line);
   padding-bottom: 3px;
 }
 
-/* Right-edge vertical nav — matches homepage PDF */
 .site-header__side {
   position: absolute;
-  top: 96px;
+  top: 28px;
   right: max(8px, calc(var(--gutter) - 18px));
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0;
+  line-height: 1;
 }
 
 .site-header__side-item {
@@ -47,33 +48,43 @@
   align-items: center;
 }
 
-.site-header__side a {
+.site-header__side a,
+.site-header__home-side {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.18em;
   line-height: 1;
-  padding: 10px 4px;
+  padding: 8px 4px;
   color: var(--color-ink);
   transition: color 0.25s var(--ease);
 }
 
-.site-header__side a:hover {
+.site-header__side a:hover,
+.site-header__home-side:hover {
   color: var(--color-accent-dim);
 }
 
 .site-header__side-rule {
   display: block;
   width: 1px;
-  height: 14px;
+  height: 12px;
   background: var(--color-ink);
   opacity: 0.55;
-  margin: 2px 0;
+  margin: 1px 0;
 }
 
 @media (max-width: 780px) {
   .site-header__side {
     display: none;
+  }
+
+  .site-header__home-mobile {
+    display: inline-block;
+  }
+
+  .site-header__row {
+    align-items: center;
   }
 }

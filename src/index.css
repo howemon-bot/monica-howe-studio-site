@@ -1,19 +1,15 @@
-/* ==========================================================================
-   Monica Howe Studio — design tokens
-   Cream + near-black, olive accent. Fonts match the homepage PDF:
-   Instrument Sans (UI/display) + Newsreader (serif labels / emphasis).
-   ========================================================================== */
 :root {
   --color-bg: #f4f1e8;
   --color-bg-dark: #141310;
   --color-ink: #191712;
   --color-ink-soft: #4a473e;
   --color-muted: #8c8874;
+  --color-cream: #f3efe8;
   --color-cream-muted: #b9b6a9;
   --color-line: rgba(25, 23, 18, 0.14);
   --color-line-dark: rgba(244, 241, 232, 0.16);
-  --color-accent: #c6d94d;
-  --color-accent-dim: #a9bb3a;
+  --color-accent: #b3c635;
+  --color-accent-dim: #93a52a;
 
   --font-display: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
@@ -110,7 +106,7 @@ ul {
 .eyebrow {
   font-family: var(--font-serif);
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-muted);
@@ -119,8 +115,8 @@ ul {
 .accent-italic {
   font-family: var(--font-serif);
   font-style: italic;
+  font-weight: 700;
   color: var(--color-accent-dim);
-  font-weight: 400;
 }
 
 .arrow {
@@ -136,6 +132,12 @@ ul {
 
 .link-arrow:hover .arrow {
   transform: translate(3px, -3px);
+}
+
+.hairline {
+  border: none;
+  border-top: 1px solid var(--color-line);
+  margin: 0;
 }
 
 .visually-hidden {

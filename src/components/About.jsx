@@ -26,7 +26,7 @@ export default function About() {
   return (
     <section id="about" className="about wrap">
       <div className="about__grid">
-        <p className="eyebrow">About</p>
+        <p className="eyebrow about__eyebrow">About</p>
         <div className="about__copy">
           <h2 className="about__heading">
             I&rsquo;m an art director and visual designer. Based in Barcelona, working
@@ -45,9 +45,7 @@ export default function About() {
       </div>
 
       <div className="about__skills" role="presentation">
-        <p className="visually-hidden">
-          Services: {SKILLS.join(', ')}
-        </p>
+        <p className="visually-hidden">Services: {SKILLS.join(', ')}</p>
         <div className="about__skills-marquee">
           <SkillsTrack />
           <SkillsTrack />

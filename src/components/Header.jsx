@@ -7,8 +7,7 @@ const base = import.meta.env.BASE_URL;
 const SIDE_LINKS = [
   { label: 'WORK', href: `${base}#work` },
   { label: 'ABOUT', href: `${base}#about` },
-  { label: 'PACKAGES', href: `${base}#packages` },
-  { label: "LET'S TALK", href: `${base}#contact` },
+  { label: 'CONTACT', href: `${base}#contact` },
 ];
 
 export default function Header() {
@@ -23,13 +22,13 @@ export default function Header() {
         </Link>
 
         {!isHome && (
-          <Link to="/" className="site-header__home-link">
+          <Link to="/" className="site-header__home-mobile">
             Home
           </Link>
         )}
       </div>
 
-      {isHome && (
+      {isHome ? (
         <nav className="site-header__side" aria-label="Primary">
           {SIDE_LINKS.map((l, i) => (
             <span key={l.label} className="site-header__side-item">
@@ -38,6 +37,10 @@ export default function Header() {
             </span>
           ))}
         </nav>
+      ) : (
+        <Link to="/" className="site-header__side site-header__home-side">
+          HOME
+        </Link>
       )}
     </header>
   );

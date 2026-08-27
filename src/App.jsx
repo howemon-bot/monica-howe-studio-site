@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import BackToTop from './components/BackToTop';
 import Home from './pages/Home';
 import ProjectDetail from './pages/ProjectDetail';
 import './components/Header.css';
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/work/:slug" element={<ProjectDetail />} />
       </Routes>
       <Footer />
+      <BackToTop />
     </BrowserRouter>
   );
 }
