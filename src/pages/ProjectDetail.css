@@ -134,18 +134,22 @@
 .project__pager-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  color: var(--color-ink-soft);
+  gap: 10px;
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink);
   transition: color 0.25s var(--ease);
 }
 
 .project__pager-link:hover {
-  color: var(--color-ink);
+  color: var(--color-accent-dim);
 }
 
-.project__pager-link .eyebrow {
-  margin: 0;
-  color: inherit;
+.project__pager-link--next {
+  margin-left: auto;
 }
 
 .project__talk {

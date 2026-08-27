@@ -9,9 +9,8 @@ export default function Contact() {
         <p className="eyebrow contact__eyebrow">Contact</p>
 
         <a href={`mailto:${EMAIL}`} className="contact__headline link-arrow">
-          <span>
-            Let&rsquo;s design something <span className="accent-italic">that lasts</span>. Say
-            hi.
+          <span className="contact__headline-text">
+            Let&rsquo;s <span className="accent-italic">talk</span>.
           </span>
           <span className="arrow contact__headline-arrow">
             <ArrowIcon size={48} />

@@ -5,25 +5,33 @@
 
 .contact__eyebrow {
   margin-bottom: clamp(28px, 4vw, 40px);
+  color: var(--color-ink);
 }
 
 .contact__headline {
   display: inline-flex;
-  align-items: flex-start;
-  gap: 14px;
+  align-items: center;
+  gap: clamp(12px, 2vw, 20px);
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.02;
-  font-size: clamp(32px, 6.4vw, 68px);
-  max-width: 16ch;
+  line-height: 1;
+  font-size: clamp(40px, 7vw, 80px);
+  color: var(--color-ink);
+}
+
+.contact__headline-text {
+  display: inline;
+}
+
+.contact__headline .accent-italic {
+  color: var(--color-accent-dim);
 }
 
 .contact__headline-arrow {
   display: inline-flex;
   flex-shrink: 0;
-  margin-top: 0.15em;
-  color: var(--color-accent-dim);
+  color: var(--color-ink);
 }
 
 .contact__links {

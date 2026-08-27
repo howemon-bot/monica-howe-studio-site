@@ -117,18 +117,20 @@ export default function ProjectDetail() {
 
       <nav className="project__pager wrap" aria-label="Other projects">
         <Link to={`/work/${previous.slug}`} className="project__pager-link">
-          <ArrowIcon size={14} rotate={-135} />
-          <span className="eyebrow">Previous</span>
+          <ArrowIcon size={18} rotate={180} />
+          <span>Previous</span>
         </Link>
         <Link to={`/work/${next.slug}`} className="project__pager-link project__pager-link--next">
-          <span className="eyebrow">Next</span>
-          <ArrowIcon size={14} />
+          <span>Next</span>
+          <ArrowIcon size={18} />
         </Link>
       </nav>
 
       <div className="project__talk wrap">
         <a href={`${base}#contact`} className="project__talk-link link-arrow">
-          Let&rsquo;s talk
+          <span>
+            Let&rsquo;s <span className="accent-italic">talk</span>.
+          </span>
           <span className="arrow">
             <ArrowIcon size={18} />
           </span>
