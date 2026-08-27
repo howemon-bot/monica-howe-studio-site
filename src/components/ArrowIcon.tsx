@@ -1,4 +1,10 @@
-export default function ArrowIcon({ className = '', size = 16, rotate = 0 }) {
+type ArrowIconProps = {
+  className?: string;
+  size?: number;
+  rotate?: number;
+};
+
+export default function ArrowIcon({ className = '', size = 16, rotate = 0 }: ArrowIconProps) {
   return (
     <svg
       className={className}

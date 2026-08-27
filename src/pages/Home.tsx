@@ -4,6 +4,7 @@ import About from '../components/About';
 import Contact from '../components/Contact';
 import '../components/About.css';
 import '../components/Contact.css';
+import '../motion/Reveal.css';
 
 export default function Home() {
   return (

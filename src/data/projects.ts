@@ -6,7 +6,28 @@ import telaviLetterhead from '../assets/telavi/letterhead.jpg';
 import telaviBillboard from '../assets/telavi/billboard.jpg';
 import telaviWebsite from '../assets/telavi/website-mockup.jpg';
 
-const projects = [
+export type ProjectImages = {
+  hero: string;
+  grid: { src: string; label: string }[];
+  wide: string;
+  screen: string;
+};
+
+export type Project = {
+  index: string;
+  slug: string;
+  name: string;
+  client: string;
+  year: string;
+  type: string;
+  brandColor: string;
+  problem: string;
+  impact: string;
+  solution: string;
+  images?: ProjectImages;
+};
+
+const projects: Project[] = [
   {
     index: '01',
     slug: 'telavi',
@@ -87,7 +108,7 @@ const projects = [
     type: 'Illustration and brand identity',
     brandColor: '#C6482E',
     problem:
-      'A children\u2019s label needed a character-led identity that could hold its own on packaging, not just a page.',
+      'A children’s label needed a character-led identity that could hold its own on packaging, not just a page.',
     impact:
       'Kids notice a character before they notice a name. The identity had to lead with personality.',
     solution:
@@ -97,11 +118,12 @@ const projects = [
 
 export default projects;
 
-export function getProjectBySlug(slug) {
+export function getProjectBySlug(slug: string | undefined) {
+  if (!slug) return undefined;
   return projects.find((p) => p.slug === slug);
 }
 
-export function getAdjacentProjects(slug) {
+export function getAdjacentProjects(slug: string) {
   const i = projects.findIndex((p) => p.slug === slug);
   const previous = projects[(i - 1 + projects.length) % projects.length];
   const next = projects[(i + 1) % projects.length];

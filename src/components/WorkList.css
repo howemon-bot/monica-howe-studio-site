@@ -39,6 +39,12 @@
   letter-spacing: 0.04em;
   width: 28px;
   flex-shrink: 0;
+  transition: transform 0.32s var(--ease);
+}
+
+.worklist__row:hover .worklist__index {
+  transform: translateX(4px);
+  transition-delay: 0s;
 }
 
 .worklist__name {
@@ -74,7 +80,9 @@
   color: var(--color-accent);
   opacity: 0;
   transform: translate(-4px, 4px);
-  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  transition:
+    opacity 0.4s var(--ease) 0.08s,
+    transform 0.4s var(--ease) 0.08s;
 }
 
 .worklist__row:hover .worklist__arrow,

@@ -1,3 +1,8 @@
+import RevealText from '../motion/RevealText';
+import Magnetic from '../motion/Magnetic';
+import '../motion/Reveal.css';
+import './About.css';
+
 const SKILLS = [
   'Visual identity',
   'Art direction',
@@ -28,19 +33,25 @@ export default function About() {
       <div className="about__grid">
         <p className="eyebrow about__eyebrow">About</p>
         <div className="about__copy">
-          <h2 className="about__heading">
-            I&rsquo;m an art director and visual designer. Based in Barcelona, working
-            internationally.
-          </h2>
+          <RevealText
+            as="h2"
+            className="about__heading"
+            lines={[
+              "I'm an art director and visual designer. Based in Barcelona, working",
+              'internationally.',
+            ]}
+          />
           <p className="about__bio">
             I work with a small number of clients at a time — individuals and brands, across
             borders and industries. What connects them isn&rsquo;t sector or size, it&rsquo;s
             pace: they&rsquo;re playing a long game, not chasing a quarter. A few things I care
             about, always: <strong>built to last, only what&rsquo;s needed.</strong>
           </p>
-          <a href="#contact" className="about__cta">
-            Let&rsquo;s talk
-          </a>
+          <Magnetic>
+            <a href="#contact" className="about__cta">
+              Let&rsquo;s talk
+            </a>
+          </Magnetic>
         </div>
       </div>
 

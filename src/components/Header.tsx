@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/brand/MonicaHowe_logo.svg';
+import Magnetic from '../motion/Magnetic';
 import './Header.css';
 
 const base = import.meta.env.BASE_URL;
@@ -33,7 +34,9 @@ export default function Header() {
           {SIDE_LINKS.map((l, i) => (
             <span key={l.label} className="site-header__side-item">
               {i > 0 && <span className="site-header__side-rule" aria-hidden="true" />}
-              <a href={l.href}>{l.label}</a>
+              <Magnetic radius={40} strength={0.2}>
+                <a href={l.href}>{l.label}</a>
+              </Magnetic>
             </span>
           ))}
         </nav>
