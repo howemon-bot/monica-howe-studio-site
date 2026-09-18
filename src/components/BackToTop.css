@@ -14,7 +14,8 @@
   opacity: 0;
   pointer-events: none;
   transform: translateY(8px);
-  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), background 0.25s var(--ease);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), background 0.25s var(--ease),
+    color 0.25s var(--ease);
 }
 
 .back-to-top.is-visible {
@@ -25,11 +26,7 @@
 
 .back-to-top:hover {
   background: var(--color-accent-dim);
-}
-
-.back-to-top svg {
-  width: 14px;
-  height: 14px;
+  color: var(--color-ink);
 }
 
 @media (prefers-reduced-motion: reduce) {

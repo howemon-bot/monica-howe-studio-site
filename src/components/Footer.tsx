@@ -14,7 +14,7 @@ export default function Footer() {
         <button type="button" onClick={scrollToTop} className="site-footer__top">
           Back to top
           <span className="site-footer__top-arrow" aria-hidden="true">
-            <ArrowIcon size={11} rotate={-90} />
+            <ArrowIcon direction="up" size={12} strokeWidth={1} />
           </span>
         </button>
       </div>

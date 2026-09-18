@@ -21,7 +21,15 @@ export default function Hero() {
 
       <div className="hero__reel" aria-label="Studio showreel — coming soon">
         <RevealImage src={showreelThumb} alt="" className="hero__reel-media" parallax={false} />
-        <span className="hero__reel-soon">Coming soon</span>
+        <div className="hero__reel-overlay" aria-hidden="true" />
+        <p className="hero__reel-soon">
+          <span className="hero__reel-soon-text">Coming soon</span>
+          <span className="hero__reel-soon-dots" aria-hidden="true">
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+          </span>
+        </p>
       </div>
     </section>
   );

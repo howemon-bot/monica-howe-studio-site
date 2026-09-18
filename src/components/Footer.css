@@ -24,6 +24,7 @@
 .site-footer__top-arrow {
   display: inline-flex;
   color: var(--color-accent);
+  line-height: 0;
 }
 
 .site-footer__copy {

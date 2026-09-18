@@ -34,48 +34,84 @@
 .hero__reel-media {
   position: absolute;
   inset: 0;
+  z-index: 0;
 }
 
-.hero__reel-img {
+.hero__reel-overlay {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s var(--ease);
-}
-
-.hero__reel:hover .hero__reel-img {
-  transform: scale(1.02);
-}
-
-.hero__reel::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(244, 241, 232, 0.05) 0px,
-    rgba(244, 241, 232, 0.05) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-  mix-blend-mode: overlay;
+  z-index: 1;
+  background: rgba(20, 19, 16, 0.42);
+  pointer-events: none;
 }
 
 .hero__reel-soon {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  margin: 0;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
   font-family: var(--font-serif);
-  font-size: clamp(13px, 1.4vw, 16px);
+  font-size: clamp(15px, 2vw, 20px);
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-cream);
   white-space: nowrap;
+  animation: reel-soon-pulse 2.4s var(--ease) infinite;
+}
+
+.hero__reel-soon-dots span {
+  opacity: 0;
+  animation: reel-soon-dot 1.6s ease-in-out infinite;
+}
+
+.hero__reel-soon-dots span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.hero__reel-soon-dots span:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+.hero__reel-soon-dots span:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+@keyframes reel-soon-pulse {
+  0%,
+  100% {
+    opacity: 0.72;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes reel-soon-dot {
+  0%,
+  20% {
+    opacity: 0;
+  }
+  40%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__reel-soon,
+  .hero__reel-soon-dots span {
+    animation: none;
+    opacity: 1;
+  }
 }
 
 .visually-hidden {
