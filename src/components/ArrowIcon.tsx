@@ -17,11 +17,17 @@ export default function ArrowIcon({ className = '', size = 16, rotate = 0 }: Arr
       style={rotate ? { transform: `rotate(${rotate}deg)` } : undefined}
     >
       <path
-        d="M3.5 12.5L12.5 3.5M12.5 3.5H5M12.5 3.5V11"
+        d="M3.8 12.2C6.2 8.4 9.4 5.6 12.4 3.6"
         stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="square"
-        strokeLinejoin="miter"
+        strokeWidth="1.15"
+        strokeLinecap="round"
+      />
+      <path
+        d="M7.2 3.5H12.5V8.8"
+        stroke="currentColor"
+        strokeWidth="1.15"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

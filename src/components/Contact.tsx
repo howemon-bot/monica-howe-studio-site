@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import ArrowIcon from './ArrowIcon';
-import Magnetic from '../motion/Magnetic';
 import '../motion/Reveal.css';
 import './Contact.css';
 
@@ -17,23 +16,21 @@ export default function Contact() {
       <div className="wrap">
         <p className="eyebrow contact__eyebrow">Contact</p>
 
-        <Magnetic>
-          <a ref={ref} href={`mailto:${EMAIL}`} className="contact__headline link-arrow">
-            <span className="reveal-text__line contact__headline-text">
-              <motion.span
-                className="reveal-text__inner"
-                initial={reduced ? false : { y: '110%' }}
-                animate={reduced || inView ? { y: '0%' } : { y: '110%' }}
-                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-              >
-                Let&rsquo;s <span className="accent-italic">talk</span>.
-              </motion.span>
-            </span>
-            <span className="arrow contact__headline-arrow">
-              <ArrowIcon size={48} />
-            </span>
-          </a>
-        </Magnetic>
+        <a ref={ref} href={`mailto:${EMAIL}`} className="contact__headline link-arrow">
+          <span className="reveal-text__line contact__headline-text">
+            <motion.span
+              className="reveal-text__inner"
+              initial={reduced ? false : { y: '110%' }}
+              animate={reduced || inView ? { y: '0%' } : { y: '110%' }}
+              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Let&rsquo;s <span className="accent-italic">talk</span>.
+            </motion.span>
+          </span>
+          <span className="arrow contact__headline-arrow">
+            <ArrowIcon size={48} />
+          </span>
+        </a>
 
         <ul className="contact__links">
           <li>

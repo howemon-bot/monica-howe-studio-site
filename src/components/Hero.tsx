@@ -19,20 +19,10 @@ export default function Hero() {
         for brands playing the long game.
       </p>
 
-      <button
-        type="button"
-        className="hero__reel"
-        aria-label="Play studio showreel"
-       
-      >
+      <div className="hero__reel" aria-label="Studio showreel — coming soon">
         <RevealImage src={showreelThumb} alt="" className="hero__reel-media" parallax={false} />
-        <span className="hero__reel-play" aria-hidden="true">
-          <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
-            <path d="M0 0L14 8L0 16V0Z" fill="currentColor" />
-          </svg>
-        </span>
-        <span className="visually-hidden">Play studio showreel</span>
-      </button>
+        <span className="hero__reel-soon">Coming soon</span>
+      </div>
     </section>
   );
 }
