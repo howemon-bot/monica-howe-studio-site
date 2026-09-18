@@ -10,7 +10,7 @@
 .site-footer__top {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   font-family: var(--font-serif);
   font-size: 12px;
   font-weight: 300;
@@ -23,7 +23,7 @@
 
 .site-footer__top-arrow {
   display: inline-flex;
-  color: var(--color-accent);
+  color: #b3c635;
   line-height: 0;
 }
 
