@@ -172,7 +172,7 @@ export default function ProjectDetail() {
             Let&rsquo;s <span className="accent-italic">talk</span>.
           </span>
           <span className="project__talk-arrow" aria-hidden="true">
-            <ArrowIcon size={42} />
+            <ArrowIcon size={56} strokeWidth={0.7} />
           </span>
         </a>
         <ul className="project__talk-links">

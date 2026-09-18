@@ -38,7 +38,7 @@ export default function Contact() {
             >
               <span className="accent-italic">lasts.</span> Say hi.
               <span className="contact__headline-arrow" aria-hidden="true">
-                <ArrowIcon size={42} />
+                <ArrowIcon size={56} strokeWidth={0.7} />
               </span>
             </motion.span>
           </span>
