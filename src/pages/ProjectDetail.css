@@ -88,10 +88,7 @@
 .project__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: clamp(16px, 2.4vw, 28px);
-  max-width: 920px;
-  margin-left: auto;
-  margin-right: auto;
+  gap: clamp(20px, 3vw, 36px);
   margin-top: clamp(28px, 4vw, 40px);
 }
 
@@ -109,16 +106,41 @@
   border-radius: 2px;
 }
 
+.project__plate--screen-square {
+  aspect-ratio: 1 / 1;
+  width: min(420px, 72%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .project__plate--photo {
-  background: var(--color-line);
+  background: transparent;
   overflow: hidden;
+}
+
+.project__plate--photo .reveal-image,
+.project__plate--photo .reveal-image__mask {
+  width: 100%;
+  height: 100%;
 }
 
 .project__plate--photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transform-origin: center;
+}
+
+.project__video {
+  margin-top: clamp(28px, 4vw, 40px);
+}
+
+.project__video-el {
+  display: block;
+  width: 100%;
+  border-radius: 2px;
+  background: var(--color-bg-dark);
 }
 
 .project__pager {
@@ -152,23 +174,55 @@
 }
 
 .project__talk {
-  padding-bottom: clamp(40px, 6vw, 64px);
+  padding-bottom: clamp(48px, 7vw, 80px);
 }
 
 .project__talk-link {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 20px);
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(18px, 2.4vw, 24px);
-  letter-spacing: -0.01em;
+  font-size: clamp(40px, 7vw, 80px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--color-ink);
 }
 
-.project__talk-link .arrow {
+.project__talk-link .accent-italic {
+  color: var(--color-accent-dim);
+}
+
+.project__talk-arrow {
+  display: inline-flex;
+  color: var(--color-ink);
+  flex-shrink: 0;
+}
+
+.project__talk-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 36px;
+  margin: clamp(24px, 3vw, 32px) 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--color-ink);
+}
+
+.project__talk-links a:hover {
   color: var(--color-accent-dim);
 }
 
 @media (max-width: 780px) {
   .project__grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project__plate--screen-square {
+    width: min(320px, 85%);
   }
 }
 

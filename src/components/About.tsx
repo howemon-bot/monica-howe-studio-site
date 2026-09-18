@@ -1,5 +1,4 @@
 import RevealText from '../motion/RevealText';
-import Magnetic from '../motion/Magnetic';
 import '../motion/Reveal.css';
 import './About.css';
 
@@ -37,8 +36,8 @@ export default function About() {
             as="h2"
             className="about__heading"
             lines={[
-              "I'm an art director and visual designer. Based in Barcelona, working",
-              'internationally.',
+              "I'm an art director and visual designer.",
+              'Based in Barcelona, working internationally.',
             ]}
           />
           <p className="about__bio">
@@ -47,11 +46,9 @@ export default function About() {
             pace: they&rsquo;re playing a long game, not chasing a quarter. A few things I care
             about, always: <strong>built to last, only what&rsquo;s needed.</strong>
           </p>
-          <Magnetic>
-            <a href="#contact" className="about__cta">
-              Let&rsquo;s talk
-            </a>
-          </Magnetic>
+          <a href="#contact" className="about__cta">
+            Let&rsquo;s talk
+          </a>
         </div>
       </div>
 

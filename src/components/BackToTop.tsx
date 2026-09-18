@@ -19,7 +19,7 @@ export default function BackToTop() {
       aria-label="Back to top"
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
     >
-      <ArrowIcon size={18} rotate={-45} />
+      <ArrowIcon size={14} rotate={-90} />
     </button>
   );
 }

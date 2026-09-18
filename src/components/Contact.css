@@ -9,23 +9,25 @@
 }
 
 .contact__headline {
-  display: inline-flex;
-  align-items: center;
-  gap: clamp(12px, 2vw, 20px);
+  display: block;
+  max-width: 18ch;
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1;
-  font-size: clamp(40px, 7vw, 80px);
+  line-height: 1.05;
+  font-size: clamp(36px, 6.2vw, 72px);
   color: var(--color-ink);
-}
-
-.contact__headline-text {
-  display: inline;
 }
 
 .contact__headline .accent-italic {
   color: var(--color-accent-dim);
+}
+
+.contact__headline-row {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(10px, 1.6vw, 18px);
+  flex-wrap: wrap;
 }
 
 .contact__headline-arrow {
@@ -37,19 +39,22 @@
 .contact__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px 28px;
+  gap: 20px 36px;
   margin-top: clamp(28px, 4vw, 40px);
-  font-size: 13px;
-  color: var(--color-ink-soft);
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--color-ink);
+  list-style: none;
+  padding: 0;
+}
+
+.contact__links a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: none;
 }
 
 .contact__links a:hover {
-  color: var(--color-ink);
-}
-
-.contact__rule {
-  width: min(160px, 40%);
-  height: 2px;
-  margin-top: clamp(28px, 4vw, 40px);
-  background: var(--color-accent);
+  color: var(--color-accent-dim);
 }

@@ -21,16 +21,18 @@
 .about__heading {
   font-family: var(--font-display);
   font-weight: 700;
-  letter-spacing: -0.01em;
-  line-height: 1.12;
-  font-size: clamp(24px, 3.6vw, 38px);
+  letter-spacing: 0.01em;
+  line-height: 1.18;
+  font-size: clamp(26px, 3.9vw, 42px);
+  color: var(--color-ink-soft);
 }
 
 .about__bio {
   margin-top: 28px;
   color: var(--color-ink-soft);
-  line-height: 1.6;
-  font-size: 15px;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  font-size: clamp(15px, 1.35vw, 17px);
   max-width: 52ch;
 }
 
@@ -50,7 +52,9 @@
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
+  color: var(--color-ink);
+  background: transparent;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
 }
 
 .about__cta:hover {

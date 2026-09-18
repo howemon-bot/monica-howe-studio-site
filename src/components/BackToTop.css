@@ -10,7 +10,7 @@
   height: 48px;
   border-radius: 50%;
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-ink-soft);
   opacity: 0;
   pointer-events: none;
   transform: translateY(8px);
@@ -25,6 +25,11 @@
 
 .back-to-top:hover {
   background: var(--color-accent-dim);
+}
+
+.back-to-top svg {
+  width: 14px;
+  height: 14px;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -2,9 +2,15 @@ type ArrowIconProps = {
   className?: string;
   size?: number;
   rotate?: number;
+  strokeWidth?: number;
 };
 
-export default function ArrowIcon({ className = '', size = 16, rotate = 0 }: ArrowIconProps) {
+export default function ArrowIcon({
+  className = '',
+  size = 16,
+  rotate = 0,
+  strokeWidth = 1.15,
+}: ArrowIconProps) {
   return (
     <svg
       className={className}
@@ -19,13 +25,13 @@ export default function ArrowIcon({ className = '', size = 16, rotate = 0 }: Arr
       <path
         d="M3.8 12.2C6.2 8.4 9.4 5.6 12.4 3.6"
         stroke="currentColor"
-        strokeWidth="1.15"
+        strokeWidth={strokeWidth}
         strokeLinecap="round"
       />
       <path
         d="M7.2 3.5H12.5V8.8"
         stroke="currentColor"
-        strokeWidth="1.15"
+        strokeWidth={strokeWidth}
         strokeLinecap="round"
         strokeLinejoin="round"
       />

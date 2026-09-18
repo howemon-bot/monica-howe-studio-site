@@ -9,8 +9,12 @@ import telaviWebsite from '../assets/telavi/website-mockup.jpg';
 export type ProjectImages = {
   hero: string;
   grid: { src: string; label: string }[];
-  wide: string;
-  screen: string;
+  wide?: string;
+  screen?: string;
+  /** Final image presentation */
+  screenLayout?: 'wide' | 'square';
+  /** Optional video (mp4/webm url or imported asset) */
+  video?: string;
 };
 
 export type Project = {
@@ -52,6 +56,7 @@ const projects: Project[] = [
       ],
       wide: telaviBillboard,
       screen: telaviWebsite,
+      screenLayout: 'square',
     },
   },
   {

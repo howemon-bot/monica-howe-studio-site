@@ -10,15 +10,13 @@ export default function Footer() {
     <footer className="site-footer">
       <hr className="hairline" />
       <div className="wrap site-footer__row">
-        <div className="site-footer__group">
-          <button type="button" onClick={scrollToTop} className="site-footer__top link-arrow">
-            Back to top
-            <span className="arrow">
-              <ArrowIcon size={12} rotate={-45} />
-            </span>
-          </button>
-          <span className="site-footer__copy">© {new Date().getFullYear()} Monica Howe</span>
-        </div>
+        <span className="site-footer__copy">© {new Date().getFullYear()} Monica Howe</span>
+        <button type="button" onClick={scrollToTop} className="site-footer__top">
+          Back to top
+          <span className="site-footer__top-arrow" aria-hidden="true">
+            <ArrowIcon size={11} rotate={-90} />
+          </span>
+        </button>
       </div>
     </footer>
   );

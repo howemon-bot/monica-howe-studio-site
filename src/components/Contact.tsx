@@ -4,7 +4,8 @@ import ArrowIcon from './ArrowIcon';
 import '../motion/Reveal.css';
 import './Contact.css';
 
-const EMAIL = 'hola@monicahowe.studio';
+export const EMAIL = 'hola@monicahowe.studio';
+export const LINKEDIN = 'https://www.linkedin.com/in/monica-howe-montesinos/';
 
 export default function Contact() {
   const ref = useRef<HTMLAnchorElement | null>(null);
@@ -16,19 +17,30 @@ export default function Contact() {
       <div className="wrap">
         <p className="eyebrow contact__eyebrow">Contact</p>
 
-        <a ref={ref} href={`mailto:${EMAIL}`} className="contact__headline link-arrow">
-          <span className="reveal-text__line contact__headline-text">
+        <a ref={ref} href={`mailto:${EMAIL}`} className="contact__headline">
+          <span className="reveal-text__line">
             <motion.span
               className="reveal-text__inner"
               initial={reduced ? false : { y: '110%' }}
               animate={reduced || inView ? { y: '0%' } : { y: '110%' }}
               transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             >
-              Let&rsquo;s <span className="accent-italic">talk</span>.
+              Let&rsquo;s design something{' '}
+              <span className="accent-italic">that</span>
             </motion.span>
           </span>
-          <span className="arrow contact__headline-arrow">
-            <ArrowIcon size={48} />
+          <span className="reveal-text__line">
+            <motion.span
+              className="reveal-text__inner contact__headline-row"
+              initial={reduced ? false : { y: '110%' }}
+              animate={reduced || inView ? { y: '0%' } : { y: '110%' }}
+              transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <span className="accent-italic">lasts.</span> Say hi.
+              <span className="contact__headline-arrow" aria-hidden="true">
+                <ArrowIcon size={42} />
+              </span>
+            </motion.span>
           </span>
         </a>
 
@@ -37,18 +49,11 @@ export default function Contact() {
             <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
           </li>
           <li>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+            <a href={LINKEDIN} target="_blank" rel="noreferrer">
               LinkedIn
             </a>
           </li>
-          <li>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer">
-              Instagram
-            </a>
-          </li>
         </ul>
-
-        <div className="contact__rule" aria-hidden="true" />
       </div>
     </section>
   );
