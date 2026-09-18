@@ -26,4 +26,5 @@
   object-fit: cover;
   display: block;
   will-change: transform;
+  scale: 1.12;
 }
