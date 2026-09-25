@@ -1,4 +1,5 @@
 import RevealText from '../motion/RevealText';
+import { EMAIL } from './Contact';
 import '../motion/Reveal.css';
 import './About.css';
 
@@ -46,7 +47,7 @@ export default function About() {
             pace: they&rsquo;re playing a long game, not chasing a quarter. A few things I care
             about, always: <strong>built to last, only what&rsquo;s needed.</strong>
           </p>
-          <a href="#contact" className="about__cta">
+          <a href={`mailto:${EMAIL}`} className="about__cta">
             Let&rsquo;s talk
           </a>
         </div>
