@@ -113,6 +113,19 @@ export default function ProjectDetail() {
               </div>
             );
           }
+          if (block.kind === 'grid') {
+            const cols = block.shots.length === 3 ? 3 : 2;
+            return (
+              <div
+                className={`project__grid project__grid--${cols}`}
+                key={`grid-${i}`}
+              >
+                {block.shots.map((shot, j) => (
+                  <ProjectShot key={`${i}-${j}`} shot={shot} />
+                ))}
+              </div>
+            );
+          }
           return <ProjectShot key={`shot-${i}`} shot={block.shot} />;
         })}
       </div>
