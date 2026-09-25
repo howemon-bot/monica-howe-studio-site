@@ -23,6 +23,10 @@
   color: var(--color-accent-dim);
 }
 
+.contact__that-lasts {
+  white-space: nowrap;
+}
+
 .contact__headline-row {
   display: inline-flex;
   align-items: center;

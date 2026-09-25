@@ -314,7 +314,7 @@ const projects: Project[] = [
       'We built the identity around the idea of rounding up — simple, human, and warm — without losing the technology underneath it.',
     gallery: [
       { kind: 'shot', shot: { src: wcPoster, alt: 'Worldcoo poster' } },
-      { kind: 'shot', shot: { src: wcSocial, alt: 'Worldcoo social media', size: 'contain' } },
+      { kind: 'shot', shot: { src: wcSocial, alt: 'Worldcoo social media' } },
       {
         kind: 'pair',
         shots: [

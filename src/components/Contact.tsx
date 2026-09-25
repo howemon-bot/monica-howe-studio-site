@@ -26,7 +26,7 @@ export default function Contact() {
               transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             >
               Let&rsquo;s design something{' '}
-              <span className="accent-italic">that lasts.</span>
+              <span className="accent-italic contact__that-lasts">that lasts.</span>
             </motion.span>
           </span>
           <span className="reveal-text__line">
