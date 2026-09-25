@@ -24,7 +24,12 @@
   letter-spacing: 0.01em;
   line-height: 1.18;
   font-size: clamp(26px, 3.9vw, 42px);
-  color: var(--color-ink-soft);
+  color: var(--color-ink);
+}
+
+.about__heading .reveal-text__inner {
+  display: block;
+  white-space: normal;
 }
 
 .about__bio {

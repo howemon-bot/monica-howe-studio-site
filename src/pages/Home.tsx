@@ -1,6 +1,7 @@
 import Hero from '../components/Hero';
 import WorkList from '../components/WorkList';
 import About from '../components/About';
+import Clients from '../components/Clients';
 import Contact from '../components/Contact';
 import '../components/About.css';
 import '../components/Contact.css';
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <WorkList />
       <About />
+      <Clients />
       <Contact />
     </>
   );

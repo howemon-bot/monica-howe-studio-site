@@ -28,3 +28,14 @@
   will-change: transform;
   scale: 1.12;
 }
+
+.reveal-image--natural,
+.reveal-image--natural .reveal-image__mask {
+  height: auto;
+}
+
+.reveal-image--natural img {
+  height: auto;
+  object-fit: contain;
+  scale: 1;
+}

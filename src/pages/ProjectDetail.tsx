@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { getProjectBySlug, getAdjacentProjects } from '../data/projects';
+import { getProjectBySlug, getAdjacentProjects, type Shot } from '../data/projects';
 import ArrowIcon from '../components/ArrowIcon';
+import FrameStack from '../components/FrameStack';
 import RevealText from '../motion/RevealText';
 import RevealImage from '../motion/RevealImage';
 import { EMAIL, LINKEDIN } from '../components/Contact';
@@ -13,6 +14,21 @@ const INFO_BLOCKS = [
   { key: 'impact' as const, label: 'Positive impact' },
   { key: 'solution' as const, label: 'Solution' },
 ];
+
+function ProjectShot({ shot }: { shot: Shot }) {
+  const frames = shot.frames && shot.frames.length > 1 ? shot.frames : null;
+  const contain = shot.size === 'contain';
+
+  return (
+    <div className={`project__shot${contain ? ' project__shot--contain' : ''}`}>
+      {frames ? (
+        <FrameStack frames={frames} alt={shot.alt} />
+      ) : (
+        <RevealImage src={shot.src} alt={shot.alt} fit="natural" parallax={false} />
+      )}
+    </div>
+  );
+}
 
 export default function ProjectDetail() {
   const { slug } = useParams();
@@ -26,8 +42,6 @@ export default function ProjectDetail() {
 
   const { previous, next } = getAdjacentProjects(project.slug);
   const style = { ['--brand' as string]: project.brandColor };
-  const images = project.images;
-  const screenLayout = images?.screenLayout ?? 'wide';
 
   return (
     <article className="project" style={style}>
@@ -71,89 +85,37 @@ export default function ProjectDetail() {
         </div>
       </section>
 
-      {images ? (
-        <>
-          <div className="project__plate project__plate--hero project__plate--photo wrap">
-            <RevealImage
-              src={images.hero}
-              alt={`${project.name} brand collateral collage`}
-            />
-          </div>
-
-          <div className="project__grid wrap">
-            {images.grid.map((g) => (
-              <div
-                className="project__plate project__plate--sq project__plate--photo"
-                key={g.label}
-              >
-                <RevealImage src={g.src} alt={`${project.name} — ${g.label}`} />
+      <div className="project__gallery wrap">
+        {project.gallery.map((block, i) => {
+          if (block.kind === 'video') {
+            return (
+              <div className="project__video" key={`video-${i}`}>
+                <video
+                  className="project__video-el"
+                  src={block.src}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
+                  preload="metadata"
+                  aria-label={block.alt}
+                />
               </div>
-            ))}
-          </div>
-
-          {images.wide && (
-            <div className="project__plate project__plate--wide project__plate--photo">
-              <RevealImage
-                src={images.wide}
-                alt={`${project.name} out-of-home billboard`}
-              />
-            </div>
-          )}
-
-          {images.video && (
-            <div className="project__video wrap">
-              <video
-                className="project__video-el"
-                src={images.video}
-                controls
-                playsInline
-                preload="metadata"
-              />
-            </div>
-          )}
-
-          {images.screen && (
-            <div
-              className={`project__plate project__plate--screen project__plate--photo wrap project__plate--screen-${screenLayout}`}
-            >
-              <RevealImage
-                src={images.screen}
-                alt={`${project.name} website mockup`}
-                parallax={false}
-              />
-            </div>
-          )}
-        </>
-      ) : (
-        <>
-          <div className="project__plate project__plate--hero wrap">
-            <span>Hero mockup collage</span>
-          </div>
-
-          <div className="project__grid wrap">
-            <div className="project__plate project__plate--sq">
-              <span>Logo lockup</span>
-            </div>
-            <div className="project__plate project__plate--sq">
-              <span>Packaging</span>
-            </div>
-            <div className="project__plate project__plate--sq">
-              <span>Stationery</span>
-            </div>
-            <div className="project__plate project__plate--sq">
-              <span>Print application</span>
-            </div>
-          </div>
-
-          <div className="project__plate project__plate--wide">
-            <span>Out-of-home / billboard</span>
-          </div>
-
-          <div className="project__plate project__plate--screen wrap">
-            <span>Website mockup</span>
-          </div>
-        </>
-      )}
+            );
+          }
+          if (block.kind === 'pair') {
+            return (
+              <div className="project__pair" key={`pair-${i}`}>
+                {block.shots.map((shot, j) => (
+                  <ProjectShot key={`${i}-${j}`} shot={shot} />
+                ))}
+              </div>
+            );
+          }
+          return <ProjectShot key={`shot-${i}`} shot={block.shot} />;
+        })}
+      </div>
 
       <nav className="project__pager wrap" aria-label="Other projects">
         <Link to={`/work/${previous.slug}`} className="project__pager-link">

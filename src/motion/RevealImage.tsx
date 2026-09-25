@@ -7,9 +7,17 @@ type RevealImageProps = {
   alt: string;
   className?: string;
   parallax?: boolean;
+  /** `natural` keeps the image’s aspect ratio instead of cropping to a plate */
+  fit?: 'cover' | 'natural';
 };
 
-export default function RevealImage({ src, alt, className = '', parallax = true }: RevealImageProps) {
+export default function RevealImage({
+  src,
+  alt,
+  className = '',
+  parallax = true,
+  fit = 'cover',
+}: RevealImageProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInView(ref, { once: true, margin: '-8% 0px' });
   const reduced = useReducedMotion();
@@ -17,10 +25,14 @@ export default function RevealImage({ src, alt, className = '', parallax = true 
     target: ref,
     offset: ['start end', 'end start'],
   });
-  const y = useTransform(scrollYProgress, [0, 1], parallax && !reduced ? ['-6%', '6%'] : ['0%', '0%']);
+  const useParallax = parallax && fit === 'cover' && !reduced;
+  const y = useTransform(scrollYProgress, [0, 1], useParallax ? ['-6%', '6%'] : ['0%', '0%']);
 
   return (
-    <div ref={ref} className={`reveal-image ${className}`.trim()}>
+    <div
+      ref={ref}
+      className={`reveal-image ${fit === 'natural' ? 'reveal-image--natural' : ''} ${className}`.trim()}
+    >
       <motion.div
         className="reveal-image__mask"
         initial={reduced ? false : { clipPath: 'inset(100% 0 0 0)' }}

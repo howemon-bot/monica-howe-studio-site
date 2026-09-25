@@ -26,7 +26,7 @@ export default function Contact() {
               transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             >
               Let&rsquo;s design something{' '}
-              <span className="accent-italic">that</span>
+              <span className="accent-italic">that lasts.</span>
             </motion.span>
           </span>
           <span className="reveal-text__line">
@@ -36,7 +36,7 @@ export default function Contact() {
               animate={reduced || inView ? { y: '0%' } : { y: '110%' }}
               transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="accent-italic">lasts.</span> Say hi.
+              Say hi.
               <span className="contact__headline-arrow" aria-hidden="true">
                 <ArrowIcon size={56} strokeWidth={0.7} />
               </span>

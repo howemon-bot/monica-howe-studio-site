@@ -9,6 +9,7 @@ const SKILLS = [
   'Motion',
   'Brand implementation',
   'Illustration',
+  'Web',
 ];
 
 function SkillsTrack() {
@@ -36,8 +37,7 @@ export default function About() {
             as="h2"
             className="about__heading"
             lines={[
-              "I'm an art director and visual designer.",
-              'Based in Barcelona, working internationally.',
+              "I'm an art director and visual designer. Based in Barcelona, working internationally.",
             ]}
           />
           <p className="about__bio">

@@ -10,7 +10,7 @@
 
 .contact__headline {
   display: block;
-  max-width: 18ch;
+  max-width: 22ch;
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: -0.02em;

@@ -67,73 +67,38 @@
   color: var(--color-ink-soft);
 }
 
-.project__plate {
+.project__gallery {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(243, 239, 232, 0.85);
-  background: var(--brand, var(--color-bg-dark));
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-top: clamp(28px, 4vw, 40px);
+  flex-direction: column;
+  gap: clamp(28px, 4vw, 40px);
+  margin-top: clamp(36px, 5vw, 56px);
 }
 
-.project__plate--hero {
-  aspect-ratio: 16 / 10;
-  border-radius: 2px;
+.project__shot,
+.project__pair,
+.project__video {
+  margin: 0;
 }
 
-.project__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(20px, 3vw, 36px);
-  margin-top: clamp(28px, 4vw, 40px);
-}
-
-.project__grid .project__plate--sq {
-  margin-top: 0;
-  aspect-ratio: 1 / 1;
-}
-
-.project__plate--wide {
-  aspect-ratio: 21 / 9;
-}
-
-.project__plate--screen {
-  aspect-ratio: 16 / 11;
-  border-radius: 2px;
-}
-
-.project__plate--screen-square {
-  aspect-ratio: 1 / 1;
-  width: min(420px, 72%);
+.project__shot--contain {
+  width: min(560px, 100%);
   margin-left: auto;
   margin-right: auto;
 }
 
-.project__plate--photo {
-  background: transparent;
-  overflow: hidden;
+.project__pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2.4vw, 28px);
+  align-items: start;
 }
 
-.project__plate--photo .reveal-image,
-.project__plate--photo .reveal-image__mask {
-  width: 100%;
-  height: 100%;
-}
-
-.project__plate--photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transform-origin: center;
+.project__pair .project__shot {
+  min-width: 0;
 }
 
 .project__video {
-  margin-top: clamp(28px, 4vw, 40px);
+  margin-top: 0;
 }
 
 .project__video-el {
@@ -216,13 +181,9 @@
   color: var(--color-accent-dim);
 }
 
-@media (max-width: 780px) {
-  .project__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .project__plate--screen-square {
-    width: min(320px, 85%);
+@media (max-width: 640px) {
+  .project__pair {
+    grid-template-columns: 1fr;
   }
 }
 
