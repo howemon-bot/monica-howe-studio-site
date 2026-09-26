@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
-import { motion, useInView, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { getProjectBySlug, getAdjacentProjects, type Shot } from '../data/projects';
 import ArrowIcon from '../components/ArrowIcon';
 import FrameStack from '../components/FrameStack';
@@ -39,31 +39,12 @@ function ProjectShot({ shot }: { shot: Shot }) {
 }
 
 function ProjectVideo({ src, alt, emphasis }: { src: string; alt: string; emphasis?: Shot['emphasis'] }) {
-  const ref = useRef<HTMLVideoElement | null>(null);
-  const inView = useInView(ref, { amount: 0.45, margin: '0px 0px -8% 0px' });
-  const reduced = useReducedMotion();
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (reduced) {
-      el.pause();
-      return;
-    }
-    if (inView) {
-      el.currentTime = 0;
-      void el.play().catch(() => {});
-    } else {
-      el.pause();
-    }
-  }, [inView, reduced]);
-
   return (
     <div className={`project__video${emphasis ? ` project__video--${emphasis}` : ''}`}>
       <video
-        ref={ref}
         className="project__video-el"
         src={src}
+        autoPlay
         muted
         loop
         playsInline

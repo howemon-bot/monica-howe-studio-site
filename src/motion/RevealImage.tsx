@@ -19,7 +19,7 @@ export default function RevealImage({
   fit = 'cover',
 }: RevealImageProps) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const inView = useInView(ref, { once: true, amount: 0.2, margin: '0px 0px -18% 0px' });
+  const inView = useInView(ref, { once: true, margin: '-8% 0px' });
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
