@@ -19,13 +19,13 @@ export default function RevealImage({
   fit = 'cover',
 }: RevealImageProps) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const inView = useInView(ref, { once: true, margin: '-8% 0px' });
+  const inView = useInView(ref, { once: true, amount: 0.2, margin: '0px 0px -18% 0px' });
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start'],
   });
-  const useParallax = parallax && fit === 'cover' && !reduced;
+  const useParallax = parallax && !reduced;
   const y = useTransform(scrollYProgress, [0, 1], useParallax ? ['-6%', '6%'] : ['0%', '0%']);
 
   return (
@@ -41,7 +41,7 @@ export default function RevealImage({
             ? { clipPath: 'inset(0% 0 0 0)' }
             : { clipPath: 'inset(100% 0 0 0)' }
         }
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
+        transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
       >
         <motion.img src={src} alt={alt} style={{ y }} />
       </motion.div>

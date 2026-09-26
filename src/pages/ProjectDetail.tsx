@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { getProjectBySlug, getAdjacentProjects, type Shot } from '../data/projects';
 import ArrowIcon from '../components/ArrowIcon';
 import FrameStack from '../components/FrameStack';
@@ -15,17 +15,62 @@ const INFO_BLOCKS = [
   { key: 'solution' as const, label: 'Solution' },
 ];
 
+function shotClass(shot: Shot) {
+  const parts = ['project__shot'];
+  if (shot.size === 'contain') parts.push('project__shot--contain');
+  if (shot.emphasis === 'hero') parts.push('project__shot--hero');
+  if (shot.emphasis === 'feature') parts.push('project__shot--feature');
+  return parts.join(' ');
+}
+
 function ProjectShot({ shot }: { shot: Shot }) {
   const frames = shot.frames && shot.frames.length > 1 ? shot.frames : null;
-  const contain = shot.size === 'contain';
+  const featured = shot.emphasis === 'hero' || shot.emphasis === 'feature';
 
   return (
-    <div className={`project__shot${contain ? ' project__shot--contain' : ''}`}>
+    <div className={shotClass(shot)}>
       {frames ? (
         <FrameStack frames={frames} alt={shot.alt} />
       ) : (
-        <RevealImage src={shot.src} alt={shot.alt} fit="natural" parallax={false} />
+        <RevealImage src={shot.src} alt={shot.alt} fit="natural" parallax={featured} />
       )}
+    </div>
+  );
+}
+
+function ProjectVideo({ src, alt, emphasis }: { src: string; alt: string; emphasis?: Shot['emphasis'] }) {
+  const ref = useRef<HTMLVideoElement | null>(null);
+  const inView = useInView(ref, { amount: 0.45, margin: '0px 0px -8% 0px' });
+  const reduced = useReducedMotion();
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (reduced) {
+      el.pause();
+      return;
+    }
+    if (inView) {
+      el.currentTime = 0;
+      void el.play().catch(() => {});
+    } else {
+      el.pause();
+    }
+  }, [inView, reduced]);
+
+  return (
+    <div className={`project__video${emphasis ? ` project__video--${emphasis}` : ''}`}>
+      <video
+        ref={ref}
+        className="project__video-el"
+        src={src}
+        muted
+        loop
+        playsInline
+        controls
+        preload="metadata"
+        aria-label={alt}
+      />
     </div>
   );
 }
@@ -89,19 +134,12 @@ export default function ProjectDetail() {
         {project.gallery.map((block, i) => {
           if (block.kind === 'video') {
             return (
-              <div className="project__video" key={`video-${i}`}>
-                <video
-                  className="project__video-el"
-                  src={block.src}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  controls
-                  preload="metadata"
-                  aria-label={block.alt}
-                />
-              </div>
+              <ProjectVideo
+                key={`video-${i}`}
+                src={block.src}
+                alt={block.alt}
+                emphasis={block.emphasis}
+              />
             );
           }
           if (block.kind === 'pair') {
@@ -116,10 +154,7 @@ export default function ProjectDetail() {
           if (block.kind === 'grid') {
             const cols = block.shots.length === 3 ? 3 : 2;
             return (
-              <div
-                className={`project__grid project__grid--${cols}`}
-                key={`grid-${i}`}
-              >
+              <div className={`project__grid project__grid--${cols}`} key={`grid-${i}`}>
                 {block.shots.map((shot, j) => (
                   <ProjectShot key={`${i}-${j}`} shot={shot} />
                 ))}

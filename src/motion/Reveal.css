@@ -37,5 +37,5 @@
 .reveal-image--natural img {
   height: auto;
   object-fit: contain;
-  scale: 1;
+  scale: 1.04;
 }

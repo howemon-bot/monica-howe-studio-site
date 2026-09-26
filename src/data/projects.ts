@@ -75,13 +75,14 @@ export type Shot = {
   alt: string;
   frames?: string[];
   size?: 'full' | 'contain';
+  emphasis?: 'hero' | 'feature';
 };
 
 export type GalleryBlock =
   | { kind: 'shot'; shot: Shot }
   | { kind: 'pair'; shots: [Shot, Shot] }
   | { kind: 'grid'; shots: Shot[] }
-  | { kind: 'video'; src: string; alt: string };
+  | { kind: 'video'; src: string; alt: string; emphasis?: 'hero' | 'feature' };
 
 export type Project = {
   index: string;
@@ -112,7 +113,7 @@ const projects: Project[] = [
     solution:
       'Working with agency HABITANT, we built the full identity from the ground up around that in-between feeling — home, but hosted.',
     gallery: [
-      { kind: 'shot', shot: { src: bcHero, alt: 'Be Casa identity on tropical foliage' } },
+      { kind: 'shot', shot: { src: bcHero, alt: 'Be Casa identity on tropical foliage', emphasis: 'hero' } },
       {
         kind: 'pair',
         shots: [
@@ -120,7 +121,7 @@ const projects: Project[] = [
           { src: bcManualIn, alt: 'Be Casa brand manual interior' },
         ],
       },
-      { kind: 'shot', shot: { src: bcCartel, alt: 'Be Casa street advertising shelter' } },
+      { kind: 'shot', shot: { src: bcCartel, alt: 'Be Casa street advertising shelter', emphasis: 'feature' } },
       {
         kind: 'pair',
         shots: [
@@ -136,7 +137,7 @@ const projects: Project[] = [
           alt: 'Be Casa pencils',
         },
       },
-      { kind: 'shot', shot: { src: bcPattern, alt: 'Be Casa pattern tiles' } },
+      { kind: 'shot', shot: { src: bcPattern, alt: 'Be Casa pattern tiles', emphasis: 'feature' } },
       {
         kind: 'pair',
         shots: [
@@ -144,7 +145,7 @@ const projects: Project[] = [
           { src: bcToothbrush, alt: 'Be Casa bamboo toothbrushes' },
         ],
       },
-      { kind: 'shot', shot: { src: bcBag, alt: 'Be Casa tote bags' } },
+      { kind: 'shot', shot: { src: bcBag, alt: 'Be Casa tote bags', emphasis: 'feature' } },
     ],
   },
   {
@@ -162,8 +163,8 @@ const projects: Project[] = [
     solution:
       "A full identity and brand book that holds both: rooted in the site's history, but built with a timeless, contemporary feel.",
     gallery: [
-      { kind: 'shot', shot: { src: medBag, alt: 'Medinaceli bag' } },
-      { kind: 'shot', shot: { src: medBook1, alt: 'Medinaceli brand manual covers' } },
+      { kind: 'shot', shot: { src: medBag, alt: 'Medinaceli bag', emphasis: 'hero' } },
+      { kind: 'shot', shot: { src: medBook1, alt: 'Medinaceli brand manual covers', emphasis: 'feature' } },
       {
         kind: 'grid',
         shots: [
@@ -181,7 +182,7 @@ const projects: Project[] = [
           alt: 'Medinaceli mugs',
         },
       },
-      { kind: 'shot', shot: { src: medBanner1, alt: 'Medinaceli street banners' } },
+      { kind: 'shot', shot: { src: medBanner1, alt: 'Medinaceli street banners', emphasis: 'feature' } },
       { kind: 'shot', shot: { src: medApp, alt: 'Medinaceli app screens' } },
       {
         kind: 'shot',
@@ -208,7 +209,7 @@ const projects: Project[] = [
     solution:
       'We built the identity around one equation: efficiency + human = difference. Typography, color, and imagery work together to hold that balance — the result sits between warmth and edge, human touch with a rock ’n’ roll, techy finish.',
     gallery: [
-      { kind: 'shot', shot: { src: telaviGuide, alt: 'Telavi brand guidelines' } },
+      { kind: 'shot', shot: { src: telaviGuide, alt: 'Telavi brand guidelines', emphasis: 'hero' } },
       {
         kind: 'grid',
         shots: [
@@ -218,7 +219,7 @@ const projects: Project[] = [
           { src: telaviIllu1, alt: 'Telavi illustration' },
         ],
       },
-      { kind: 'shot', shot: { src: telaviBillboard, alt: 'Telavi billboard' } },
+      { kind: 'shot', shot: { src: telaviBillboard, alt: 'Telavi billboard', emphasis: 'feature' } },
       {
         kind: 'pair',
         shots: [
@@ -226,7 +227,7 @@ const projects: Project[] = [
           { src: telaviCards, alt: 'Telavi business cards' },
         ],
       },
-      { kind: 'video', src: telaviMotion, alt: 'Telavi motion' },
+      { kind: 'video', src: telaviMotion, alt: 'Telavi motion', emphasis: 'feature' },
     ],
   },
   {
@@ -263,8 +264,8 @@ const projects: Project[] = [
           },
         ],
       },
-      { kind: 'shot', shot: { src: fleaPhone, alt: 'The Tiny Flea social and print assets' } },
-      { kind: 'shot', shot: { src: fleaPoster, alt: 'The Tiny Flea market poster' } },
+      { kind: 'shot', shot: { src: fleaPhone, alt: 'The Tiny Flea social and print assets', emphasis: 'feature' } },
+      { kind: 'shot', shot: { src: fleaPoster, alt: 'The Tiny Flea market poster', emphasis: 'hero' } },
       {
         kind: 'shot',
         shot: {
@@ -302,8 +303,8 @@ const projects: Project[] = [
           },
         ],
       },
-      { kind: 'shot', shot: { src: wcPhoto5, alt: 'Worldcoo campaign photography' } },
-      { kind: 'shot', shot: { src: wcPoster, alt: 'Worldcoo poster' } },
+      { kind: 'shot', shot: { src: wcPhoto5, alt: 'Worldcoo campaign photography', emphasis: 'hero' } },
+      { kind: 'shot', shot: { src: wcPoster, alt: 'Worldcoo poster', emphasis: 'feature' } },
       {
         kind: 'grid',
         shots: [
@@ -330,7 +331,7 @@ const projects: Project[] = [
     solution:
       'Ongoing editorial design work drawing on microtypography and infographics to visualize complex topics clearly.',
     gallery: [
-      { kind: 'shot', shot: { src: edCover, alt: 'WWF Banking on Nature Positive publication' } },
+      { kind: 'shot', shot: { src: edCover, alt: 'WWF Banking on Nature Positive publication', emphasis: 'hero' } },
       {
         kind: 'grid',
         shots: [
