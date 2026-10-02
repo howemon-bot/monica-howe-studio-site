@@ -9,17 +9,25 @@ type FrameStackProps = {
   interval?: number;
 };
 
-export default function FrameStack({ frames, alt, interval = 2200 }: FrameStackProps) {
+export default function FrameStack({ frames, alt, interval = 520 }: FrameStackProps) {
   const reduced = useReducedMotion();
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     if (reduced || frames.length < 2 || paused) return;
-    const id = window.setInterval(() => {
-      setActive((i) => (i + 1) % frames.length);
-    }, interval);
-    return () => window.clearInterval(id);
+
+    const tick = () => setActive((i) => (i + 1) % frames.length);
+    let loop: number | undefined;
+    const start = window.setTimeout(() => {
+      tick();
+      loop = window.setInterval(tick, interval);
+    }, 180);
+
+    return () => {
+      window.clearTimeout(start);
+      if (loop) window.clearInterval(loop);
+    };
   }, [frames.length, interval, paused, reduced]);
 
   if (frames.length === 0) return null;

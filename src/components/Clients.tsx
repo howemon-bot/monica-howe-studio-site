@@ -30,9 +30,14 @@ export default function Clients() {
         Some clients
       </p>
       <ul className="clients__grid">
-        {CLIENTS.map((c) => (
+        {CLIENTS.map((c, i) => (
           <li key={c.name} className="clients__item">
-            <img src={c.src} alt={c.name} className="clients__logo" />
+            <img
+              src={c.src}
+              alt={c.name}
+              className="clients__logo"
+              style={{ animationDelay: `${i * 0.7}s` }}
+            />
           </li>
         ))}
       </ul>

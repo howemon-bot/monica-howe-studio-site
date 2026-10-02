@@ -8,8 +8,8 @@
   --color-cream-muted: #b9b6a9;
   --color-line: rgba(25, 23, 18, 0.14);
   --color-line-dark: rgba(244, 241, 232, 0.16);
-  --color-accent: #b3c635;
-  --color-accent-dim: #93a52a;
+  --color-accent: #d2de32;
+  --color-accent-dim: #b8c42c;
 
   --font-display: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
@@ -17,7 +17,7 @@
   --font-accent: var(--font-serif);
 
   --container-w: 1360px;
-  --gutter: clamp(20px, 5vw, 64px);
+  --gutter: clamp(28px, 6vw, 72px);
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }

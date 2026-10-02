@@ -6,12 +6,18 @@ import bcPencil1 from '../assets/be-casa/BC_Lapiz_web.jpg';
 import bcPencil2 from '../assets/be-casa/BC_Lapiz2_web.jpg';
 import bcPencil3 from '../assets/be-casa/BC_Lapiz3_web.jpg';
 import bcPencil4 from '../assets/be-casa/BC_Lapiz4_web.jpg';
+import bcPlate1 from '../assets/be-casa/BC_vajilla_1_web.jpg';
+import bcPlate2 from '../assets/be-casa/BC_vajilla_2_web.jpg';
+import bcPlate3 from '../assets/be-casa/BC_vajilla_3_web.jpg';
+import bcPlate4 from '../assets/be-casa/BC_vajilla_4_web.jpg';
 import bcRoom from '../assets/be-casa/BC_Room.jpg';
 import bcToothbrush from '../assets/be-casa/BC_Toothbrush_web.jpg';
 import bcBag from '../assets/be-casa/BC_Bolsa_web.jpg';
 import bcPattern from '../assets/be-casa/BC_Pattern_web.jpg';
 import bcManual from '../assets/be-casa/Manual-Marca1_web.jpg';
 import bcManualIn from '../assets/be-casa/Manual-Marca_interior1_web.jpg';
+import bcGif from '../assets/be-casa/BC_Video.gif';
+import bcEntry from '../assets/be-casa/BeCasa_Entry.jpg';
 
 import medBook1 from '../assets/medinaceli/Medinaceli_Brandbook_1.jpg';
 import medBook2 from '../assets/medinaceli/Medinaceli_Brandbook_2.jpg';
@@ -22,6 +28,8 @@ import medPoster1 from '../assets/medinaceli/Medinaceli_Poster1.jpg';
 import medPoster2 from '../assets/medinaceli/Medinaceli_Poster2.jpg';
 import medPoster3 from '../assets/medinaceli/Medinaceli_Poster3.jpg';
 import medBanner1 from '../assets/medinaceli/Medinaceli_Banderola_1.jpg';
+import medBanner2 from '../assets/medinaceli/Medinaceli_Banderola_2.jpg';
+import medBanner3 from '../assets/medinaceli/Medinaceli_Banderola_3.jpg';
 import medCup1 from '../assets/medinaceli/Medinaceli_Taza.jpg';
 import medCup2 from '../assets/medinaceli/Medinaceli_Taza_2.jpg';
 import medCup3 from '../assets/medinaceli/Medinaceli_Taza_3.jpg';
@@ -59,16 +67,16 @@ import wcCards from '../assets/worldcoo/BC_Worldcoo_Mockup_web.jpg';
 import wcCup from '../assets/worldcoo/WC_ReusableCup_web.jpg';
 import wcToteA from '../assets/worldcoo/WC_ToteBag_A_web.jpg';
 import wcToteB from '../assets/worldcoo/WC_ToteBag_B_web.jpg';
-import wcPhotoPay from '../assets/worldcoo/WC_Image_Smile_RGB_image_web.jpg';
-import wcPhotoHill from '../assets/worldcoo/WC_Image_Smile_RGB_web.jpg';
-import wcPhoto3 from '../assets/worldcoo/WC_Image_Smile_RGB_web3.jpg';
-import wcPhoto5 from '../assets/worldcoo/WC_Image_Smile_RGB_web5.jpg';
+import wcPhotoDad from '../assets/worldcoo/Worldcoo_Image0.jpg';
+import wcPhotoPay from '../assets/worldcoo/Worldcoo_Image1.jpg';
+import wcPhotoKids from '../assets/worldcoo/Worldcoo_Image2.jpg';
+import wcPhotoBear from '../assets/worldcoo/Worldcoo_Image3.jpg';
 
 import edCover from '../assets/editorial/WWF_Editorial_1.jpg';
 import ed2 from '../assets/editorial/WWF_Editorial_2_web.jpg';
 import ed3 from '../assets/editorial/WWF_Editorial_3_web.jpg';
 import ed4 from '../assets/editorial/WWF_Editorial_4_web.jpg';
-import ed5 from '../assets/editorial/WWF_Editorial_5_web.jpg';
+import ed6 from '../assets/editorial/WWF_Editorial_6_web.jpg';
 
 export type Shot = {
   src: string;
@@ -106,14 +114,16 @@ const projects: Project[] = [
     client: 'HABITANT',
     year: '2022',
     type: 'Visual identity',
-    brandColor: '#1B5C4E',
+    brandColor: '#1f524c',
     problem:
       "A new kind of accommodation — hotel comfort, apartment charm — needed a brand that didn't just borrow from either category.",
-    impact: 'A more human way to stay somewhere, across three complexes in Madrid.',
+    impact:
+      'A more human way to stay somewhere, and a lighter one: three BREEAM “Very Good” certified complexes in Madrid, running on renewable energy.',
     solution:
       'Working with agency HABITANT, we built the full identity from the ground up around that in-between feeling — home, but hosted.',
     gallery: [
       { kind: 'shot', shot: { src: bcHero, alt: 'Be Casa identity on tropical foliage', emphasis: 'hero' } },
+      { kind: 'shot', shot: { src: bcGif, alt: 'Be Casa logo motion', emphasis: 'feature' } },
       {
         kind: 'pair',
         shots: [
@@ -122,6 +132,7 @@ const projects: Project[] = [
         ],
       },
       { kind: 'shot', shot: { src: bcCartel, alt: 'Be Casa street advertising shelter', emphasis: 'feature' } },
+      { kind: 'shot', shot: { src: bcEntry, alt: 'Be Casa entrance signage', emphasis: 'feature' } },
       {
         kind: 'pair',
         shots: [
@@ -136,6 +147,15 @@ const projects: Project[] = [
           frames: [bcPencil1, bcPencil2, bcPencil3, bcPencil4],
           alt: 'Be Casa pencils',
         },
+      },
+      {
+        kind: 'grid',
+        shots: [
+          { src: bcPlate1, alt: 'Be Casa tableware' },
+          { src: bcPlate2, alt: 'Be Casa tableware' },
+          { src: bcPlate3, alt: 'Be Casa tableware' },
+          { src: bcPlate4, alt: 'Be Casa tableware' },
+        ],
       },
       { kind: 'shot', shot: { src: bcPattern, alt: 'Be Casa pattern tiles', emphasis: 'feature' } },
       {
@@ -155,7 +175,7 @@ const projects: Project[] = [
     client: 'MEDINACELI',
     year: '2024',
     type: 'Brand identity and brand book',
-    brandColor: '#2F9BDB',
+    brandColor: '#2ea0d4',
     problem:
       "Medinaceli — home to Spain's only three-gated Roman arch — needed a brand refresh, but one that wouldn't flatten what made it distinct.",
     impact:
@@ -182,7 +202,14 @@ const projects: Project[] = [
           alt: 'Medinaceli mugs',
         },
       },
-      { kind: 'shot', shot: { src: medBanner1, alt: 'Medinaceli street banners', emphasis: 'feature' } },
+      {
+        kind: 'grid',
+        shots: [
+          { src: medBanner1, alt: 'Medinaceli street banner' },
+          { src: medBanner2, alt: 'Medinaceli street banner' },
+          { src: medBanner3, alt: 'Medinaceli street banner' },
+        ],
+      },
       { kind: 'shot', shot: { src: medApp, alt: 'Medinaceli app screens' } },
       {
         kind: 'shot',
@@ -201,7 +228,7 @@ const projects: Project[] = [
     client: 'BETTER BRAND LABS',
     year: '2024',
     type: 'Visual identity and implementation',
-    brandColor: '#2B3FD6',
+    brandColor: '#4f54a4',
     problem:
       'Telavi wanted to become the leading integrated cloud communications provider in the Philippines — but their brand didn’t yet reflect the shift they were making: from a standard telecom provider to a company built around human connection through technology.',
     impact:
@@ -224,7 +251,7 @@ const projects: Project[] = [
         kind: 'pair',
         shots: [
           { src: telaviWebsite, alt: 'Telavi website mockup' },
-          { src: telaviCards, alt: 'Telavi business cards' },
+          { src: telaviCards, alt: 'Telavi business cards', size: 'contain' },
         ],
       },
       { kind: 'video', src: telaviMotion, alt: 'Telavi motion', emphasis: 'feature' },
@@ -237,7 +264,7 @@ const projects: Project[] = [
     client: 'THE TINY FLEA',
     year: '2024',
     type: 'Brand identity and social',
-    brandColor: '#E5391A',
+    brandColor: '#fec40d',
     problem:
       "Barcelona didn't have a market dedicated to secondhand kids' essentials — parents needed a place to find what their little ones need without buying everything new.",
     impact:
@@ -283,7 +310,7 @@ const projects: Project[] = [
     client: 'WORLDCOO',
     year: '2023–24',
     type: 'Brand identity',
-    brandColor: '#F05A28',
+    brandColor: '#f68832',
     problem:
       'Worldcoo, a BCorp helping social projects raise funding through tools like round-up donations, needed a brand built from scratch.',
     impact:
@@ -303,14 +330,14 @@ const projects: Project[] = [
           },
         ],
       },
-      { kind: 'shot', shot: { src: wcPhoto5, alt: 'Worldcoo campaign photography', emphasis: 'hero' } },
+      { kind: 'shot', shot: { src: wcPhotoDad, alt: 'Worldcoo campaign — father and child', emphasis: 'hero' } },
       { kind: 'shot', shot: { src: wcPoster, alt: 'Worldcoo poster', emphasis: 'feature' } },
       {
         kind: 'grid',
         shots: [
           { src: wcPhotoPay, alt: 'Worldcoo campaign — round-up at checkout' },
-          { src: wcPhotoHill, alt: 'Worldcoo campaign — landscape' },
-          { src: wcPhoto3, alt: 'Worldcoo campaign image' },
+          { src: wcPhotoKids, alt: 'Worldcoo campaign — children playing' },
+          { src: wcPhotoBear, alt: 'Worldcoo campaign — polar bear' },
         ],
       },
       { kind: 'shot', shot: { src: wcSocial, alt: 'Worldcoo social media' } },
@@ -338,7 +365,7 @@ const projects: Project[] = [
           { src: ed2, alt: 'WWF editorial spread' },
           { src: ed3, alt: 'WWF editorial spread' },
           { src: ed4, alt: 'WWF editorial spread' },
-          { src: ed5, alt: 'WWF editorial spread' },
+          { src: ed6, alt: 'WWF editorial spread' },
         ],
       },
     ],

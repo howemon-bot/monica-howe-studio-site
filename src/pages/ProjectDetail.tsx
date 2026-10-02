@@ -70,7 +70,7 @@ export default function ProjectDetail() {
   const style = { ['--brand' as string]: project.brandColor };
 
   return (
-    <article className="project" style={style}>
+    <article className="project" style={style} {...(project.slug === 'editorial' ? { 'data-editorial': true } : {})}>
       <section className="project__intro wrap">
         <div className="project__intro-row">
           <div>

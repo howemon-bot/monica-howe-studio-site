@@ -1,7 +1,7 @@
 .back-to-top {
   position: fixed;
-  right: max(16px, var(--gutter));
-  bottom: 24px;
+  right: max(24px, var(--gutter));
+  bottom: 32px;
   z-index: 40;
   display: inline-flex;
   align-items: center;

@@ -23,10 +23,9 @@ export default function Contact() {
               className="reveal-text__inner"
               initial={reduced ? false : { y: '110%' }}
               animate={reduced || inView ? { y: '0%' } : { y: '110%' }}
-              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             >
-              Let&rsquo;s design something{' '}
-              <span className="accent-italic contact__that-lasts">that lasts.</span>
+              Let&rsquo;s design something
             </motion.span>
           </span>
           <span className="reveal-text__line">
@@ -34,11 +33,11 @@ export default function Contact() {
               className="reveal-text__inner contact__headline-row"
               initial={reduced ? false : { y: '110%' }}
               animate={reduced || inView ? { y: '0%' } : { y: '110%' }}
-              transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
             >
-              Say hi.
+              <span className="accent-italic contact__that-lasts">that lasts.</span> Say Hi.
               <span className="contact__headline-arrow" aria-hidden="true">
-                <ArrowIcon size={56} strokeWidth={0.7} />
+                <ArrowIcon size={40} strokeWidth={0.8} />
               </span>
             </motion.span>
           </span>

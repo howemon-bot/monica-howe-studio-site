@@ -19,7 +19,7 @@ export default function RevealImage({
   fit = 'cover',
 }: RevealImageProps) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const inView = useInView(ref, { once: true, margin: '-8% 0px' });
+  const inView = useInView(ref, { once: true, amount: 0 });
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -41,7 +41,7 @@ export default function RevealImage({
             ? { clipPath: 'inset(0% 0 0 0)' }
             : { clipPath: 'inset(100% 0 0 0)' }
         }
-        transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
       >
         <motion.img src={src} alt={alt} style={{ y }} />
       </motion.div>

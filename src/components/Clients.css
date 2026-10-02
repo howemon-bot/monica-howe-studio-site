@@ -50,19 +50,59 @@
 }
 
 @media (max-width: 640px) {
+  .clients {
+    padding-top: 40px;
+    padding-bottom: 4px;
+  }
+
+  .clients__eyebrow {
+    margin-bottom: 20px;
+  }
+
   .clients__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px 24px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px 14px;
+  }
+
+  .clients__item {
+    min-height: 44px;
+  }
+
+  .clients__item:last-child {
+    display: none;
   }
 
   .clients__logo {
-    max-height: 64px;
+    max-height: 34px;
+    opacity: 0.32;
+    animation: clients-spot 6.3s ease-in-out infinite;
+  }
+
+  .clients__item:hover .clients__logo {
+    animation-play-state: paused;
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes clients-spot {
+  0%,
+  11%,
+  100% {
+    opacity: 0.32;
+    transform: scale(1);
+  }
+  5%,
+  9% {
+    opacity: 1;
+    transform: scale(1.1);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .clients__logo {
     transition: none;
+    animation: none;
   }
 
   .clients__item:hover .clients__logo {

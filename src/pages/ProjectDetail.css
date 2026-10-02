@@ -14,6 +14,11 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   font-size: clamp(36px, 6.4vw, 64px);
+  color: var(--brand, var(--color-ink));
+}
+
+.project[data-editorial] .project__title {
+  color: var(--color-ink);
 }
 
 .project__index {
@@ -88,6 +93,11 @@
   margin-right: auto;
 }
 
+.project__pair .project__shot--contain {
+  width: 58%;
+  margin: 10% auto 0;
+}
+
 .project__shot--feature,
 .project__video--feature {
   width: calc(100% + (var(--gutter) * 2));
@@ -149,7 +159,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: clamp(36px, 5vw, 48px) 0;
+  padding: clamp(36px, 5vw, 48px) 4px;
   margin-top: clamp(28px, 4vw, 40px);
   border-top: 1px solid var(--color-line);
 }
@@ -189,16 +199,33 @@
   letter-spacing: -0.02em;
   line-height: 1;
   color: var(--color-ink);
+  transition: transform 0.4s var(--ease);
+}
+
+.project__talk-link:hover {
+  transform: translateX(8px);
 }
 
 .project__talk-link .accent-italic {
-  color: var(--color-accent-dim);
+  color: var(--color-accent);
 }
 
 .project__talk-arrow {
   display: inline-flex;
   color: var(--color-ink);
   flex-shrink: 0;
+  transition: transform 0.4s var(--ease);
+}
+
+.project__talk-link:hover .project__talk-arrow {
+  transform: translateX(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project__talk-link:hover,
+  .project__talk-link:hover .project__talk-arrow {
+    transform: none;
+  }
 }
 
 .project__talk-links {
@@ -220,9 +247,13 @@
 
 @media (max-width: 640px) {
   .project__pair,
-  .project__grid--2,
-  .project__grid--3 {
+  .project__grid--2 {
     grid-template-columns: 1fr;
+  }
+
+  .project__grid--3 {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
   }
 
   .project__blocks {
@@ -237,5 +268,24 @@
   .project__facts {
     flex-direction: column;
     width: 100%;
+  }
+
+  .project__pair .project__shot--contain {
+    width: 72%;
+    margin: 6% auto 0;
+  }
+
+  .project__gallery {
+    gap: clamp(24px, 6vw, 36px);
+  }
+
+  .project__shot--hero,
+  .project__video--hero,
+  .project__shot--feature,
+  .project__video--feature {
+    width: calc(100% + (var(--gutter) * 2));
+    max-width: none;
+    margin-left: calc(-1 * var(--gutter));
+    margin-right: calc(-1 * var(--gutter));
   }
 }
