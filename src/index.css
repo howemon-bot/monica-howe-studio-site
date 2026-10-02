@@ -17,7 +17,7 @@
   --font-accent: var(--font-serif);
 
   --container-w: 1360px;
-  --gutter: clamp(28px, 6vw, 72px);
+  --gutter: clamp(36px, 7vw, 72px);
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
