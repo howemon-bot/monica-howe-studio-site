@@ -6,6 +6,7 @@ import './Contact.css';
 
 export const EMAIL = 'hola@monicahowe.studio';
 export const LINKEDIN = 'https://www.linkedin.com/in/monica-howe-montesinos/';
+export const INSTAGRAM = 'https://www.instagram.com/monicahowestudio';
 
 export default function Contact() {
   const ref = useRef<HTMLAnchorElement | null>(null);
@@ -53,6 +54,11 @@ export default function Contact() {
           <li>
             <a href={LINKEDIN} target="_blank" rel="noreferrer">
               LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href={INSTAGRAM} target="_blank" rel="noreferrer">
+              Instagram
             </a>
           </li>
         </ul>

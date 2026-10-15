@@ -83,7 +83,7 @@ export type Shot = {
   src: string;
   alt: string;
   frames?: string[];
-  size?: 'full' | 'contain' | 'inset' | 'stack';
+  size?: 'full' | 'contain' | 'inset' | 'stack' | 'zoom';
   emphasis?: 'hero' | 'feature';
 };
 
@@ -204,13 +204,13 @@ const projects: Project[] = [
         },
       },
       {
-        kind: 'grid',
-        columns: 2,
-        shots: [
-          { src: medBanner1, alt: 'Medinaceli street banner' },
-          { src: medBanner2, alt: 'Medinaceli street banner' },
-          { src: medBanner3, alt: 'Medinaceli street banner' },
-        ],
+        kind: 'shot',
+        shot: {
+          src: medBanner1,
+          frames: [medBanner1, medBanner2, medBanner3],
+          alt: 'Medinaceli street banners',
+          size: 'zoom',
+        },
       },
       { kind: 'shot', shot: { src: medApp, alt: 'Medinaceli app screens' } },
       {

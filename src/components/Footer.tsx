@@ -1,4 +1,5 @@
 import ArrowIcon from './ArrowIcon';
+import { INSTAGRAM } from './Contact';
 import './Footer.css';
 
 function scrollToTop() {
@@ -10,7 +11,15 @@ export default function Footer() {
     <footer className="site-footer">
       <hr className="hairline" />
       <div className="wrap site-footer__row">
-        <span className="site-footer__copy">© {new Date().getFullYear()} Monica Howe</span>
+        <span className="site-footer__copy">
+          © {new Date().getFullYear()} Monica Howe
+          <span className="site-footer__sep" aria-hidden="true">
+            ·
+          </span>
+          <a href={INSTAGRAM} target="_blank" rel="noreferrer">
+            Instagram
+          </a>
+        </span>
         <button type="button" onClick={scrollToTop} className="site-footer__top">
           Back to top
           <span className="site-footer__top-arrow" aria-hidden="true">

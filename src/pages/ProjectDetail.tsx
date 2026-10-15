@@ -6,7 +6,7 @@ import ArrowIcon from '../components/ArrowIcon';
 import FrameStack from '../components/FrameStack';
 import RevealText from '../motion/RevealText';
 import RevealImage from '../motion/RevealImage';
-import { EMAIL, LINKEDIN } from '../components/Contact';
+import { EMAIL, INSTAGRAM, LINKEDIN } from '../components/Contact';
 import './ProjectDetail.css';
 
 const INFO_BLOCKS = [
@@ -20,6 +20,7 @@ function shotClass(shot: Shot) {
   if (shot.size === 'contain') parts.push('project__shot--contain');
   if (shot.size === 'inset') parts.push('project__shot--inset');
   if (shot.size === 'stack') parts.push('project__shot--stack');
+  if (shot.size === 'zoom') parts.push('project__shot--zoom');
   if (shot.emphasis === 'hero') parts.push('project__shot--hero');
   if (shot.emphasis === 'feature') parts.push('project__shot--feature');
   return parts.join(' ');
@@ -182,6 +183,11 @@ export default function ProjectDetail() {
           <li>
             <a href={LINKEDIN} target="_blank" rel="noreferrer">
               LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href={INSTAGRAM} target="_blank" rel="noreferrer">
+              Instagram
             </a>
           </li>
         </ul>

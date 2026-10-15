@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useReducedMotion } from 'framer-motion';
 import showreel from '../assets/hero/showreel.mp4';
 import RevealText from '../motion/RevealText';
@@ -7,15 +7,47 @@ import './Hero.css';
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const reduced = useReducedMotion();
-  const [muted, setMuted] = useState(true);
+  const [muted, setMuted] = useState(false);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el || reduced) return;
+
+    el.muted = false;
+    const playLoud = () => {
+      el.muted = false;
+      setMuted(false);
+      return el.play();
+    };
+
+    void playLoud().catch(() => {
+      el.muted = true;
+      setMuted(true);
+      void el.play().catch(() => {});
+    });
+
+    const unlock = (event: Event) => {
+      if ((event.target as HTMLElement | null)?.closest?.('.hero__reel')) return;
+      void playLoud().catch(() => {});
+      window.removeEventListener('pointerdown', unlock);
+      window.removeEventListener('keydown', unlock);
+    };
+    window.addEventListener('pointerdown', unlock);
+    window.addEventListener('keydown', unlock);
+
+    return () => {
+      window.removeEventListener('pointerdown', unlock);
+      window.removeEventListener('keydown', unlock);
+    };
+  }, [reduced]);
 
   function toggleSound() {
     const el = videoRef.current;
     if (!el) return;
-    const next = !muted;
+    const next = !el.muted;
     el.muted = next;
     setMuted(next);
-    if (!next) void el.play().catch(() => {});
+    void el.play().catch(() => {});
   }
 
   return (
@@ -36,7 +68,10 @@ export default function Hero() {
       <button
         type="button"
         className="hero__reel"
-        onClick={toggleSound}
+        onClick={(event) => {
+          event.stopPropagation();
+          toggleSound();
+        }}
         aria-label={muted ? 'Play showreel with sound' : 'Mute showreel'}
       >
         <video
@@ -44,10 +79,9 @@ export default function Hero() {
           className="hero__reel-media"
           src={showreel}
           autoPlay={!reduced}
-          muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
         />
         {muted && !reduced && (
           <span className="hero__reel-sound" aria-hidden="true">
