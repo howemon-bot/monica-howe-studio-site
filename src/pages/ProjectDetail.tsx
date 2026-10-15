@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getProjectBySlug, getAdjacentProjects, type Shot } from '../data/projects';
@@ -15,26 +15,11 @@ const INFO_BLOCKS = [
   { key: 'solution' as const, label: 'Solution' },
 ];
 
-function useNarrowViewport(maxWidth = 860) {
-  const [narrow, setNarrow] = useState(() =>
-    typeof window !== 'undefined' ? window.matchMedia(`(max-width: ${maxWidth}px)`).matches : false,
-  );
-
-  useEffect(() => {
-    const mq = window.matchMedia(`(max-width: ${maxWidth}px)`);
-    const update = () => setNarrow(mq.matches);
-    update();
-    mq.addEventListener('change', update);
-    return () => mq.removeEventListener('change', update);
-  }, [maxWidth]);
-
-  return narrow;
-}
-
 function shotClass(shot: Shot) {
   const parts = ['project__shot'];
   if (shot.size === 'contain') parts.push('project__shot--contain');
   if (shot.size === 'inset') parts.push('project__shot--inset');
+  if (shot.size === 'stack') parts.push('project__shot--stack');
   if (shot.emphasis === 'hero') parts.push('project__shot--hero');
   if (shot.emphasis === 'feature') parts.push('project__shot--feature');
   return parts.join(' ');
@@ -76,7 +61,6 @@ function ProjectVideo({ src, alt, emphasis }: { src: string; alt: string; emphas
 export default function ProjectDetail() {
   const { slug } = useParams();
   const project = getProjectBySlug(slug);
-  const isNarrow = useNarrowViewport();
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -151,17 +135,7 @@ export default function ProjectDetail() {
             );
           }
           if (block.kind === 'grid') {
-            if (block.stackOnMobile && isNarrow) {
-              return (
-                <div className="project__mobile-stack" key={`grid-${i}`}>
-                  <FrameStack
-                    frames={block.shots.map((shot) => shot.src)}
-                    alt={block.shots[0]?.alt ?? ''}
-                  />
-                </div>
-              );
-            }
-            const cols = block.shots.length === 3 ? 3 : 2;
+            const cols = block.columns ?? (block.shots.length === 3 ? 3 : 2);
             const gridClass = [
               'project__grid',
               `project__grid--${cols}`,

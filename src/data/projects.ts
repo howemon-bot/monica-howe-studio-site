@@ -29,6 +29,7 @@ import medPoster2 from '../assets/medinaceli/Medinaceli_Poster2.jpg';
 import medPoster3 from '../assets/medinaceli/Medinaceli_Poster3.jpg';
 import medBanner1 from '../assets/medinaceli/Medinaceli_Banderola_1.jpg';
 import medBanner2 from '../assets/medinaceli/Medinaceli_Banderola_2.jpg';
+import medBanner3 from '../assets/medinaceli/Medinaceli_Banderola_3.jpg';
 import medCup1 from '../assets/medinaceli/Medinaceli_Taza.jpg';
 import medCup2 from '../assets/medinaceli/Medinaceli_Taza_2.jpg';
 import medCup3 from '../assets/medinaceli/Medinaceli_Taza_3.jpg';
@@ -82,14 +83,14 @@ export type Shot = {
   src: string;
   alt: string;
   frames?: string[];
-  size?: 'full' | 'contain' | 'inset';
+  size?: 'full' | 'contain' | 'inset' | 'stack';
   emphasis?: 'hero' | 'feature';
 };
 
 export type GalleryBlock =
   | { kind: 'shot'; shot: Shot }
   | { kind: 'pair'; shots: [Shot, Shot] }
-  | { kind: 'grid'; shots: Shot[]; stackOnMobile?: boolean; equal?: boolean }
+  | { kind: 'grid'; shots: Shot[]; columns?: 2 | 3; equal?: boolean }
   | { kind: 'video'; src: string; alt: string; emphasis?: 'hero' | 'feature' };
 
 export type Project = {
@@ -149,14 +150,13 @@ const projects: Project[] = [
         },
       },
       {
-        kind: 'grid',
-        stackOnMobile: true,
-        shots: [
-          { src: bcPlate1, alt: 'Be Casa tableware' },
-          { src: bcPlate2, alt: 'Be Casa tableware' },
-          { src: bcPlate3, alt: 'Be Casa tableware' },
-          { src: bcPlate4, alt: 'Be Casa tableware' },
-        ],
+        kind: 'shot',
+        shot: {
+          src: bcPlate1,
+          frames: [bcPlate1, bcPlate2, bcPlate3, bcPlate4],
+          alt: 'Be Casa tableware',
+          size: 'stack',
+        },
       },
       { kind: 'shot', shot: { src: bcPattern, alt: 'Be Casa pattern tiles', emphasis: 'feature' } },
       {
@@ -205,9 +205,11 @@ const projects: Project[] = [
       },
       {
         kind: 'grid',
+        columns: 2,
         shots: [
           { src: medBanner1, alt: 'Medinaceli street banner' },
           { src: medBanner2, alt: 'Medinaceli street banner' },
+          { src: medBanner3, alt: 'Medinaceli street banner' },
         ],
       },
       { kind: 'shot', shot: { src: medApp, alt: 'Medinaceli app screens' } },
