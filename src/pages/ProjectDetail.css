@@ -26,8 +26,10 @@
   font-weight: 800;
   font-size: clamp(56px, 11vw, 140px);
   line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--color-line);
+  color: var(--brand, var(--color-ink));
+  -webkit-text-fill-color: var(--brand, var(--color-ink));
+  -webkit-text-stroke: 0;
+  opacity: 0.28;
   user-select: none;
 }
 
@@ -93,6 +95,12 @@
   margin-right: auto;
 }
 
+.project__shot--inset {
+  width: min(72%, 880px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .project__pair .project__shot--contain {
   width: 58%;
   margin: 10% auto 0;
@@ -142,6 +150,33 @@
 
 .project__grid--3 {
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+.project__grid--equal {
+  align-items: stretch;
+}
+
+.project__grid--equal .project__shot,
+.project__grid--equal .reveal-image,
+.project__grid--equal .reveal-image--natural,
+.project__grid--equal .reveal-image__mask,
+.project__grid--equal .reveal-image--natural .reveal-image__mask,
+.project__grid--equal .frame-stack {
+  height: 100%;
+  aspect-ratio: 1;
+}
+
+.project__grid--equal .reveal-image img,
+.project__grid--equal .reveal-image--natural img,
+.project__grid--equal .frame-stack__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  scale: 1;
+}
+
+.project__mobile-stack {
+  display: none;
 }
 
 .project__video {
@@ -250,6 +285,18 @@
   .project__pair,
   .project__grid--2 {
     grid-template-columns: 1fr;
+  }
+
+  .project__grid--hide-mobile {
+    display: none;
+  }
+
+  .project__mobile-stack {
+    display: block;
+  }
+
+  .project__shot--inset {
+    width: 86%;
   }
 
   .project__grid--3 {

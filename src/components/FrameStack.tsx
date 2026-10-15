@@ -12,12 +12,17 @@ type FrameStackProps = {
 export default function FrameStack({ frames, alt, interval = 520 }: FrameStackProps) {
   const reduced = useReducedMotion();
   const [active, setActive] = useState(0);
+  const [prev, setPrev] = useState(0);
   const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     if (reduced || frames.length < 2 || paused) return;
 
-    const tick = () => setActive((i) => (i + 1) % frames.length);
+    const tick = () =>
+      setActive((i) => {
+        setPrev(i);
+        return (i + 1) % frames.length;
+      });
     let loop: number | undefined;
     const start = window.setTimeout(() => {
       tick();
@@ -42,14 +47,18 @@ export default function FrameStack({ frames, alt, interval = 520 }: FrameStackPr
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {frames.map((src, i) => (
-        <img
-          key={src}
-          src={src}
-          alt={i === 0 ? alt : ''}
-          className={`frame-stack__img${i === active ? ' is-on' : ''}`}
-        />
-      ))}
+      {frames.map((src, i) => {
+        const on = i === active;
+        const underneath = i === prev && i !== active;
+        return (
+          <img
+            key={src}
+            src={src}
+            alt={i === 0 ? alt : ''}
+            className={`frame-stack__img${on ? ' is-on' : ''}${underneath ? ' is-prev' : ''}`}
+          />
+        );
+      })}
     </div>
   );
 }

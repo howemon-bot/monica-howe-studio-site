@@ -33,7 +33,7 @@
 .contact__headline-row {
   display: inline-flex;
   align-items: baseline;
-  gap: 0.28em;
+  gap: 0.22em;
   white-space: nowrap;
 }
 
@@ -48,10 +48,10 @@
   flex-shrink: 0;
   align-self: flex-end;
   color: var(--color-ink);
-  width: 0.48em;
-  height: 0.48em;
-  margin-left: 0.06em;
-  margin-bottom: 0.12em;
+  width: 0.42em;
+  height: 0.42em;
+  margin-left: 0.02em;
+  margin-bottom: 0.14em;
   transition: transform 0.4s var(--ease);
 }
 

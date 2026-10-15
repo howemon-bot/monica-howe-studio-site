@@ -18,6 +18,7 @@ const INFO_BLOCKS = [
 function shotClass(shot: Shot) {
   const parts = ['project__shot'];
   if (shot.size === 'contain') parts.push('project__shot--contain');
+  if (shot.size === 'inset') parts.push('project__shot--inset');
   if (shot.emphasis === 'hero') parts.push('project__shot--hero');
   if (shot.emphasis === 'feature') parts.push('project__shot--feature');
   return parts.join(' ');
@@ -133,12 +134,30 @@ export default function ProjectDetail() {
             );
           }
           if (block.kind === 'grid') {
-            const cols = block.shots.length === 3 ? 3 : 2;
+            const cols = block.shots.length === 3 && !block.stackOnMobile ? 3 : 2;
+            const gridClass = [
+              'project__grid',
+              `project__grid--${cols}`,
+              block.equal ? 'project__grid--equal' : '',
+              block.stackOnMobile ? 'project__grid--hide-mobile' : '',
+            ]
+              .filter(Boolean)
+              .join(' ');
             return (
-              <div className={`project__grid project__grid--${cols}`} key={`grid-${i}`}>
-                {block.shots.map((shot, j) => (
-                  <ProjectShot key={`${i}-${j}`} shot={shot} />
-                ))}
+              <div key={`grid-${i}`}>
+                <div className={gridClass}>
+                  {block.shots.map((shot, j) => (
+                    <ProjectShot key={`${i}-${j}`} shot={shot} />
+                  ))}
+                </div>
+                {block.stackOnMobile ? (
+                  <div className="project__mobile-stack">
+                    <FrameStack
+                      frames={block.shots.map((shot) => shot.src)}
+                      alt={block.shots[0]?.alt ?? ''}
+                    />
+                  </div>
+                ) : null}
               </div>
             );
           }

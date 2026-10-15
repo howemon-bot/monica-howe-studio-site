@@ -8,7 +8,7 @@
   height: auto;
   display: block;
   opacity: 0;
-  transition: opacity 0.18s linear;
+  transition: opacity 0.28s linear;
 }
 
 .frame-stack__img:first-child {
@@ -20,9 +20,16 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+}
+
+.frame-stack__img.is-prev {
+  opacity: 1;
+  z-index: 1;
+  transition: none;
 }
 
 .frame-stack__img.is-on {
   opacity: 1;
+  z-index: 2;
 }

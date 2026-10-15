@@ -29,7 +29,6 @@ import medPoster2 from '../assets/medinaceli/Medinaceli_Poster2.jpg';
 import medPoster3 from '../assets/medinaceli/Medinaceli_Poster3.jpg';
 import medBanner1 from '../assets/medinaceli/Medinaceli_Banderola_1.jpg';
 import medBanner2 from '../assets/medinaceli/Medinaceli_Banderola_2.jpg';
-import medBanner3 from '../assets/medinaceli/Medinaceli_Banderola_3.jpg';
 import medCup1 from '../assets/medinaceli/Medinaceli_Taza.jpg';
 import medCup2 from '../assets/medinaceli/Medinaceli_Taza_2.jpg';
 import medCup3 from '../assets/medinaceli/Medinaceli_Taza_3.jpg';
@@ -76,20 +75,21 @@ import edCover from '../assets/editorial/WWF_Editorial_1.jpg';
 import ed2 from '../assets/editorial/WWF_Editorial_2_web.jpg';
 import ed3 from '../assets/editorial/WWF_Editorial_3_web.jpg';
 import ed4 from '../assets/editorial/WWF_Editorial_4_web.jpg';
+import ed5 from '../assets/editorial/WWF_Editorial_5_web.jpg';
 import ed6 from '../assets/editorial/WWF_Editorial_6_web.jpg';
 
 export type Shot = {
   src: string;
   alt: string;
   frames?: string[];
-  size?: 'full' | 'contain';
+  size?: 'full' | 'contain' | 'inset';
   emphasis?: 'hero' | 'feature';
 };
 
 export type GalleryBlock =
   | { kind: 'shot'; shot: Shot }
   | { kind: 'pair'; shots: [Shot, Shot] }
-  | { kind: 'grid'; shots: Shot[] }
+  | { kind: 'grid'; shots: Shot[]; stackOnMobile?: boolean; equal?: boolean }
   | { kind: 'video'; src: string; alt: string; emphasis?: 'hero' | 'feature' };
 
 export type Project = {
@@ -132,7 +132,7 @@ const projects: Project[] = [
         ],
       },
       { kind: 'shot', shot: { src: bcCartel, alt: 'Be Casa street advertising shelter', emphasis: 'feature' } },
-      { kind: 'shot', shot: { src: bcEntry, alt: 'Be Casa entrance signage', emphasis: 'feature' } },
+      { kind: 'shot', shot: { src: bcEntry, alt: 'Be Casa entrance signage', size: 'inset' } },
       {
         kind: 'pair',
         shots: [
@@ -150,6 +150,7 @@ const projects: Project[] = [
       },
       {
         kind: 'grid',
+        stackOnMobile: true,
         shots: [
           { src: bcPlate1, alt: 'Be Casa tableware' },
           { src: bcPlate2, alt: 'Be Casa tableware' },
@@ -207,7 +208,6 @@ const projects: Project[] = [
         shots: [
           { src: medBanner1, alt: 'Medinaceli street banner' },
           { src: medBanner2, alt: 'Medinaceli street banner' },
-          { src: medBanner3, alt: 'Medinaceli street banner' },
         ],
       },
       { kind: 'shot', shot: { src: medApp, alt: 'Medinaceli app screens' } },
@@ -239,6 +239,7 @@ const projects: Project[] = [
       { kind: 'shot', shot: { src: telaviGuide, alt: 'Telavi brand guidelines', emphasis: 'hero' } },
       {
         kind: 'grid',
+        equal: true,
         shots: [
           { src: telaviIllu2, alt: 'Telavi illustration — working from the sofa' },
           { src: telaviPencils, alt: 'Telavi pencils' },
@@ -365,6 +366,7 @@ const projects: Project[] = [
           { src: ed2, alt: 'WWF editorial spread' },
           { src: ed3, alt: 'WWF editorial spread' },
           { src: ed4, alt: 'WWF editorial spread' },
+          { src: ed5, alt: 'WWF editorial spread' },
           { src: ed6, alt: 'WWF editorial spread' },
         ],
       },
