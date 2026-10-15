@@ -108,9 +108,7 @@
 }
 
 .project__shot--zoom {
-  width: calc(100% + (var(--gutter) * 2));
-  margin-left: calc(-1 * var(--gutter));
-  margin-right: calc(-1 * var(--gutter));
+  width: 100%;
 }
 
 .project__shot--zoom .frame-stack,
@@ -327,13 +325,7 @@
   .project__shot--zoom .frame-stack,
   .project__shot--zoom .reveal-image,
   .project__shot--zoom .reveal-image__mask {
-    aspect-ratio: 3 / 4;
-  }
-
-  .project__shot--zoom img,
-  .project__shot--zoom .frame-stack__img {
-    transform: scale(1.45);
-    transform-origin: center 40%;
+    aspect-ratio: 4 / 3;
   }
 
   .project__blocks {
