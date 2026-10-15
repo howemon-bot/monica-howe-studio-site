@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getProjectBySlug, getAdjacentProjects, type Shot } from '../data/projects';
@@ -14,6 +14,22 @@ const INFO_BLOCKS = [
   { key: 'impact' as const, label: 'Positive impact' },
   { key: 'solution' as const, label: 'Solution' },
 ];
+
+function useNarrowViewport(maxWidth = 860) {
+  const [narrow, setNarrow] = useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia(`(max-width: ${maxWidth}px)`).matches : false,
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${maxWidth}px)`);
+    const update = () => setNarrow(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, [maxWidth]);
+
+  return narrow;
+}
 
 function shotClass(shot: Shot) {
   const parts = ['project__shot'];
@@ -60,6 +76,7 @@ function ProjectVideo({ src, alt, emphasis }: { src: string; alt: string; emphas
 export default function ProjectDetail() {
   const { slug } = useParams();
   const project = getProjectBySlug(slug);
+  const isNarrow = useNarrowViewport();
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -134,30 +151,29 @@ export default function ProjectDetail() {
             );
           }
           if (block.kind === 'grid') {
-            const cols = block.shots.length === 3 && !block.stackOnMobile ? 3 : 2;
+            if (block.stackOnMobile && isNarrow) {
+              return (
+                <div className="project__mobile-stack" key={`grid-${i}`}>
+                  <FrameStack
+                    frames={block.shots.map((shot) => shot.src)}
+                    alt={block.shots[0]?.alt ?? ''}
+                  />
+                </div>
+              );
+            }
+            const cols = block.shots.length === 3 ? 3 : 2;
             const gridClass = [
               'project__grid',
               `project__grid--${cols}`,
               block.equal ? 'project__grid--equal' : '',
-              block.stackOnMobile ? 'project__grid--hide-mobile' : '',
             ]
               .filter(Boolean)
               .join(' ');
             return (
-              <div key={`grid-${i}`}>
-                <div className={gridClass}>
-                  {block.shots.map((shot, j) => (
-                    <ProjectShot key={`${i}-${j}`} shot={shot} />
-                  ))}
-                </div>
-                {block.stackOnMobile ? (
-                  <div className="project__mobile-stack">
-                    <FrameStack
-                      frames={block.shots.map((shot) => shot.src)}
-                      alt={block.shots[0]?.alt ?? ''}
-                    />
-                  </div>
-                ) : null}
+              <div className={gridClass} key={`grid-${i}`}>
+                {block.shots.map((shot, j) => (
+                  <ProjectShot key={`${i}-${j}`} shot={shot} />
+                ))}
               </div>
             );
           }

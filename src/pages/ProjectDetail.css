@@ -176,7 +176,9 @@
 }
 
 .project__mobile-stack {
-  display: none;
+  width: min(58%, 250px);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .project__video {
@@ -285,14 +287,6 @@
   .project__pair,
   .project__grid--2 {
     grid-template-columns: 1fr;
-  }
-
-  .project__grid--hide-mobile {
-    display: none;
-  }
-
-  .project__mobile-stack {
-    display: block;
   }
 
   .project__shot--inset {
