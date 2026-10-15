@@ -30,14 +30,17 @@ export default function Contact() {
           </span>
           <span className="reveal-text__line">
             <motion.span
-              className="reveal-text__inner contact__headline-row"
+              className="reveal-text__inner"
               initial={reduced ? false : { y: '110%' }}
               animate={reduced || inView ? { y: '0%' } : { y: '110%' }}
               transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="accent-italic contact__that-lasts">that lasts.</span> Say Hi.
-              <span className="contact__headline-arrow" aria-hidden="true">
-                <ArrowIcon size={40} strokeWidth={0.8} />
+              <span className="contact__headline-row">
+                <span className="accent-italic contact__that-lasts">that lasts.</span>
+                <span className="contact__hi">Say Hi.</span>
+                <span className="contact__headline-arrow" aria-hidden="true">
+                  <ArrowIcon size={18} strokeWidth={1.15} />
+                </span>
               </span>
             </motion.span>
           </span>

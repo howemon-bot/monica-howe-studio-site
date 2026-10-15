@@ -12,9 +12,14 @@
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1;
+  line-height: 1.12;
   font-size: clamp(32px, 5.6vw, 68px);
   color: var(--color-ink);
+}
+
+.contact .reveal-text__line {
+  padding: 0.06em 0 0.28em;
+  margin-bottom: -0.12em;
 }
 
 .contact__headline .accent-italic {
@@ -27,33 +32,40 @@
 
 .contact__headline-row {
   display: inline-flex;
-  align-items: center;
-  gap: clamp(8px, 1.2vw, 14px);
+  align-items: baseline;
+  gap: 0.28em;
+  white-space: nowrap;
+}
+
+.contact__hi {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 700;
 }
 
 .contact__headline-arrow {
   display: inline-flex;
   flex-shrink: 0;
+  align-self: flex-end;
   color: var(--color-ink);
-  width: 0.7em;
-  height: 0.7em;
+  width: 0.48em;
+  height: 0.48em;
+  margin-left: 0.06em;
+  margin-bottom: 0.12em;
   transition: transform 0.4s var(--ease);
 }
 
 .contact__headline-arrow svg {
   width: 100%;
   height: 100%;
-}
-
-.contact__headline:hover .contact__headline-row {
-  transform: translateX(6px);
+  display: block;
 }
 
 .contact__headline .contact__headline-row {
   transition: transform 0.4s var(--ease);
 }
 
-.contact__headline:hover .contact__headline-arrow {
+.contact__headline:hover .contact__headline-row {
   transform: translateX(6px);
 }
 
@@ -81,8 +93,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .contact__headline:hover .contact__headline-row,
-  .contact__headline:hover .contact__headline-arrow {
+  .contact__headline:hover .contact__headline-row {
     transform: none;
   }
 }

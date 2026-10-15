@@ -67,7 +67,7 @@
 
 .site-header__side-rule {
   display: block;
-  width: 2px;
+  width: 1px;
   height: 14px;
   background-color: var(--color-accent);
   margin: 2px 0;
