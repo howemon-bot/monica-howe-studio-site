@@ -13,7 +13,7 @@
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.12;
-  font-size: clamp(32px, 5.6vw, 68px);
+  font-size: clamp(36px, 6.1vw, 72px);
   color: var(--color-ink);
 }
 
@@ -28,6 +28,10 @@
 
 .contact__that-lasts {
   white-space: nowrap;
+  /* The serif italic has shorter lowercase letters than the bold sans,
+     so nudge it up to read the same size. */
+  font-size: 1.08em;
+  line-height: 1;
 }
 
 .contact__headline-row {
@@ -37,28 +41,27 @@
   white-space: nowrap;
 }
 
+.contact__say-hi {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.16em;
+}
+
 .contact__hi {
   font-family: var(--font-display);
   font-style: normal;
   font-weight: 700;
 }
 
+/* Sits on the baseline and rises to cap height, like a letter. */
 .contact__headline-arrow {
-  display: inline-flex;
   flex-shrink: 0;
-  align-self: flex-end;
-  color: var(--color-ink);
-  width: 0.42em;
-  height: 0.42em;
-  margin-left: 0.02em;
-  margin-bottom: 0.14em;
-  transition: transform 0.4s var(--ease);
-}
-
-.contact__headline-arrow svg {
-  width: 100%;
-  height: 100%;
   display: block;
+  width: 0.62em;
+  height: 0.62em;
+  overflow: visible;
+  color: var(--color-ink);
+  transition: transform 0.4s var(--ease);
 }
 
 .contact__headline .contact__headline-row {
@@ -90,6 +93,23 @@
 
 .contact__links a:hover {
   color: var(--color-accent-dim);
+}
+
+@media (max-width: 640px) {
+  /* "that lasts." and "Say Hi." each get their own line, left-aligned with the rest. */
+  .contact__headline-row {
+    flex-wrap: wrap;
+    row-gap: 0;
+  }
+
+  .contact__that-lasts {
+    flex-basis: 100%;
+  }
+
+  /* Email on its own line; LinkedIn and Instagram side by side underneath. */
+  .contact__links-email {
+    flex-basis: 100%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

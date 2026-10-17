@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
-import ArrowIcon from './ArrowIcon';
 import '../motion/Reveal.css';
 import './Contact.css';
 
@@ -38,9 +37,22 @@ export default function Contact() {
             >
               <span className="contact__headline-row">
                 <span className="accent-italic contact__that-lasts">that lasts.</span>
-                <span className="contact__hi">Say Hi.</span>
-                <span className="contact__headline-arrow" aria-hidden="true">
-                  <ArrowIcon size={18} strokeWidth={1.15} />
+                <span className="contact__say-hi">
+                  <span className="contact__hi">Say Hi.</span>
+                  <svg
+                    className="contact__headline-arrow"
+                    viewBox="3.5 3.5 9 9"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3.5 12.5L12.5 3.5M5.25 3.5H12.5V10.75"
+                      stroke="currentColor"
+                      strokeWidth={0.9}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </span>
               </span>
             </motion.span>
@@ -48,7 +60,7 @@ export default function Contact() {
         </a>
 
         <ul className="contact__links">
-          <li>
+          <li className="contact__links-email">
             <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
           </li>
           <li>
