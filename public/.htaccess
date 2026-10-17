@@ -1,7 +1,28 @@
-Options -MultiViews
-RewriteEngine On
-RewriteBase /
-RewriteRule ^index\.html$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.html [L]
+# Deployed to public_html by .github/workflows/deploy.yml (copied from public/ by Vite).
+
+# Never let the server or SiteGround's Dynamic Cache keep a copy of the HTML.
+# Each deploy gives the JS/CSS files new names; a cached page would still point
+# at the old names, which the deploy removes, and the site would load blank.
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  # Hashed build files never change under the same name, so cache them for a year.
+  <If "%{REQUEST_URI} =~ m#^/assets/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+</IfModule>
+
+# Single-page app: send any path that isn't a real file to index.html,
+# so routes like /work/<slug> load on refresh or from a shared link.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
