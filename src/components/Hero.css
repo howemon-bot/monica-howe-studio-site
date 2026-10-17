@@ -61,6 +61,15 @@
   opacity: 1;
 }
 
+@media (max-width: 640px) {
+  .hero__reel {
+    width: calc(100% + 2 * var(--gutter));
+    margin-left: calc(-1 * var(--gutter));
+    margin-right: calc(-1 * var(--gutter));
+    border-radius: 0;
+  }
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
