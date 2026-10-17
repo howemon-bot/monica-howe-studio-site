@@ -41,14 +41,14 @@ export default function Contact() {
                   <span className="contact__hi">Say Hi.</span>
                   <svg
                     className="contact__headline-arrow"
-                    viewBox="3.5 3.5 9 9"
+                    viewBox="2.9 2.9 10.2 10.2"
                     fill="none"
                     aria-hidden="true"
                   >
                     <path
                       d="M3.5 12.5L12.5 3.5M5.25 3.5H12.5V10.75"
                       stroke="currentColor"
-                      strokeWidth={0.9}
+                      strokeWidth={1.2}
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />

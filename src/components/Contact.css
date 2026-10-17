@@ -13,7 +13,7 @@
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.12;
-  font-size: clamp(36px, 6.1vw, 72px);
+  font-size: clamp(40px, 6.1vw, 72px);
   color: var(--color-ink);
 }
 
@@ -28,10 +28,8 @@
 
 .contact__that-lasts {
   white-space: nowrap;
-  /* The serif italic has shorter lowercase letters than the bold sans,
-     so nudge it up to read the same size. */
-  font-size: 1.08em;
-  line-height: 1;
+  /* The serif italic draws thinner strokes than the bold sans; 800 matches its weight. */
+  font-weight: 800;
 }
 
 .contact__headline-row {
@@ -53,12 +51,13 @@
   font-weight: 700;
 }
 
-/* Sits on the baseline and rises to cap height, like a letter. */
+/* Sits on the baseline and rises to cap height (0.72em), like a letter.
+   The SVG viewBox is cropped to the stroke's edges so the ink fills the box. */
 .contact__headline-arrow {
   flex-shrink: 0;
   display: block;
-  width: 0.62em;
-  height: 0.62em;
+  width: 0.72em;
+  height: 0.72em;
   overflow: visible;
   color: var(--color-ink);
   transition: transform 0.4s var(--ease);
@@ -104,6 +103,17 @@
 
   .contact__that-lasts {
     flex-basis: 100%;
+  }
+
+  /* Keep every line the same distance apart (one line-height) on phones:
+     drop the extra space between the two reveal lines... */
+  .contact .reveal-text__line {
+    margin-bottom: -0.34em;
+  }
+
+  /* ...and the extra space the wrapped serif line adds above "Say Hi." */
+  .contact__say-hi {
+    margin-top: -0.125em;
   }
 
   /* Email on its own line; LinkedIn and Instagram side by side underneath. */
