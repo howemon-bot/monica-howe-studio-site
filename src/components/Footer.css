@@ -41,10 +41,3 @@
   font-weight: 300;
 }
 
-.site-footer__sep {
-  margin: 0 0.55em;
-}
-
-.site-footer__copy a:hover {
-  color: var(--color-accent-dim);
-}
