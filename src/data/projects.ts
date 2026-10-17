@@ -72,12 +72,28 @@ import wcPhotoPay from '../assets/worldcoo/Worldcoo_Image1.jpg';
 import wcPhotoKids from '../assets/worldcoo/Worldcoo_Image2.jpg';
 import wcPhotoBear from '../assets/worldcoo/Worldcoo_Image3.jpg';
 
-import edCover from '../assets/editorial/WWF_Editorial_1.jpg';
-import ed2 from '../assets/editorial/WWF_Editorial_2_web.jpg';
-import ed3 from '../assets/editorial/WWF_Editorial_3_web.jpg';
-import ed4 from '../assets/editorial/WWF_Editorial_4_web.jpg';
-import ed5 from '../assets/editorial/WWF_Editorial_5_web.jpg';
-import ed6 from '../assets/editorial/WWF_Editorial_6_web.jpg';
+import wwfCover from '../assets/wwf/WWF_BankingOnNature_web.jpg';
+import wwfZebra from '../assets/wwf/WWF_Spread_Zebra_web.jpg';
+import wwfAnnex from '../assets/wwf/WWF_Spread_Annex_web.jpg';
+import wwfPink from '../assets/wwf/WWF_Spread_Pink_web.jpg';
+import wwfFlower from '../assets/wwf/WWF_Spread_Flower_web.jpg';
+import wwfLuchs from '../assets/wwf/WWF_Luchs_Guidelines_web.jpg';
+import wwfPoster from '../assets/wwf/WWF_SFS_Poster_web.jpg';
+import wwfRisk from '../assets/wwf/WWF_Report_Risk_web.jpg';
+import wwfOrganisation from '../assets/wwf/WWF_Report_Organisation_web.jpg';
+import wwfValuation from '../assets/wwf/WWF_Report_Valuation_web.jpg';
+
+import ieLyraicsGuide from '../assets/ie/IE_Lyraics_Guidelines_web.jpg';
+import ieLyraicsCup from '../assets/ie/IE_Lyraics_Cup_web.jpg';
+import ieLyraicsKeychain from '../assets/ie/IE_Lyraics_Keychain_web.jpg';
+import ieLyraicsPad1 from '../assets/ie/IE_Lyraics_Pad1_web.jpg';
+import ieLyraicsPad2 from '../assets/ie/IE_Lyraics_Pad2_web.jpg';
+import ieLyraicsPad3 from '../assets/ie/IE_Lyraics_Pad3_web.jpg';
+import ieT4dKeychain from '../assets/ie/IE_Tech4Democracy_Keychain_web.jpg';
+import ieT4dEvent from '../assets/ie/IE_Tech4Democracy_Event_web.jpg';
+import ieCgcSpread from '../assets/ie/IE_CGC_Report_Spread_web.jpg';
+import ieCgcPolicy from '../assets/ie/IE_CGC_Report_Policy_web.jpg';
+import ieCgcConclusion from '../assets/ie/IE_CGC_Report_Conclusion_web.jpg';
 
 export type Shot = {
   src: string;
@@ -262,6 +278,43 @@ const projects: Project[] = [
   },
   {
     index: '04',
+    slug: 'wwf',
+    name: 'WWF',
+    client: 'WWF GERMANY',
+    year: 'Ongoing',
+    type: 'Editorial, branding and communication',
+    brandColor: '#1A6B66',
+    problem:
+      'WWF Germany’s projects cover a wide range of topics, some of them highly technical. They all serve the same purpose: protecting nature and the wildlife that depends on it. Each publication, campaign and piece of material has to make that purpose clear and compelling.',
+    impact:
+      'Clearer communication means wider understanding, and wider understanding brings more support for protecting species, habitats and ecosystems for generations to come.',
+    solution:
+      'Ongoing design support across editorial, branding, and marketing and communication material, from reports and publication series to project identities and campaign assets. We use careful typography and infographics so even complex topics are easy to understand.',
+    gallery: [
+      { kind: 'shot', shot: { src: wwfCover, alt: 'WWF Banking on Nature-Positive publication' } },
+      {
+        kind: 'grid',
+        shots: [
+          { src: wwfZebra, alt: 'Banking on Nature-Positive spread — Agenda item 1' },
+          { src: wwfAnnex, alt: 'Banking on Nature-Positive spread — Kunming-Montreal annex' },
+          { src: wwfPink, alt: 'Banking on Nature-Positive spread' },
+          { src: wwfFlower, alt: 'Banking on Nature-Positive spread — Agenda item 4' },
+        ],
+      },
+      { kind: 'shot', shot: { src: wwfLuchs, alt: 'Luchs Thüringen design handbook' } },
+      { kind: 'shot', shot: { src: wwfPoster, alt: 'One Planet Sustainable Food Systems conference poster' } },
+      {
+        kind: 'pair',
+        shots: [
+          { src: wwfRisk, alt: 'WWF report — Risk & Resilience chapter' },
+          { src: wwfOrganisation, alt: 'WWF report — Organisation & Ecosystem chapter' },
+        ],
+      },
+      { kind: 'shot', shot: { src: wwfValuation, alt: 'Closing the Valuation Gap report, WWF and Quantis' } },
+    ],
+  },
+  {
+    index: '05',
     slug: 'the-tiny-flea',
     name: 'The Tiny Flea',
     client: 'THE TINY FLEA',
@@ -307,7 +360,7 @@ const projects: Project[] = [
     ],
   },
   {
-    index: '05',
+    index: '06',
     slug: 'worldcoo',
     name: 'Worldcoo',
     client: 'WORLDCOO',
@@ -347,29 +400,49 @@ const projects: Project[] = [
     ],
   },
   {
-    index: '06',
-    slug: 'editorial',
-    name: 'Editorial',
-    client: 'WWF GERMANY / IE UNIVERSITY',
+    index: '07',
+    slug: 'ie-university',
+    name: 'IE University',
+    client: 'IE UNIVERSITY',
     year: 'Ongoing',
-    type: 'Editorial design',
-    brandColor: '#1A6B66',
+    type: 'Editorial, branding and communication',
+    brandColor: '#292f62',
     problem:
-      'WWF Germany and IE University regularly needed publications, presentations, and print material that could make complex conservation topics accessible.',
+      'IE University’s centres and schools each produce a steady flow of publications, reports and communication material. Some initiatives also need a visual identity of their own. Every piece has to feel clear and professional, reflect the team behind it, and still sit within the IE brand.',
     impact:
-      'Clearer material means wider understanding — and wider support — for wildlife, endangered species protection and education.',
+      'Well-designed material helps knowledge travel further, so research, ideas and programmes reach the students, academics and wider audiences they’re meant for.',
     solution:
-      'Ongoing editorial design work drawing on microtypography and infographics to visualize complex topics clearly.',
+      'Ongoing editorial design across different IE centres and schools, along with marketing and communication material. When a project calls for it, we also create sub-brands and project identities. We adapt to each team’s voice while keeping everything clear, consistent and connected to the wider IE brand.',
     gallery: [
-      { kind: 'shot', shot: { src: edCover, alt: 'WWF Banking on Nature Positive publication', emphasis: 'hero' } },
+      { kind: 'shot', shot: { src: ieLyraicsGuide, alt: 'LyrAIcs visual identity guidelines' } },
       {
-        kind: 'grid',
+        kind: 'pair',
         shots: [
-          { src: ed2, alt: 'WWF editorial spread' },
-          { src: ed3, alt: 'WWF editorial spread' },
-          { src: ed4, alt: 'WWF editorial spread' },
-          { src: ed5, alt: 'WWF editorial spread' },
-          { src: ed6, alt: 'WWF editorial spread' },
+          { src: ieLyraicsCup, alt: 'LyrAIcs mug' },
+          { src: ieLyraicsKeychain, alt: 'LyrAIcs keychains' },
+        ],
+      },
+      {
+        kind: 'shot',
+        shot: {
+          src: ieLyraicsPad2,
+          frames: [ieLyraicsPad2, ieLyraicsPad1, ieLyraicsPad3],
+          alt: 'LyrAIcs campaign on a tablet',
+        },
+      },
+      {
+        kind: 'pair',
+        shots: [
+          { src: ieT4dKeychain, alt: 'Tech4Democracy keychain' },
+          { src: ieT4dEvent, alt: 'Tech4Democracy event with Jacinda Ardern' },
+        ],
+      },
+      { kind: 'shot', shot: { src: ieCgcSpread, alt: 'IE report spread — Is AI already affecting entry-level work?' } },
+      {
+        kind: 'pair',
+        shots: [
+          { src: ieCgcPolicy, alt: 'IE report spread — A policy menu for an AI shock' },
+          { src: ieCgcConclusion, alt: 'IE report spread — Conclusion: the no-regrets playbook' },
         ],
       },
     ],

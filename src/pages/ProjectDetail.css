@@ -17,7 +17,7 @@
   color: var(--brand, var(--color-ink));
 }
 
-.project[data-editorial] .project__title {
+.project[data-ink-title] .project__title {
   color: var(--color-ink);
 }
 
