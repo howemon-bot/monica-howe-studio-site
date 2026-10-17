@@ -18,7 +18,7 @@
 }
 
 .project[data-ink-title] .project__title {
-  color: var(--color-ink);
+  color: #000;
 }
 
 .project__index {

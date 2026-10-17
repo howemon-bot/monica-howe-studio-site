@@ -406,7 +406,7 @@ const projects: Project[] = [
     client: 'IE UNIVERSITY',
     year: 'Ongoing',
     type: 'Editorial, branding and communication',
-    brandColor: '#292f62',
+    brandColor: '#000066',
     problem:
       'IE University’s centres and schools each produce a steady flow of publications, reports and communication material. Some initiatives also need a visual identity of their own. Every piece has to feel clear and professional, reflect the team behind it, and still sit within the IE brand.',
     impact:
