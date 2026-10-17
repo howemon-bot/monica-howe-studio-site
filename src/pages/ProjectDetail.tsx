@@ -169,15 +169,26 @@ export default function ProjectDetail() {
 
       <div className="project__talk wrap">
         <a href={`mailto:${EMAIL}`} className="project__talk-link">
-          <span>
-            Let&rsquo;s <span className="accent-italic">talk</span>.
+          <span className="project__talk-text">
+            Let&rsquo;s <span className="accent-italic project__talk-accent">talk</span>.
           </span>
-          <span className="project__talk-arrow" aria-hidden="true">
-            <ArrowIcon size={56} strokeWidth={0.7} />
-          </span>
+          <svg
+            className="project__talk-arrow"
+            viewBox="3 3 10 10"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M3.5 12.5L12.5 3.5M5.25 3.5H12.5V10.75"
+              stroke="currentColor"
+              strokeWidth={1}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </a>
         <ul className="project__talk-links">
-          <li>
+          <li className="project__talk-links-email">
             <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
           </li>
           <li>

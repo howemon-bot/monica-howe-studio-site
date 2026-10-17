@@ -257,7 +257,7 @@
 
 .project__talk-link {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   gap: clamp(12px, 2vw, 20px);
   font-family: var(--font-display);
   font-weight: 700;
@@ -276,8 +276,23 @@
   color: var(--color-accent);
 }
 
+/* The serif italic draws thinner strokes than the bold sans; 750 matches its weight. */
+.project__talk-accent {
+  font-weight: 750;
+}
+
+/* The "L" ink sits a little right of its edge; pull it back so it lines up with the email. */
+.project__talk-text {
+  margin-left: -0.05em;
+}
+
+/* Sits on the baseline and rises to cap height (0.72em), like a letter.
+   The SVG viewBox is cropped to the stroke's edges so the ink fills the box. */
 .project__talk-arrow {
-  display: inline-flex;
+  display: block;
+  width: 0.72em;
+  height: 0.72em;
+  overflow: visible;
   color: var(--color-ink);
   flex-shrink: 0;
   transition: transform 0.4s var(--ease);
@@ -309,6 +324,13 @@
 
 .project__talk-links a:hover {
   color: var(--color-accent-dim);
+}
+
+/* Phones: email on its own line; LinkedIn and Instagram side by side underneath. */
+@media (max-width: 640px) {
+  .project__talk-links-email {
+    flex-basis: 100%;
+  }
 }
 
 @media (max-width: 860px) {

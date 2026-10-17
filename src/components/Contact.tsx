@@ -25,7 +25,9 @@ export default function Contact() {
               animate={reduced || inView ? { y: '0%' } : { y: '110%' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             >
-              Let&rsquo;s design something
+              <span className="contact__first">
+                Let&rsquo;s design <span className="contact__something">something</span>
+              </span>
             </motion.span>
           </span>
           <span className="reveal-text__line">
@@ -41,14 +43,14 @@ export default function Contact() {
                   <span className="contact__hi">Say Hi.</span>
                   <svg
                     className="contact__headline-arrow"
-                    viewBox="2.9 2.9 10.2 10.2"
+                    viewBox="3 3 10 10"
                     fill="none"
                     aria-hidden="true"
                   >
                     <path
                       d="M3.5 12.5L12.5 3.5M5.25 3.5H12.5V10.75"
                       stroke="currentColor"
-                      strokeWidth={1.2}
+                      strokeWidth={1}
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
