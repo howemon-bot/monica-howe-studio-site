@@ -1,5 +1,7 @@
 # Deployed to public_html by .github/workflows/deploy.yml (copied from public/ by Vite).
 
+Options -MultiViews
+
 # Never let the server or SiteGround's Dynamic Cache keep a copy of the HTML.
 # Each deploy gives the JS/CSS files new names; a cached page would still point
 # at the old names, which the deploy removes, and the site would load blank.
