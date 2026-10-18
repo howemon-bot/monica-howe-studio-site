@@ -1,6 +1,5 @@
 .whatido__eyebrow {
   margin-bottom: clamp(20px, 3vw, 32px);
-  color: var(--color-accent-dim);
 }
 
 /* Dark band behind the cards only: it starts on their top line and ends on their bottom line. */
@@ -113,19 +112,29 @@
   transition: color 0.3s var(--ease), opacity 0.3s var(--ease);
 }
 
-/* Dark "See sample" circle that follows the pointer inside the card. */
+/* "See sample" circle. The outer element is moved to the pointer by WhatIDo.tsx;
+   the inner circle only grows in and out, so the two never fight over one transform. */
 .whatido__cursor {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.whatido__cursor-dot {
+  position: absolute;
+  top: -40px;
+  left: -40px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   width: 80px;
   height: 80px;
-  margin: -40px 0 0 -40px;
   padding: 0 12px;
   border-radius: 50%;
   background: var(--color-bg-dark);
@@ -137,47 +146,50 @@
   letter-spacing: 0.12em;
   text-align: center;
   text-transform: uppercase;
-  pointer-events: none;
-  transform: translate(var(--x, 50%), var(--y, 50%)) scale(0);
+  transform: scale(0);
   transition: transform 0.35s var(--ease);
 }
 
-/* Hover states (mouse or trackpad only). */
+/* Hover states (mouse or trackpad only). The active card is set by WhatIDo.tsx from
+   what is under the pointer each frame, rather than :hover, which can lag behind
+   while the row slides under a still mouse. */
 @media (hover: hover) {
-  .whatido__grid:hover .whatido__card {
+  .whatido__grid.has-active .whatido__card {
     opacity: 0.35;
   }
 
-  .whatido__grid .whatido__card:hover {
+  .whatido__grid .whatido__card.is-active {
     opacity: 1;
+  }
+
+  .whatido__card:hover {
     cursor: none;
   }
 
-  .whatido__card:hover::before {
+  .whatido__card.is-active::before {
     transform: scaleY(1);
   }
 
-  .whatido__card:hover .whatido__top,
-  .whatido__card:hover .whatido__name,
-  .whatido__card:hover .whatido__desc {
+  .whatido__card.is-active .whatido__top,
+  .whatido__card.is-active .whatido__name,
+  .whatido__card.is-active .whatido__desc {
     color: var(--color-bg-dark);
   }
 
-  .whatido__card:hover .whatido__desc {
+  .whatido__card.is-active .whatido__desc {
     opacity: 0.85;
   }
 
-  .whatido__card:hover .whatido__name {
+  .whatido__card.is-active .whatido__name {
     transform: translateX(4px);
   }
 
-  .whatido__card:hover .whatido__arrow {
+  .whatido__card.is-active .whatido__arrow {
     transform: rotate(45deg);
   }
 
-  .whatido__card:hover .whatido__cursor {
-    transform: translate(var(--x, 50%), var(--y, 50%)) scale(1);
-    transition: transform 0.12s linear;
+  .whatido__card.is-active .whatido__cursor-dot {
+    transform: scale(1);
   }
 }
 
@@ -206,23 +218,43 @@
   background: var(--color-accent);
 }
 
-/* Phones: a vertical stack of full-width cards, the first few shown until "+" is tapped. */
+/* Phones: the whole section is dark (white title inside), cards sit two per row,
+   and the first few show until "+" is tapped. */
 @media (max-width: 640px) {
+  .whatido {
+    padding: 40px 0 48px;
+    background: var(--color-bg-dark);
+    color: var(--color-cream);
+  }
+
+  .whatido__eyebrow {
+    color: var(--color-cream);
+  }
+
   .whatido__viewport {
     overflow: visible;
     margin-right: 0;
   }
 
   .whatido__grid {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     width: auto;
     transform: none !important;
   }
 
   .whatido__card {
     flex: none;
-    gap: 40px;
-    padding: 22px;
+    gap: 28px;
+    padding: 16px;
+  }
+
+  .whatido__name {
+    font-size: 19px;
+  }
+
+  .whatido__desc {
+    font-size: 12.5px;
   }
 
   .whatido__grid:not(.is-expanded) .whatido__extra {
@@ -231,6 +263,14 @@
 
   .whatido__more {
     display: flex;
+  }
+
+  .whatido__toggle {
+    color: var(--color-accent);
+  }
+
+  .whatido__toggle:hover {
+    color: var(--color-bg-dark);
   }
 }
 
@@ -252,7 +292,7 @@
   .whatido__card,
   .whatido__card::before,
   .whatido__name,
-  .whatido__cursor {
+  .whatido__cursor-dot {
     transition: none;
   }
 }
