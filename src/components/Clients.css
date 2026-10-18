@@ -1,6 +1,6 @@
 .clients {
-  --logo-h: 43px;
-  --logo-gap: 64px;
+  --logo-h: 29px;
+  --logo-gap: 43px;
   padding-top: clamp(48px, 8vw, 88px);
   padding-bottom: clamp(96px, 14vw, 144px);
 }
@@ -61,8 +61,8 @@
 
 @media (max-width: 640px) {
   .clients {
-    --logo-h: 46px;
-    --logo-gap: 56px;
+    --logo-h: 31px;
+    --logo-gap: 37px;
     padding-top: 40px;
     padding-bottom: 80px;
   }

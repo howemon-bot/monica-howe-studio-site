@@ -8,7 +8,7 @@
 .services__marquee {
   display: flex;
   width: max-content;
-  animation: services-marquee 71s linear infinite;
+  animation: services-marquee 81s linear infinite;
 }
 
 .services:hover .services__marquee {
@@ -20,8 +20,8 @@
   align-items: center;
   flex-shrink: 0;
   /* Keeps the strip the same height as before the text was enlarged. */
-  padding: 17px 0;
-  font-size: 16px;
+  padding: 19px 0;
+  font-size: 11px;
   line-height: 1;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -40,7 +40,7 @@
   display: inline-flex;
   margin-left: 28px;
   color: var(--color-accent-dim);
-  font-size: 13px;
+  font-size: 9px;
   line-height: 1;
 }
 

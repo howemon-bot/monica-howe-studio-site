@@ -29,8 +29,10 @@ export default function Services() {
   return (
     <div className="services" role="presentation">
       <p className="visually-hidden">Services: {SERVICES.join(', ')}</p>
-      {/* Each half of the loop holds the list twice, so it always covers even very wide screens. */}
+      {/* Each half of the loop holds the list three times, so it always covers even very wide screens. */}
       <div className="services__marquee">
+        <ServicesTrack />
+        <ServicesTrack />
         <ServicesTrack />
         <ServicesTrack />
         <ServicesTrack />
