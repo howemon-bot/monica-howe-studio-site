@@ -281,7 +281,7 @@ const projects: Project[] = [
     slug: 'wwf',
     name: 'WWF',
     client: 'WWF GERMANY',
-    year: 'Ongoing',
+    year: '2022–…',
     type: 'Editorial, branding and communication',
     brandColor: '#1A6B66',
     problem:
@@ -404,7 +404,7 @@ const projects: Project[] = [
     slug: 'ie-university',
     name: 'IE University',
     client: 'IE UNIVERSITY',
-    year: 'Ongoing',
+    year: '2022–…',
     type: 'Editorial, branding and communication',
     brandColor: '#000066',
     problem:

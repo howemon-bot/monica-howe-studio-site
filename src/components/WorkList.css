@@ -123,3 +123,27 @@
     display: inline;
   }
 }
+
+/* Phones: titles sized with the screen so the longest name, "IE University", stays on
+   one line (it is about 5.6em wide; 212px is the index, gaps, year, arrow and page
+   margins, with a little to spare). A small arrow is always shown, since there is no hover. */
+@media (max-width: 640px) {
+  .worklist__name {
+    font-size: clamp(20px, calc((100vw - 212px) / 5.6), 30px);
+    will-change: transform;
+  }
+
+  .worklist__meta {
+    gap: 10px;
+  }
+
+  .worklist__arrow {
+    opacity: 1;
+    transform: none;
+  }
+
+  .worklist__arrow svg {
+    width: 14px;
+    height: 14px;
+  }
+}
