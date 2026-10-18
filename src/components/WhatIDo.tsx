@@ -13,14 +13,16 @@ import './WhatIDo.css';
 const MOBILE_PREVIEW_COUNT = 4;
 
 // Each card opens a project that shows that kind of work; its image (from the same
-// project) appears, tinted lime, on hover.
+// project) appears, tinted lime, on hover. `focus` is the part of the image kept in view;
+// `invert` is for dark photos, so their light subject reads as dark marks on lime;
+// `lineArt` keeps a drawing's thin outlines visible.
 const SERVICES = [
-  { name: 'Art direction', desc: 'One clear visual course.', slug: 'medinaceli', img: imgArtDirection },
-  { name: 'Editorial', desc: 'Complex ideas, made clear.', slug: 'wwf', img: imgEditorial },
-  { name: 'Motion', desc: 'Movement with meaning.', slug: 'be-casa', img: imgMotion },
-  { name: 'Brand identity', desc: 'Designed and rolled out.', slug: 'worldcoo', img: imgBrandIdentity },
-  { name: 'Illustration', desc: 'Drawings with a voice.', slug: 'telavi', img: imgIllustration },
-  { name: 'Website', desc: 'Hand-built, no templates.', slug: 'telavi', img: imgWebsite },
+  { name: 'Art direction', desc: 'One clear visual course.', slug: 'medinaceli', img: imgArtDirection, focus: 'right center' },
+  { name: 'Editorial', desc: 'Complex ideas, made clear.', slug: 'wwf', img: imgEditorial, focus: 'right center' },
+  { name: 'Motion', desc: 'Movement with meaning.', slug: 'be-casa', img: imgMotion, focus: 'right center', invert: true },
+  { name: 'Brand identity', desc: 'Designed and rolled out.', slug: 'worldcoo', img: imgBrandIdentity, focus: 'right center' },
+  { name: 'Illustration', desc: 'Drawings with a voice.', slug: 'telavi', img: imgIllustration, focus: 'right center', lineArt: true },
+  { name: 'Website', desc: 'Hand-built, no templates.', slug: 'telavi', img: imgWebsite, focus: 'right center' },
 ];
 
 export default function WhatIDo() {
@@ -112,7 +114,19 @@ export default function WhatIDo() {
                 data-hide-cursor
               >
                 <span className="whatido__media" aria-hidden="true">
-                  <img src={s.img} alt="" loading="lazy" decoding="async" />
+                  <img
+                    src={s.img}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    style={
+                      {
+                        '--focus': s.focus,
+                        '--invert': s.invert ? 1 : 0,
+                        ...(s.lineArt ? { '--contrast': 0.9, '--lift': 1.3 } : {}),
+                      } as React.CSSProperties
+                    }
+                  />
                 </span>
                 <div className="whatido__top">
                   <span>{String(i + 1).padStart(2, '0')}</span>
