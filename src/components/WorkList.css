@@ -33,7 +33,12 @@
   padding-left: 10px;
 }
 
+/* The serif numbers and years sit a little high in their line box next to the big
+   sans titles; position: relative + top nudges them to the row's true middle without
+   disturbing the hover transforms. */
 .worklist__index {
+  position: relative;
+  top: 0.11em;
   font-family: var(--font-serif);
   font-size: 13px;
   font-weight: 300;
@@ -75,6 +80,12 @@
 
 .worklist__client {
   display: none;
+}
+
+.worklist__client,
+.worklist__year {
+  position: relative;
+  top: 0.11em;
 }
 
 .worklist__arrow {
@@ -130,7 +141,6 @@
 @media (max-width: 640px) {
   .worklist__name {
     font-size: clamp(20px, calc((100vw - 212px) / 5.6), 30px);
-    will-change: transform;
   }
 
   .worklist__meta {
