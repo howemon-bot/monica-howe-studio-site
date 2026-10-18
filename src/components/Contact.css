@@ -30,12 +30,13 @@
   align-items: baseline;
   gap: 0.22em;
   white-space: nowrap;
-  transition: transform 0.3s var(--ease);
+  transition: translate 0.3s var(--ease);
 }
 
-/* Hover mirrors the project list: the line slides right, then the arrow lifts toward its corner. */
+/* Hover mirrors the project list: the line slides right, then the arrow lifts toward its corner.
+   Uses `translate` because the reveal animation already sets an inline `transform` on this element. */
 .contact__headline:hover .contact__headline-row {
-  transform: translateX(10px);
+  translate: 10px 0;
 }
 
 /* The "L" ink sits a little right of its edge; pull it back so it lines up with the email. */
@@ -99,7 +100,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .contact__headline:hover .contact__headline-row,
+  .contact__headline:hover .contact__headline-row {
+    translate: none;
+  }
+
   .contact__headline:hover .contact__headline-arrow {
     transform: none;
   }
