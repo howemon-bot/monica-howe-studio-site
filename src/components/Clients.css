@@ -18,7 +18,7 @@
 .clients__marquee-inner {
   display: flex;
   width: max-content;
-  animation: clients-marquee 37s linear infinite;
+  animation: clients-marquee 74s linear infinite;
 }
 
 .clients__marquee:hover .clients__marquee-inner {
@@ -72,7 +72,7 @@
   }
 
   .clients__marquee-inner {
-    animation-duration: 40s;
+    animation-duration: 80s;
   }
 }
 

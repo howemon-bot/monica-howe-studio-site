@@ -8,7 +8,7 @@
 .services__marquee {
   display: flex;
   width: max-content;
-  animation: services-marquee 32s linear infinite;
+  animation: services-marquee 71s linear infinite;
 }
 
 .services:hover .services__marquee {
@@ -19,8 +19,10 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  padding: 18px 0;
-  font-size: 12px;
+  /* Keeps the strip the same height as before the text was enlarged. */
+  padding: 17px 0;
+  font-size: 16px;
+  line-height: 1;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -38,7 +40,7 @@
   display: inline-flex;
   margin-left: 28px;
   color: var(--color-accent-dim);
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1;
 }
 
@@ -59,7 +61,7 @@
     flex-wrap: wrap;
   }
 
-  .services__track:last-child {
+  .services__track + .services__track {
     display: none;
   }
 

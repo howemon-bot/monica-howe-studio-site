@@ -56,10 +56,13 @@ export default function Clients() {
           Some clients
         </p>
       </div>
-      {/* Two identical tracks side by side scroll left by one track's width, then loop. */}
+      {/* Four identical tracks scroll left by half their width, then loop. Each half
+          holds the list twice, so it always covers even very wide screens. */}
       <div className="clients__marquee">
         <div className="clients__marquee-inner">
           <LogoTrack />
+          <LogoTrack hidden />
+          <LogoTrack hidden />
           <LogoTrack hidden />
         </div>
       </div>
