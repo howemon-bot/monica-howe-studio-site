@@ -265,11 +265,12 @@
   letter-spacing: -0.02em;
   line-height: 1;
   color: var(--color-ink);
-  transition: transform 0.4s var(--ease);
+  transition: transform 0.3s var(--ease);
 }
 
+/* Hover mirrors the project list: the line slides right, then the arrow lifts toward its corner. */
 .project__talk-link:hover {
-  transform: translateX(8px);
+  transform: translateX(10px);
 }
 
 .project__talk-link .accent-italic {
@@ -295,11 +296,11 @@
   overflow: visible;
   color: var(--color-ink);
   flex-shrink: 0;
-  transition: transform 0.4s var(--ease);
+  transition: transform 0.4s var(--ease) 0.08s;
 }
 
 .project__talk-link:hover .project__talk-arrow {
-  transform: translateX(6px);
+  transform: translate(0.045em, -0.045em);
 }
 
 @media (prefers-reduced-motion: reduce) {

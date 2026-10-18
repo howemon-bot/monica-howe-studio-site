@@ -30,11 +30,12 @@
   align-items: baseline;
   gap: 0.22em;
   white-space: nowrap;
-  transition: transform 0.4s var(--ease);
+  transition: transform 0.3s var(--ease);
 }
 
+/* Hover mirrors the project list: the line slides right, then the arrow lifts toward its corner. */
 .contact__headline:hover .contact__headline-row {
-  transform: translateX(8px);
+  transform: translateX(10px);
 }
 
 /* The "L" ink sits a little right of its edge; pull it back so it lines up with the email. */
@@ -60,11 +61,11 @@
   height: 0.72em;
   overflow: visible;
   color: var(--color-ink);
-  transition: transform 0.4s var(--ease);
+  transition: transform 0.4s var(--ease) 0.08s;
 }
 
 .contact__headline:hover .contact__headline-arrow {
-  transform: translateX(6px);
+  transform: translate(0.045em, -0.045em);
 }
 
 .contact__links {
