@@ -13,14 +13,14 @@ export default function About() {
             as="h2"
             className="about__heading"
             lines={[
-              "I'm an art director and visual designer. Based in Barcelona, working internationally.",
+              'I’m an art director and visual designer based in Barcelona, working internationally.',
             ]}
           />
           <p className="about__bio">
-            I work with a small number of clients at a time — individuals and brands, across
-            borders and industries. What connects them isn&rsquo;t sector or size, it&rsquo;s
-            pace: they&rsquo;re playing a long game, not chasing a quarter. A few things I care
-            about, always: <strong>built to last, only what&rsquo;s needed.</strong>
+            After 20 years in design, I take on a few projects at a time and lead each one
+            myself. My clients range from global organisations to one-person brands. What they
+            share is a belief that craft matters as much as how something looks, and they want
+            work that holds up over time.
           </p>
           <a href={`mailto:${EMAIL}`} className="about__cta">
             Let&rsquo;s talk
