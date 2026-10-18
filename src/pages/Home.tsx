@@ -15,8 +15,8 @@ export default function Home() {
       <Hero />
       <Services />
       <WorkList />
-      <Clients />
       <About />
+      <Clients />
       <WhatIDo />
       <Contact />
     </>

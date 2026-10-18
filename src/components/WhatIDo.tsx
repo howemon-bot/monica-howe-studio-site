@@ -1,19 +1,26 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ArrowIcon from './ArrowIcon';
+import imgArtDirection from '../assets/services/Service_ArtDirection.jpg';
+import imgEditorial from '../assets/services/Service_Editorial.jpg';
+import imgMotion from '../assets/services/Service_Motion.jpg';
+import imgBrandIdentity from '../assets/services/Service_BrandIdentity.jpg';
+import imgIllustration from '../assets/services/Service_Illustration.jpg';
+import imgWebsite from '../assets/services/Service_Website.jpg';
 import './WhatIDo.css';
 
-// On phones the cards stack and only the first few show until "+" is tapped.
+// On phones only the first few cards show until "+" is tapped.
 const MOBILE_PREVIEW_COUNT = 4;
 
-// Each card opens a project that shows that kind of work.
+// Each card opens a project that shows that kind of work; its image (from the same
+// project) appears, tinted lime, on hover.
 const SERVICES = [
-  { name: 'Art direction', desc: 'One clear visual course.', slug: 'medinaceli' },
-  { name: 'Editorial', desc: 'Complex ideas, made clear.', slug: 'wwf' },
-  { name: 'Motion', desc: 'Movement with meaning.', slug: 'be-casa' },
-  { name: 'Brand identity', desc: 'Designed and rolled out.', slug: 'worldcoo' },
-  { name: 'Illustration', desc: 'Drawings with a voice.', slug: 'telavi' },
-  { name: 'Website', desc: 'Hand-built, no templates.', slug: 'telavi' },
+  { name: 'Art direction', desc: 'One clear visual course.', slug: 'medinaceli', img: imgArtDirection },
+  { name: 'Editorial', desc: 'Complex ideas, made clear.', slug: 'wwf', img: imgEditorial },
+  { name: 'Motion', desc: 'Movement with meaning.', slug: 'be-casa', img: imgMotion },
+  { name: 'Brand identity', desc: 'Designed and rolled out.', slug: 'worldcoo', img: imgBrandIdentity },
+  { name: 'Illustration', desc: 'Drawings with a voice.', slug: 'telavi', img: imgIllustration },
+  { name: 'Website', desc: 'Hand-built, no templates.', slug: 'telavi', img: imgWebsite },
 ];
 
 export default function WhatIDo() {
@@ -104,6 +111,9 @@ export default function WhatIDo() {
                 className="whatido__card"
                 data-hide-cursor
               >
+                <span className="whatido__media" aria-hidden="true">
+                  <img src={s.img} alt="" loading="lazy" decoding="async" />
+                </span>
                 <div className="whatido__top">
                   <span>{String(i + 1).padStart(2, '0')}</span>
                   <span className="whatido__arrow" aria-hidden="true">
