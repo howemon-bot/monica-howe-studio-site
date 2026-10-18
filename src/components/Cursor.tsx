@@ -73,6 +73,9 @@ export default function Cursor() {
       if (event.pointerType !== 'mouse') return;
       mouseX = event.clientX;
       mouseY = event.clientY;
+      // Elements with their own pointer graphic (e.g. the service cards) hide this one.
+      const target = event.target as Element | null;
+      root.classList.toggle('is-hidden', !!target?.closest?.('[data-hide-cursor]'));
       if (!visible) {
         visible = true;
         dotX = ringX = mouseX;

@@ -12,6 +12,10 @@
   opacity: 1;
 }
 
+.cursor.is-visible.is-hidden {
+  opacity: 0;
+}
+
 .cursor__dot,
 .cursor__ring {
   position: absolute;
