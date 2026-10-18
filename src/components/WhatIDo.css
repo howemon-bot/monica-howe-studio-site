@@ -38,16 +38,30 @@
   transition: background-size 0.6s var(--ease), opacity 0.5s var(--ease);
 }
 
+/* Commas, full stop and "&" in green. */
 .whatido__sep {
-  color: var(--color-muted);
+  color: var(--color-accent-dim);
 }
 
-/* The "&" in the serif italic, like "that lasts" in the contact heading. */
+/* The "&" in the serif italic, like "that lasts" in the contact heading. Its serif
+   metrics are taller than the sans, so it doesn't count toward line height; otherwise
+   it pushes the next line down. */
 .whatido__amp {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 750;
+  line-height: 0;
   color: var(--color-accent-dim);
+}
+
+/* Scroll reveal: words start faint and light up in order (see WhatIDo.tsx). */
+.whatido__word {
+  opacity: 0.15;
+  transition: opacity 0.4s var(--ease);
+}
+
+.whatido__word.is-lit {
+  opacity: 1;
 }
 
 /* One "See sample" circle for the whole section. WhatIDo.tsx eases the outer element
@@ -123,6 +137,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .whatido__word,
   .whatido__statement > *,
   .whatido__item,
   .whatido__cursor-dot {

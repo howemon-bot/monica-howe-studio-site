@@ -18,6 +18,44 @@ export default function WhatIDo() {
   const statementRef = useRef<HTMLParagraphElement | null>(null);
   const circleRef = useRef<HTMLSpanElement | null>(null);
 
+  // As the statement scrolls into view its words light up one after another, as if being
+  // written: faint until the scroll reaches them, then full colour.
+  useEffect(() => {
+    const statement = statementRef.current;
+    if (!statement) return;
+    const words = [...statement.querySelectorAll<HTMLElement>('.whatido__word')];
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      words.forEach((w) => w.classList.add('is-lit'));
+      return;
+    }
+
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const rect = statement.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // 0 when the statement's top is near the bottom of the screen, 1 by the time it
+      // has risen to about a third of the way down.
+      const start = vh * 0.9;
+      const end = vh * 0.35;
+      const progress = Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
+      const lit = Math.round(progress * words.length);
+      words.forEach((w, i) => w.classList.toggle('is-lit', i < lit));
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
+
   // Mouse or trackpad only. The service under the pointer gets a lime highlight while
   // the rest of the sentence fades back, and one "See sample" circle eases after the
   // pointer, gliding from word to word.
@@ -96,11 +134,16 @@ export default function WhatIDo() {
           {SERVICES.map((s, i) => (
             <Fragment key={s.name}>
               <Link to={`/work/${s.slug}`} className="whatido__item" data-hide-cursor>
-                {s.name}
+                {s.name.split(' ').map((word, w) => (
+                  <Fragment key={w}>
+                    {w > 0 && ' '}
+                    <span className="whatido__word">{word}</span>
+                  </Fragment>
+                ))}
               </Link>
-              {i < last - 1 && <span className="whatido__sep">, </span>}
-              {i === last - 1 && <span className="whatido__amp"> &amp; </span>}
-              {i === last && <span className="whatido__sep">.</span>}
+              {i < last - 1 && <span className="whatido__sep whatido__word">, </span>}
+              {i === last - 1 && <span className="whatido__amp whatido__word"> &amp; </span>}
+              {i === last && <span className="whatido__sep whatido__word">.</span>}
             </Fragment>
           ))}
         </p>
