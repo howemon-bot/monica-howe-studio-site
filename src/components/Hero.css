@@ -12,11 +12,11 @@
   max-width: 15ch;
 }
 
-/* Large on desktop (up to 48px), easing down to 19px on phones. */
+/* Larger on desktop (up to 32px), easing down to 19px on phones. */
 .hero__sub {
   margin-top: clamp(16px, 2vw, 28px);
   max-width: 36ch;
-  font-size: clamp(19px, 4vw, 48px);
+  font-size: clamp(19px, 2.7vw, 32px);
   color: var(--color-ink-soft);
   line-height: 1.3;
 }
