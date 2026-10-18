@@ -1,11 +1,11 @@
-.whatido {
-  background: var(--color-bg-dark);
-  color: var(--color-cream);
-  padding: clamp(40px, 6vw, 64px) 0 clamp(48px, 7vw, 72px);
-}
-
 .whatido__eyebrow {
   margin-bottom: clamp(20px, 3vw, 32px);
+  color: var(--color-accent-dim);
+}
+
+/* Dark band behind the cards only: it starts on their top line and ends on their bottom line. */
+.whatido__band {
+  background: var(--color-bg-dark);
   color: var(--color-cream);
 }
 
@@ -181,7 +181,7 @@
   }
 }
 
-/* "+" button, same as the project list's; phones only. */
+/* "+" button like the project list's, on the cream background below the cards; phones only. */
 .whatido__more {
   display: none;
   justify-content: center;
@@ -196,7 +196,7 @@
   height: 36px;
   border: 1px solid var(--color-accent);
   border-radius: 50%;
-  color: var(--color-accent);
+  color: var(--color-ink);
   font-size: 22px;
   line-height: 1;
   transition: background 0.25s var(--ease), color 0.25s var(--ease);
@@ -204,7 +204,6 @@
 
 .whatido__toggle:hover {
   background: var(--color-accent);
-  color: var(--color-bg-dark);
 }
 
 /* Phones: a vertical stack of full-width cards, the first few shown until "+" is tapped. */

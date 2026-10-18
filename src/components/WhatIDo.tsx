@@ -85,46 +85,52 @@ export default function WhatIDo() {
         <p id="whatido-heading" className="eyebrow whatido__eyebrow">
           What I do
         </p>
-        <div ref={viewportRef} className="whatido__viewport">
-          <ul ref={trackRef} className={`whatido__grid${expanded ? ' is-expanded' : ''}`}>
-            {SERVICES.map((s, i) => (
-              <li key={s.name} className={i >= MOBILE_PREVIEW_COUNT ? 'whatido__extra' : undefined}>
-                <Link
-                  to={`/work/${s.slug}`}
-                  className="whatido__card"
-                  data-hide-cursor
-                  onPointerMove={followPointer}
-                >
-                  <div className="whatido__top">
-                    <span>{String(i + 1).padStart(2, '0')}</span>
-                    <span className="whatido__arrow" aria-hidden="true">
-                      <ArrowIcon size={16} />
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="whatido__name">{s.name}</h3>
-                    <p className="whatido__desc">{s.desc}</p>
-                  </div>
-                  <span className="whatido__cursor" aria-hidden="true">
-                    See sample
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+      </div>
 
-        <div className="whatido__more">
-          <button
-            type="button"
-            className="whatido__toggle"
-            aria-expanded={expanded}
-            aria-label={expanded ? 'Show fewer services' : 'Show more services'}
-            onClick={() => setExpanded((v) => !v)}
-          >
-            {expanded ? '–' : '+'}
-          </button>
+      {/* The dark band runs exactly from the cards' top line to their bottom line. */}
+      <div className="whatido__band">
+        <div className="wrap">
+          <div ref={viewportRef} className="whatido__viewport">
+            <ul ref={trackRef} className={`whatido__grid${expanded ? ' is-expanded' : ''}`}>
+              {SERVICES.map((s, i) => (
+                <li key={s.name} className={i >= MOBILE_PREVIEW_COUNT ? 'whatido__extra' : undefined}>
+                  <Link
+                    to={`/work/${s.slug}`}
+                    className="whatido__card"
+                    data-hide-cursor
+                    onPointerMove={followPointer}
+                  >
+                    <div className="whatido__top">
+                      <span>{String(i + 1).padStart(2, '0')}</span>
+                      <span className="whatido__arrow" aria-hidden="true">
+                        <ArrowIcon size={16} />
+                      </span>
+                    </div>
+                    <div>
+                      <h3 className="whatido__name">{s.name}</h3>
+                      <p className="whatido__desc">{s.desc}</p>
+                    </div>
+                    <span className="whatido__cursor" aria-hidden="true">
+                      See sample
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
+      </div>
+
+      <div className="wrap whatido__more">
+        <button
+          type="button"
+          className="whatido__toggle"
+          aria-expanded={expanded}
+          aria-label={expanded ? 'Show fewer services' : 'Show more services'}
+          onClick={() => setExpanded((v) => !v)}
+        >
+          {expanded ? '–' : '+'}
+        </button>
       </div>
     </section>
   );

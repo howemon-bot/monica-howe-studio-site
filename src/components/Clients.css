@@ -2,7 +2,7 @@
   --logo-h: 43px;
   --logo-gap: 64px;
   padding-top: clamp(48px, 8vw, 88px);
-  padding-bottom: clamp(48px, 7vw, 72px);
+  padding-bottom: clamp(96px, 14vw, 144px);
 }
 
 .clients__eyebrow {
@@ -64,7 +64,7 @@
     --logo-h: 46px;
     --logo-gap: 56px;
     padding-top: 40px;
-    padding-bottom: 40px;
+    padding-bottom: 80px;
   }
 
   .clients__eyebrow {

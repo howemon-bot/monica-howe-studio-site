@@ -12,6 +12,7 @@
 
 .about__eyebrow {
   margin-top: 0.55em;
+  color: var(--color-accent-dim);
 }
 
 .about__copy {

@@ -7,7 +7,7 @@ export default function About() {
   return (
     <section id="about" className="about wrap">
       <div className="about__grid">
-        <p className="eyebrow about__eyebrow">About</p>
+        <p className="eyebrow about__eyebrow">Hello</p>
         <div className="about__copy">
           <RevealText
             as="h2"
