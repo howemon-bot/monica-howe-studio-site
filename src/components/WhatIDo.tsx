@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import ArrowIcon from './ArrowIcon';
 import imgArtDirection from '../assets/services/Service_ArtDirection.jpg';
@@ -8,9 +8,6 @@ import imgBrandIdentity from '../assets/services/Service_BrandIdentity.jpg';
 import imgIllustration from '../assets/services/Service_Illustration.jpg';
 import imgWebsite from '../assets/services/Service_Website.jpg';
 import './WhatIDo.css';
-
-// On phones only the first few cards show until "+" is tapped.
-const MOBILE_PREVIEW_COUNT = 4;
 
 // Each card opens a project that shows that kind of work; its image (from the same
 // project) appears, tinted lime, on hover. `focus` is the part of the image kept in view;
@@ -29,7 +26,6 @@ export default function WhatIDo() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const circleRef = useRef<HTMLSpanElement | null>(null);
   const gridRef = useRef<HTMLUListElement | null>(null);
-  const [expanded, setExpanded] = useState(false);
 
   // Mouse or trackpad only. The card under the pointer becomes active (lime fill), and
   // one shared "See sample" circle eases after the pointer, gliding from card to card
@@ -105,9 +101,9 @@ export default function WhatIDo() {
         <p id="whatido-heading" className="eyebrow whatido__eyebrow">
           What I do
         </p>
-        <ul ref={gridRef} className={`whatido__grid${expanded ? ' is-expanded' : ''}`}>
+        <ul ref={gridRef} className="whatido__grid">
           {SERVICES.map((s, i) => (
-            <li key={s.name} className={i >= MOBILE_PREVIEW_COUNT ? 'whatido__extra' : undefined}>
+            <li key={s.name}>
               <Link
                 to={`/work/${s.slug}`}
                 className="whatido__card"
@@ -142,18 +138,6 @@ export default function WhatIDo() {
             </li>
           ))}
         </ul>
-      </div>
-
-      <div className="wrap whatido__more">
-        <button
-          type="button"
-          className="whatido__toggle"
-          aria-expanded={expanded}
-          aria-label={expanded ? 'Show fewer services' : 'Show more services'}
-          onClick={() => setExpanded((v) => !v)}
-        >
-          {expanded ? '–' : '+'}
-        </button>
       </div>
 
       <span ref={circleRef} className="whatido__cursor" aria-hidden="true">
