@@ -19,8 +19,7 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  /* Keeps the strip the same height as before the text was enlarged. */
-  padding: 19px 0;
+  padding: 20px 0;
   font-size: 11px;
   line-height: 1;
   font-weight: 600;
@@ -34,6 +33,14 @@
   display: inline-flex;
   align-items: center;
   padding-left: 28px;
+}
+
+/* Trim each line to exactly cap height and baseline, so the space above and below the
+   capitals is equal whatever the browser's font metrics (Safari and Chrome otherwise
+   place the text a pixel or so differently). Browsers without support keep the
+   regular line box, a near-identical result. */
+.services__track li > * {
+  text-box: trim-both cap alphabetic;
 }
 
 .services__sep {
