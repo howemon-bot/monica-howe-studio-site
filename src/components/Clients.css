@@ -1,6 +1,6 @@
 .clients {
-  --logo-h: 64px;
-  --logo-gap: 96px;
+  --logo-h: 43px;
+  --logo-gap: 64px;
   padding-top: clamp(48px, 8vw, 88px);
   padding-bottom: clamp(8px, 2vw, 16px);
 }
@@ -18,7 +18,7 @@
 .clients__marquee-inner {
   display: flex;
   width: max-content;
-  animation: clients-marquee 55s linear infinite;
+  animation: clients-marquee 37s linear infinite;
 }
 
 .clients__marquee:hover .clients__marquee-inner {
