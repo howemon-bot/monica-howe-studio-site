@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
+import Cursor from './components/Cursor';
 import Home from './pages/Home';
 import ProjectDetail from './pages/ProjectDetail';
 import SmoothScroll from './motion/SmoothScroll';
@@ -31,6 +32,7 @@ export default function App() {
         <AppRoutes />
         <Footer />
         <BackToTop />
+        <Cursor />
       </SmoothScroll>
     </BrowserRouter>
   );

@@ -1,0 +1,55 @@
+/* Sits above everything, including the full-screen menu, and never blocks clicks. */
+.cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+
+.cursor.is-visible {
+  opacity: 1;
+}
+
+.cursor__dot,
+.cursor__ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+/* Lime dot; the deeper lime reads better against the cream background. */
+.cursor__dot {
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  background: var(--color-accent-dim);
+  transition: background-color 0.3s var(--ease);
+}
+
+/* Thin outline: dark on light sections, light on dark ones. */
+.cursor__ring {
+  width: 32px;
+  height: 32px;
+  margin: -16px 0 0 -16px;
+  border: 1px solid rgba(25, 23, 18, 0.45);
+  transition: border-color 0.3s var(--ease);
+}
+
+.cursor.is-on-dark .cursor__dot {
+  background: var(--color-accent);
+}
+
+.cursor.is-on-dark .cursor__ring {
+  border-color: rgba(243, 239, 232, 0.4);
+}
+
+/* Touch screens have no mouse to follow. */
+@media (hover: none), (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}
