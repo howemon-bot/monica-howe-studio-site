@@ -16,8 +16,8 @@ export default function Home() {
       <Services />
       <WorkList />
       <About />
-      <WhatIDo />
       <Clients />
+      <WhatIDo />
       <Contact />
     </>
   );
