@@ -15,7 +15,7 @@
 .hero__sub {
   margin-top: 22px;
   max-width: 36ch;
-  font-size: clamp(17px, 1.9vw, 22px);
+  font-size: clamp(19px, 2.1vw, 24px);
   color: var(--color-ink-soft);
   line-height: 1.5;
 }

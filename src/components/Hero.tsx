@@ -55,15 +55,11 @@ export default function Hero() {
       <RevealText
         as="h1"
         className="hero__title"
-        lines={['Built to last.', 'No trends to chase.']}
+        lines={['A creative studio', 'for brands who care.']}
         immediate
         delay={0.15}
       />
-      <p className="hero__sub">
-        Visual identity and art direction,
-        <br />
-        for brands playing the long game.
-      </p>
+      <p className="hero__sub">Design with intention, made&nbsp;to&nbsp;last.</p>
 
       <button
         type="button"
