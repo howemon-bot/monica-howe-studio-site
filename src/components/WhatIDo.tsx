@@ -17,12 +17,12 @@ const MOBILE_PREVIEW_COUNT = 4;
 // `invert` is for dark photos, so their light subject reads as dark marks on lime;
 // `lineArt` keeps a drawing's thin outlines visible.
 const SERVICES = [
-  { name: 'Art direction', desc: 'One clear visual course.', slug: 'medinaceli', img: imgArtDirection, focus: 'right center' },
-  { name: 'Editorial', desc: 'Complex ideas, made clear.', slug: 'wwf', img: imgEditorial, focus: 'right center' },
-  { name: 'Motion', desc: 'Movement with meaning.', slug: 'be-casa', img: imgMotion, focus: 'right center', invert: true },
-  { name: 'Brand identity', desc: 'Designed and rolled out.', slug: 'worldcoo', img: imgBrandIdentity, focus: 'right center' },
-  { name: 'Illustration', desc: 'Drawings with a voice.', slug: 'telavi', img: imgIllustration, focus: 'right center', lineArt: true },
-  { name: 'Website', desc: 'Hand-built, no templates.', slug: 'telavi', img: imgWebsite, focus: 'right center' },
+  { name: 'Art direction', desc: 'One clear visual course.', slug: 'medinaceli', img: imgArtDirection, focus: 'center' },
+  { name: 'Editorial', desc: 'Complex ideas, made clear.', slug: 'wwf', img: imgEditorial, focus: 'center' },
+  { name: 'Motion', desc: 'Movement with meaning.', slug: 'be-casa', img: imgMotion, focus: 'center', invert: true },
+  { name: 'Brand identity', desc: 'Designed and rolled out.', slug: 'worldcoo', img: imgBrandIdentity, focus: 'center' },
+  { name: 'Illustration', desc: 'Drawings with a voice.', slug: 'telavi', img: imgIllustration, focus: 'center', lineArt: true },
+  { name: 'Website', desc: 'Hand-built, no templates.', slug: 'telavi', img: imgWebsite, focus: 'center' },
 ];
 
 export default function WhatIDo() {

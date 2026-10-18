@@ -40,8 +40,8 @@
 }
 
 /* On hover a lime panel wipes down from the top. A small, faint, single-colour version
-   of a project image sits in its right-hand side with room around it, and slowly zooms
-   in. The photo is turned grey and pushed light so its own background melts into the
+   of a project image sits in its right-hand side, feathered into the lime, and slowly
+   zooms in. The photo is turned grey and pushed light so its own background melts into the
    lime and only a soft olive trace of the subject remains. */
 .whatido__media {
   position: absolute;
@@ -60,8 +60,11 @@
   right: 6%;
   width: 36%;
   height: 72%;
-  object-fit: contain;
-  object-position: var(--focus, right center);
+  object-fit: cover;
+  object-position: var(--focus, center);
+  /* Feathered on every side, so the image dissolves into the lime with no visible edge. */
+  -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
   /* --invert flips dark photos (light logo on dark) into dark marks on lime;
      --contrast and --lift let line drawings keep their thin outlines. */
   filter: grayscale(1) invert(var(--invert, 0)) contrast(var(--contrast, 0.35))
