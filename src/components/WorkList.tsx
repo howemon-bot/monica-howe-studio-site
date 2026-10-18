@@ -43,10 +43,12 @@ export default function WorkList() {
     update();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
+    phone.addEventListener('change', onScroll);
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
+      phone.removeEventListener('change', onScroll);
     };
   }, [expanded]);
 
