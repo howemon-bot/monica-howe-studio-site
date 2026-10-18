@@ -17,31 +17,34 @@ const SERVICES = [
 ];
 
 export default function WhatIDo() {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const viewportRef = useRef<HTMLDivElement | null>(null);
+  const circleRef = useRef<HTMLSpanElement | null>(null);
   const trackRef = useRef<HTMLUListElement | null>(null);
   const [expanded, setExpanded] = useState(false);
 
   // Mouse or trackpad only (touch screens scroll natively). One animation loop:
   //  - the row pans as the pointer moves across it: left edge shows the first card,
   //    right edge the last;
-  //  - the "See sample" circle eases toward the pointer every frame, so it keeps up
-  //    even while the row slides under a still mouse.
+  //  - one shared "See sample" circle eases toward the pointer every frame and glides
+  //    from card to card, rather than each card popping its own circle in and out.
   useEffect(() => {
+    const section = sectionRef.current;
     const viewport = viewportRef.current;
     const track = trackRef.current;
-    if (!viewport || !track) return;
+    const circle = circleRef.current;
+    if (!section || !viewport || !track || !circle) return;
 
     const fine = window.matchMedia('(hover: hover) and (pointer: fine)');
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     const panEase = () => (reduced.matches ? 1 : 0.08);
-    const followEase = () => (reduced.matches ? 1 : 0.3);
+    const followEase = () => (reduced.matches ? 1 : 0.16);
 
     let pan = 0;
     let panTarget = 0;
     let pointerX = 0;
     let pointerY = 0;
     let hovered: HTMLElement | null = null;
-    let follower: HTMLElement | null = null;
     let followX = 0;
     let followY = 0;
     let inside = false;
@@ -53,17 +56,18 @@ export default function WhatIDo() {
     // frame, so a card that slides away under a still mouse lets go straight away.
     const setActive = (card: HTMLElement | null) => {
       if (card === hovered) return;
+      const wasActive = !!hovered;
       hovered?.classList.remove('is-active');
       hovered = card;
-      follower = card?.querySelector<HTMLElement>('.whatido__cursor') ?? null;
+      card?.classList.add('is-active');
       track.classList.toggle('has-active', !!card);
-      if (card && follower) {
-        card.classList.add('is-active');
-        // Start exactly under the pointer instead of sliding in from the last card.
-        const rect = card.getBoundingClientRect();
+      section.classList.toggle('has-active', !!card);
+      if (card && !wasActive) {
+        // First card entered: the circle starts under the pointer and grows from there.
+        const rect = section.getBoundingClientRect();
         followX = pointerX - rect.left;
         followY = pointerY - rect.top;
-        follower.style.transform = `translate3d(${followX}px, ${followY}px, 0)`;
+        circle.style.transform = `translate3d(${followX}px, ${followY}px, 0)`;
       }
     };
     const cardUnderPointer = () => {
@@ -75,13 +79,12 @@ export default function WhatIDo() {
     };
 
     const placeFollower = () => {
-      if (!hovered || !follower) return true;
-      const rect = hovered.getBoundingClientRect();
+      const rect = section.getBoundingClientRect();
       const x = pointerX - rect.left;
       const y = pointerY - rect.top;
       followX += (x - followX) * followEase();
       followY += (y - followY) * followEase();
-      follower.style.transform = `translate3d(${followX.toFixed(1)}px, ${followY.toFixed(1)}px, 0)`;
+      circle.style.transform = `translate3d(${followX.toFixed(1)}px, ${followY.toFixed(1)}px, 0)`;
       return Math.abs(x - followX) < 0.2 && Math.abs(y - followY) < 0.2;
     };
 
@@ -137,43 +140,34 @@ export default function WhatIDo() {
   }, []);
 
   return (
-    <section id="services" className="whatido" aria-labelledby="whatido-heading">
+    <section ref={sectionRef} id="services" className="whatido" aria-labelledby="whatido-heading">
       <div className="wrap">
         <p id="whatido-heading" className="eyebrow whatido__eyebrow">
           What I do
         </p>
-      </div>
-
-      {/* The dark band runs exactly from the cards' top line to their bottom line. */}
-      <div className="whatido__band">
-        <div className="wrap">
-          <div ref={viewportRef} className="whatido__viewport">
-            <ul ref={trackRef} className={`whatido__grid${expanded ? ' is-expanded' : ''}`}>
-              {SERVICES.map((s, i) => (
-                <li key={s.name} className={i >= MOBILE_PREVIEW_COUNT ? 'whatido__extra' : undefined}>
-                  <Link
-                    to={`/work/${s.slug}`}
-                    className="whatido__card"
-                    data-hide-cursor
-                  >
-                    <div className="whatido__top">
-                      <span>{String(i + 1).padStart(2, '0')}</span>
-                      <span className="whatido__arrow" aria-hidden="true">
-                        <ArrowIcon size={16} />
-                      </span>
-                    </div>
-                    <div>
-                      <h3 className="whatido__name">{s.name}</h3>
-                      <p className="whatido__desc">{s.desc}</p>
-                    </div>
-                    <span className="whatido__cursor" aria-hidden="true">
-                      <span className="whatido__cursor-dot">See sample</span>
+        <div ref={viewportRef} className="whatido__viewport">
+          <ul ref={trackRef} className={`whatido__grid${expanded ? ' is-expanded' : ''}`}>
+            {SERVICES.map((s, i) => (
+              <li key={s.name} className={i >= MOBILE_PREVIEW_COUNT ? 'whatido__extra' : undefined}>
+                <Link
+                  to={`/work/${s.slug}`}
+                  className="whatido__card"
+                  data-hide-cursor
+                >
+                  <div className="whatido__top">
+                    <span>{String(i + 1).padStart(2, '0')}</span>
+                    <span className="whatido__arrow" aria-hidden="true">
+                      <ArrowIcon size={16} />
                     </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+                  </div>
+                  <div>
+                    <h3 className="whatido__name">{s.name}</h3>
+                    <p className="whatido__desc">{s.desc}</p>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
@@ -188,6 +182,10 @@ export default function WhatIDo() {
           {expanded ? '–' : '+'}
         </button>
       </div>
+
+      <span ref={circleRef} className="whatido__cursor" aria-hidden="true">
+        <span className="whatido__cursor-dot">See sample</span>
+      </span>
     </section>
   );
 }
