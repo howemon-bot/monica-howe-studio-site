@@ -1,0 +1,72 @@
+/* Full-width strip of services between the showreel and Selected work. */
+.services {
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  overflow: hidden;
+}
+
+.services__marquee {
+  display: flex;
+  width: max-content;
+  animation: services-marquee 32s linear infinite;
+}
+
+.services:hover .services__marquee {
+  animation-play-state: paused;
+}
+
+.services__track {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 18px 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  white-space: nowrap;
+}
+
+.services__track li {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 28px;
+}
+
+.services__sep {
+  display: inline-flex;
+  margin-left: 28px;
+  color: var(--color-accent-dim);
+  font-size: 10px;
+  line-height: 1;
+}
+
+@keyframes services-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services__marquee {
+    animation: none;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .services__track:last-child {
+    display: none;
+  }
+
+  .services__track {
+    flex-wrap: wrap;
+    justify-content: center;
+    white-space: normal;
+    padding: 16px var(--gutter);
+  }
+}

@@ -1,6 +1,6 @@
 .hero {
   padding-top: clamp(48px, 8vw, 80px);
-  padding-bottom: clamp(48px, 8vw, 80px);
+  padding-bottom: clamp(36px, 5.5vw, 60px);
 }
 
 .hero__title {

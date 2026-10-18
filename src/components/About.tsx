@@ -3,31 +3,6 @@ import { EMAIL } from './Contact';
 import '../motion/Reveal.css';
 import './About.css';
 
-const SKILLS = [
-  'Visual identity',
-  'Art direction',
-  'Editorial',
-  'Motion',
-  'Brand implementation',
-  'Illustration',
-  'Web',
-];
-
-function SkillsTrack() {
-  return (
-    <ul className="about__skills-track" aria-hidden="true">
-      {SKILLS.map((s) => (
-        <li key={s}>
-          <span>{s}</span>
-          <span className="about__skills-sep" aria-hidden="true">
-            ✦
-          </span>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
 export default function About() {
   return (
     <section id="about" className="about wrap">
@@ -50,14 +25,6 @@ export default function About() {
           <a href={`mailto:${EMAIL}`} className="about__cta">
             Let&rsquo;s talk
           </a>
-        </div>
-      </div>
-
-      <div className="about__skills" role="presentation">
-        <p className="visually-hidden">Services: {SKILLS.join(', ')}</p>
-        <div className="about__skills-marquee">
-          <SkillsTrack />
-          <SkillsTrack />
         </div>
       </div>
     </section>
