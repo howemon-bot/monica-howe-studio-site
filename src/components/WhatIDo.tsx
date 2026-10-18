@@ -1,40 +1,31 @@
-import { useEffect, useRef } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import ArrowIcon from './ArrowIcon';
-import imgArtDirection from '../assets/services/Service_ArtDirection.jpg';
-import imgEditorial from '../assets/services/Service_Editorial.jpg';
-import imgMotion from '../assets/services/Service_Motion.jpg';
-import imgBrandIdentity from '../assets/services/Service_BrandIdentity.jpg';
-import imgIllustration from '../assets/services/Service_Illustration.jpg';
-import imgWebsite from '../assets/services/Service_Website.jpg';
 import './WhatIDo.css';
 
-// Each card opens a project that shows that kind of work; its image (from the same
-// project) appears, tinted lime, on hover. `focus` is the part of the image kept in view;
-// `invert` is for dark photos, so their light subject reads as dark marks on lime;
-// `lineArt` keeps a drawing's thin outlines visible.
+// Each service opens a project that shows that kind of work.
 const SERVICES = [
-  { name: 'Art direction', desc: 'One clear visual course.', slug: 'medinaceli', img: imgArtDirection, focus: 'center' },
-  { name: 'Editorial', desc: 'Complex ideas, made clear.', slug: 'wwf', img: imgEditorial, focus: 'center' },
-  { name: 'Motion', desc: 'Movement with meaning.', slug: 'be-casa', img: imgMotion, focus: 'center', invert: true },
-  { name: 'Brand identity', desc: 'Designed and rolled out.', slug: 'worldcoo', img: imgBrandIdentity, focus: 'center' },
-  { name: 'Illustration', desc: 'Drawings with a voice.', slug: 'telavi', img: imgIllustration, focus: 'center', lineArt: true },
-  { name: 'Website', desc: 'Hand-built, no templates.', slug: 'telavi', img: imgWebsite, focus: 'center' },
+  { name: 'Art direction', slug: 'medinaceli' },
+  { name: 'Editorial', slug: 'wwf' },
+  { name: 'Motion', slug: 'be-casa' },
+  { name: 'Brand identity', slug: 'worldcoo' },
+  { name: 'Illustration', slug: 'telavi' },
+  { name: 'Website', slug: 'telavi' },
 ];
 
+/** "What I do" as one large typographic statement; each service is a link. */
 export default function WhatIDo() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const statementRef = useRef<HTMLParagraphElement | null>(null);
   const circleRef = useRef<HTMLSpanElement | null>(null);
-  const gridRef = useRef<HTMLUListElement | null>(null);
 
-  // Mouse or trackpad only. The card under the pointer becomes active (lime fill), and
-  // one shared "See sample" circle eases after the pointer, gliding from card to card
-  // rather than each card popping its own circle in and out.
+  // Mouse or trackpad only. The service under the pointer gets a lime highlight while
+  // the rest of the sentence fades back, and one "See sample" circle eases after the
+  // pointer, gliding from word to word.
   useEffect(() => {
     const section = sectionRef.current;
-    const grid = gridRef.current;
+    const statement = statementRef.current;
     const circle = circleRef.current;
-    if (!section || !grid || !circle) return;
+    if (!section || !statement || !circle) return;
 
     const fine = window.matchMedia('(hover: hover) and (pointer: fine)');
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -47,16 +38,16 @@ export default function WhatIDo() {
     let active: HTMLElement | null = null;
     let frame = 0;
 
-    const setActive = (card: HTMLElement | null) => {
-      if (card === active) return;
+    const setActive = (item: HTMLElement | null) => {
+      if (item === active) return;
       const wasActive = !!active;
       active?.classList.remove('is-active');
-      active = card;
-      card?.classList.add('is-active');
-      grid.classList.toggle('has-active', !!card);
-      section.classList.toggle('has-active', !!card);
-      if (card && !wasActive) {
-        // First card entered: the circle starts under the pointer and grows from there.
+      active = item;
+      item?.classList.add('is-active');
+      statement.classList.toggle('has-active', !!item);
+      section.classList.toggle('has-active', !!item);
+      if (item && !wasActive) {
+        // First word entered: the circle starts under the pointer and grows from there.
         const rect = section.getBoundingClientRect();
         circleX = pointerX - rect.left;
         circleY = pointerY - rect.top;
@@ -79,21 +70,21 @@ export default function WhatIDo() {
       if (!fine.matches || event.pointerType !== 'mouse') return;
       pointerX = event.clientX;
       pointerY = event.clientY;
-      const card = (event.target as Element).closest<HTMLElement>('.whatido__card');
-      // On the hairline between two cards, keep the current one rather than flicker.
-      if (card || !grid.contains(event.target as Node)) setActive(card);
+      setActive((event.target as Element).closest<HTMLElement>('.whatido__item'));
       if (!frame) frame = requestAnimationFrame(tick);
     };
     const onLeave = () => setActive(null);
 
-    grid.addEventListener('pointermove', onMove);
-    grid.addEventListener('pointerleave', onLeave);
+    statement.addEventListener('pointermove', onMove);
+    statement.addEventListener('pointerleave', onLeave);
     return () => {
       cancelAnimationFrame(frame);
-      grid.removeEventListener('pointermove', onMove);
-      grid.removeEventListener('pointerleave', onLeave);
+      statement.removeEventListener('pointermove', onMove);
+      statement.removeEventListener('pointerleave', onLeave);
     };
   }, []);
+
+  const last = SERVICES.length - 1;
 
   return (
     <section ref={sectionRef} id="services" className="whatido" aria-labelledby="whatido-heading">
@@ -101,43 +92,18 @@ export default function WhatIDo() {
         <p id="whatido-heading" className="eyebrow whatido__eyebrow">
           What I do
         </p>
-        <ul ref={gridRef} className="whatido__grid">
+        <p ref={statementRef} className="whatido__statement">
           {SERVICES.map((s, i) => (
-            <li key={s.name}>
-              <Link
-                to={`/work/${s.slug}`}
-                className="whatido__card"
-                data-hide-cursor
-              >
-                <span className="whatido__media" aria-hidden="true">
-                  <img
-                    src={s.img}
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    style={
-                      {
-                        '--focus': s.focus,
-                        '--invert': s.invert ? 1 : 0,
-                        ...(s.lineArt ? { '--contrast': 0.9, '--lift': 1.3 } : {}),
-                      } as React.CSSProperties
-                    }
-                  />
-                </span>
-                <div className="whatido__top">
-                  <span>{String(i + 1).padStart(2, '0')}</span>
-                  <span className="whatido__arrow" aria-hidden="true">
-                    <ArrowIcon size={16} />
-                  </span>
-                </div>
-                <div>
-                  <h3 className="whatido__name">{s.name}</h3>
-                  <p className="whatido__desc">{s.desc}</p>
-                </div>
+            <Fragment key={s.name}>
+              <Link to={`/work/${s.slug}`} className="whatido__item" data-hide-cursor>
+                {s.name}
               </Link>
-            </li>
+              {i < last - 1 && <span className="whatido__sep">, </span>}
+              {i === last - 1 && <span className="whatido__amp"> &amp; </span>}
+              {i === last && <span className="whatido__sep">.</span>}
+            </Fragment>
           ))}
-        </ul>
+        </p>
       </div>
 
       <span ref={circleRef} className="whatido__cursor" aria-hidden="true">
