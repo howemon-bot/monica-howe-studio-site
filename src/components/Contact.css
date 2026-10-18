@@ -7,25 +7,38 @@
   margin-bottom: clamp(28px, 4vw, 40px);
 }
 
+/* Same "Let's talk." as the project pages, at double the size.
+   On narrow screens it shrinks to the widest size that still fits on one line
+   ("Let's talk." plus the arrow is about 5.5em wide). */
 .contact__headline {
   display: block;
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.12;
-  font-size: clamp(40px, 6.1vw, 72px);
+  line-height: 1;
+  font-size: min(clamp(80px, 14vw, 160px), calc((100vw - 2 * var(--gutter)) / 5.5));
   color: var(--color-ink);
 }
 
 .contact .reveal-text__line {
-  padding: 0.06em 0 0.28em 0.1em;
+  padding: 0.06em 0 0.22em 0.1em;
   margin-left: -0.1em;
-  margin-bottom: -0.26em;
 }
 
-/* Each line starts with a letter whose ink sits a little right of its edge;
-   pull it back by that amount so every line lines up with the email below. */
-.contact__first {
+.contact .contact__headline-row {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.22em;
+  white-space: nowrap;
+  transition: transform 0.4s var(--ease);
+}
+
+.contact__headline:hover .contact__headline-row {
+  transform: translateX(8px);
+}
+
+/* The "L" ink sits a little right of its edge; pull it back so it lines up with the email. */
+.contact__talk {
   margin-left: -0.05em;
 }
 
@@ -33,30 +46,9 @@
   color: var(--color-accent);
 }
 
-.contact__that-lasts {
-  white-space: nowrap;
-  /* The serif italic draws thinner strokes than the bold sans; 750 matches its weight. */
+/* The serif italic draws thinner strokes than the bold sans; 750 matches its weight. */
+.contact__talk-accent {
   font-weight: 750;
-  margin-left: -0.039em;
-}
-
-.contact__headline-row {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.22em;
-  white-space: nowrap;
-}
-
-.contact__say-hi {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.16em;
-}
-
-.contact__hi {
-  font-family: var(--font-display);
-  font-style: normal;
-  font-weight: 700;
 }
 
 /* Sits on the baseline and rises to cap height (0.72em), like a letter.
@@ -71,11 +63,7 @@
   transition: transform 0.4s var(--ease);
 }
 
-.contact__headline .contact__headline-row {
-  transition: transform 0.4s var(--ease);
-}
-
-.contact__headline:hover .contact__headline-row {
+.contact__headline:hover .contact__headline-arrow {
   transform: translateX(6px);
 }
 
@@ -103,34 +91,6 @@
 }
 
 @media (max-width: 640px) {
-  /* "that lasts." and "Say Hi." each get their own line, left-aligned with the rest. */
-  .contact__headline-row {
-    flex-wrap: wrap;
-    row-gap: 0;
-  }
-
-  .contact__that-lasts {
-    flex-basis: 100%;
-  }
-
-  /* Always break before "something" so each phone line can be aligned on its own. */
-  .contact__something {
-    display: block;
-    margin-left: -0.016em;
-  }
-
-  /* Keep every line the same distance apart (one line-height) on phones:
-     drop the extra space between the two reveal lines... */
-  .contact .reveal-text__line {
-    margin-bottom: -0.34em;
-  }
-
-  /* ...and the extra space the wrapped serif line adds above "Say Hi." */
-  .contact__say-hi {
-    margin-top: -0.125em;
-    margin-left: -0.024em;
-  }
-
   /* Email on its own line; LinkedIn and Instagram side by side underneath. */
   .contact__links-email {
     flex-basis: 100%;
@@ -138,7 +98,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .contact__headline:hover .contact__headline-row {
+  .contact__headline:hover .contact__headline-row,
+  .contact__headline:hover .contact__headline-arrow {
     transform: none;
   }
 }
