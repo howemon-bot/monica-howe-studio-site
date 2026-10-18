@@ -1,4 +1,6 @@
 .clients {
+  --logo-h: 64px;
+  --logo-gap: 96px;
   padding-top: clamp(48px, 8vw, 88px);
   padding-bottom: clamp(8px, 2vw, 16px);
 }
@@ -8,65 +10,59 @@
   color: var(--color-muted);
 }
 
-.clients__grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: clamp(28px, 4vw, 48px) clamp(20px, 3vw, 40px);
+/* Runs edge to edge across the screen, past the page margins. */
+.clients__marquee {
+  overflow: hidden;
+}
+
+.clients__marquee-inner {
+  display: flex;
+  width: max-content;
+  animation: clients-marquee 55s linear infinite;
+}
+
+.clients__marquee:hover .clients__marquee-inner {
+  animation-play-state: paused;
+}
+
+.clients__track {
+  display: flex;
+  flex-shrink: 0;
   align-items: center;
-  list-style: none;
+  gap: var(--logo-gap);
+  min-height: calc(var(--logo-h) * 1.35);
   margin: 0;
-  padding: 0;
+  /* Same gap after the last logo, so the loop joins seamlessly. */
+  padding: 0 var(--logo-gap) 0 0;
+  list-style: none;
 }
 
 .clients__item {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
-  justify-content: center;
-  min-height: 88px;
 }
 
 .clients__logo {
   display: block;
   width: auto;
-  max-width: 100%;
-  height: auto;
-  max-height: 92px;
-  object-fit: contain;
+  height: calc(var(--logo-h) * var(--k, 1));
   filter: brightness(0);
-  opacity: 0.32;
-  transform: scale(1);
-  animation: clients-spot 7s ease-in-out infinite;
-  transition: transform 0.35s var(--ease), opacity 0.35s var(--ease);
 }
 
-.clients__item:hover .clients__logo {
-  animation-play-state: paused;
-  opacity: 1;
-  transform: scale(1.12);
-}
-
-@keyframes clients-spot {
-  0%,
-  8%,
-  100% {
-    opacity: 0.32;
-    transform: scale(1);
+@keyframes clients-marquee {
+  from {
+    transform: translateX(0);
   }
-  3%,
-  6% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-}
-
-@media (max-width: 900px) {
-  .clients__grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  to {
+    transform: translateX(-50%);
   }
 }
 
 @media (max-width: 640px) {
   .clients {
+    --logo-h: 46px;
+    --logo-gap: 56px;
     padding-top: 40px;
     padding-bottom: 4px;
   }
@@ -75,32 +71,26 @@
     margin-bottom: 20px;
   }
 
-  .clients__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 22px 16px;
-  }
-
-  .clients__item {
-    min-height: 58px;
-  }
-
-  .clients__item:last-child {
-    display: none;
-  }
-
-  .clients__logo {
-    max-height: 48px;
+  .clients__marquee-inner {
+    animation-duration: 40s;
   }
 }
 
+/* Without motion: a still row the visitor can swipe through. */
 @media (prefers-reduced-motion: reduce) {
-  .clients__logo {
-    animation: none;
-    opacity: 0.82;
-    transition: none;
+  .clients__marquee {
+    overflow-x: auto;
   }
 
-  .clients__item:hover .clients__logo {
-    transform: none;
+  .clients__marquee-inner {
+    animation: none;
+  }
+
+  .clients__track[aria-hidden] {
+    display: none;
+  }
+
+  .clients__track {
+    padding-left: var(--gutter);
   }
 }
