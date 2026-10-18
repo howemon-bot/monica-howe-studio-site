@@ -12,12 +12,13 @@
   max-width: 15ch;
 }
 
+/* Large on desktop (up to 48px), easing down to 19px on phones. */
 .hero__sub {
-  margin-top: 22px;
+  margin-top: clamp(16px, 2vw, 28px);
   max-width: 36ch;
-  font-size: clamp(19px, 2.1vw, 24px);
+  font-size: clamp(19px, 4vw, 48px);
   color: var(--color-ink-soft);
-  line-height: 1.5;
+  line-height: 1.3;
 }
 
 .hero__reel {
@@ -62,6 +63,11 @@
 }
 
 @media (max-width: 640px) {
+  /* Three lines on phones, longest first; sized so "A creative studio" fits the width. */
+  .hero__title {
+    font-size: min(46px, calc((100vw - 2 * var(--gutter)) / 7.9));
+  }
+
   .hero__reel {
     width: calc(100% + 2 * var(--gutter));
     margin-left: calc(-1 * var(--gutter));
